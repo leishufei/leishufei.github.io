@@ -22,13 +22,13 @@
 
   <meta name="description" content="在 Python 里要想不换行输出，其实很简单，只需要像下面这样打印信息： 12345import timefor i in range(100):    print(&amp;#x27;\r目前进度为：[%s] %.2f%%&amp;#x27; % (i * &quot;#&quot;, i * 100 &#x2F; 100), end&#x3D;&amp;#x27;&amp;#x27;)    time.sleep(1)  实际上，Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pyhon 不换行输出">
+<meta property="og:title" content="Python 不换行输出">
 <meta property="og:url" content="http://yoursite.com/2020/08/11/2020-08-11-print-without-newline/">
 <meta property="og:site_name" content="lei&#39;s blog">
 <meta property="og:description" content="在 Python 里要想不换行输出，其实很简单，只需要像下面这样打印信息： 12345import timefor i in range(100):    print(&amp;#x27;\r目前进度为：[%s] %.2f%%&amp;#x27; % (i * &quot;#&quot;, i * 100 &#x2F; 100), end&#x3D;&amp;#x27;&amp;#x27;)    time.sleep(1)  实际上，Python">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-08-11T13:13:55.000Z">
-<meta property="article:modified_time" content="2020-08-11T13:33:02.559Z">
+<meta property="article:modified_time" content="2020-08-12T02:12:29.268Z">
 <meta property="article:author" content="leishufei">
 <meta property="article:tag" content="Python  爬虫  数据分析">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Pyhon 不换行输出 | lei's blog</title>
+  <title>Python 不换行输出 | lei's blog</title>
   
 
 
@@ -165,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Pyhon 不换行输出
+          Python 不换行输出
         </h1>
 
         <div class="post-meta">
@@ -174,10 +174,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-08-11 21:13:55 / Modified: 21:33:02" itemprop="dateCreated datePublished" datetime="2020-08-11T21:13:55+08:00">2020-08-11</time>
+              <time title="Created: 2020-08-11 21:13:55" itemprop="dateCreated datePublished" datetime="2020-08-11T21:13:55+08:00">2020-08-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-08-12 10:12:29" itemprop="dateModified" datetime="2020-08-12T10:12:29+08:00">2020-08-12</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -202,9 +208,7 @@
         <p>在 Python 里要想不换行输出，其实很简单，只需要像下面这样打印信息：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    print(<span class="string">&#x27;\r目前进度为：[%s] %.2f%%&#x27;</span> % (i * <span class="string">&quot;#&quot;</span>, i * <span class="number">100</span> / <span class="number">100</span>), end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
-<p>实际上，Python 打印信息时的<code>end</code>默认为<code>\n</code>（即换行符），同时将光标提到最新行的最前面，相当于执行了</p>
-<p><code>print(&quot;\n\r&quot;)</code>，这样就实现了换行输出 。那如果想要不换行输出就很简单了，只需要将<code>end</code>指定为空字符串（即</p>
-<p>不换行），同时加入<code>\r</code>，这样就可以了。</p>
+<p>实际上，Python 打印信息时的<code>end</code>默认为<code>\n</code>（即换行符），同时将光标提到最新行的最前面，相当于执行了<code>print(&quot;\n\r&quot;)</code>，这样就实现了换行输出 。那如果想要不换行输出就很简单了，只需要将<code>end</code>指定为空字符串（即不换行），同时加入<code>\r</code>，这样就可以了。</p>
 
     </div>
 
@@ -223,7 +227,10 @@
     <a href="/2020/08/11/2020-08-11-directory-tree-stucture/" rel="prev" title="自动生成项目的目录树结构">
       <i class="fa fa-chevron-left"></i> 自动生成项目的目录树结构
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/12/2020-08-12-problems-during-using-pyinstaller/" rel="next" title="PyInstaller 打包过程中遇到的坑">
+      PyInstaller 打包过程中遇到的坑 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -295,7 +302,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
