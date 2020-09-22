@@ -46,15 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>我在 Github Pages 上的第一篇博客</title>
-    <url>/2020/08/01/first-blog-on-github/</url>
-    <content><![CDATA[<p>今天突发奇想的想弄一个博客，这样可以把平时学习的经历以及遇到的一些疑难杂症放在博客上，以供后面查阅。但对 Github 不经常使用的我，对一些东西还是不太熟悉，捣鼓了很久才初见成效。所以，后续还要继续努力呀！</p>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-  </entry>
-  <entry>
     <title>自动生成项目的目录树结构</title>
     <url>/2020/08/11/2020-08-11-directory-tree-stucture/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个好的项目应该具有一个简洁明了的 README 文件，而 README 文件中的目录树结构能让读者很<br>好的了解你的项目。当文件结构比较简单的时候，逐行手动打出来倒不是太大的问题，但是当项目<br>文件比较多，结构相对复杂的时候，手动打出来就比较费劲了。这时，自动生成目录树结构的方法<br>就显得尤为重要。</p>
