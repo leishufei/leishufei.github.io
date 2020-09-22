@@ -23,16 +23,16 @@
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/09/21/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <loc>https://leishufei.github.io/2020/09/20/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
     
-    <lastmod>2020-09-21</lastmod>
+    <lastmod>2020-09-20</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/09/20/2020-09-20-python-openpyxl/</loc>
+    <loc>https://leishufei.github.io/2020/09/15/2020-09-20-python-openpyxl/</loc>
     
-    <lastmod>2020-09-20</lastmod>
+    <lastmod>2020-09-15</lastmod>
     
   </url>
   
@@ -44,37 +44,37 @@
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/08/13/2020-08-13-some-problems-with-bat/</loc>
+    <loc>https://leishufei.github.io/2020/08/27/2020-08-13-some-problems-with-bat/</loc>
     
-    <lastmod>2020-08-13</lastmod>
+    <lastmod>2020-08-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leishufei.github.io/2020/08/25/2020-08-12-problems-during-using-pyinstaller/</loc>
+    
+    <lastmod>2020-08-25</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leishufei.github.io/2020/08/20/2020-08-11-print-without-newline/</loc>
+    
+    <lastmod>2020-08-20</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leishufei.github.io/2020/08/15/2020-08-11-directory-tree-stucture/</loc>
+    
+    <lastmod>2020-08-15</lastmod>
     
   </url>
   
   <url>
     <loc>https://leishufei.github.io/2020/08/08/2020-08-08-google-translation-js-crack/</loc>
     
-    <lastmod>2020-08-13</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leishufei.github.io/2020/08/11/2020-08-11-directory-tree-stucture/</loc>
-    
-    <lastmod>2020-08-13</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leishufei.github.io/2020/08/12/2020-08-12-problems-during-using-pyinstaller/</loc>
-    
-    <lastmod>2020-08-12</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://leishufei.github.io/2020/08/11/2020-08-11-print-without-newline/</loc>
-    
-    <lastmod>2020-08-12</lastmod>
+    <lastmod>2020-08-08</lastmod>
     
   </url>
   
@@ -88,35 +88,49 @@
 
   
   <url>
-    <loc>https://leishufei.github.io/tags/python/</loc>
+    <loc>https://leishufei.github.io/tags/Python/</loc>
     <lastmod>2020-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/tags/javascript/</loc>
+    <loc>https://leishufei.github.io/tags/Javascript/</loc>
     <lastmod>2020-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/tags/pyinstaller/</loc>
+    <loc>https://leishufei.github.io/tags/Windows/</loc>
     <lastmod>2020-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/tags/bat/</loc>
+    <loc>https://leishufei.github.io/tags/Directory-Tree/</loc>
     <lastmod>2020-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/tags/web-spider/</loc>
+    <loc>https://leishufei.github.io/tags/Pyinstaller/</loc>
+    <lastmod>2020-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leishufei.github.io/tags/Bat/</loc>
+    <lastmod>2020-09-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://leishufei.github.io/tags/Web-Spider/</loc>
     <lastmod>2020-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -132,14 +146,14 @@
 
   
   <url>
-    <loc>https://leishufei.github.io/categories/Blog/</loc>
+    <loc>https://leishufei.github.io/categories/Python/</loc>
     <lastmod>2020-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/categories/Essays/</loc>
+    <loc>https://leishufei.github.io/categories/Windows/</loc>
     <lastmod>2020-09-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
