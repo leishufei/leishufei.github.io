@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://leishufei.github.io/404</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://leishufei.github.io/schedule/</loc>
+    
+    <lastmod>2020-09-23</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://leishufei.github.io/tags/</loc>
     
     <lastmod>2020-09-22</lastmod>
@@ -23,56 +37,56 @@
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/09/20/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <loc>https://leishufei.github.io/Python/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
     
     <lastmod>2020-09-20</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/09/15/2020-09-20-python-openpyxl/</loc>
+    <loc>https://leishufei.github.io/Python/2020-09-20-python-openpyxl/</loc>
     
     <lastmod>2020-09-15</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/08/28/2020-08-28-weather-assistant/</loc>
+    <loc>https://leishufei.github.io/Python/2020-08-28-weather-assistant/</loc>
     
     <lastmod>2020-08-28</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/08/27/2020-08-13-some-problems-with-bat/</loc>
+    <loc>https://leishufei.github.io/Python/2020-08-13-some-problems-with-bat/</loc>
     
     <lastmod>2020-08-27</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/08/25/2020-08-12-problems-during-using-pyinstaller/</loc>
+    <loc>https://leishufei.github.io/Python/2020-08-12-problems-during-using-pyinstaller/</loc>
     
     <lastmod>2020-08-25</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/08/20/2020-08-11-print-without-newline/</loc>
+    <loc>https://leishufei.github.io/Python/2020-08-11-print-without-newline/</loc>
     
     <lastmod>2020-08-20</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/08/15/2020-08-11-directory-tree-stucture/</loc>
+    <loc>https://leishufei.github.io/Windows/2020-08-11-directory-tree-stucture/</loc>
     
     <lastmod>2020-08-15</lastmod>
     
   </url>
   
   <url>
-    <loc>https://leishufei.github.io/2020/08/08/2020-08-08-google-translation-js-crack/</loc>
+    <loc>https://leishufei.github.io/Python/2020-08-08-google-translation-js-crack/</loc>
     
     <lastmod>2020-08-08</lastmod>
     
@@ -81,7 +95,7 @@
 
   <url>
     <loc>https://leishufei.github.io/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -89,56 +103,56 @@
   
   <url>
     <loc>https://leishufei.github.io/tags/Python/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://leishufei.github.io/tags/Javascript/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://leishufei.github.io/tags/Windows/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://leishufei.github.io/tags/Directory-Tree/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://leishufei.github.io/tags/Pyinstaller/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://leishufei.github.io/tags/Bat/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://leishufei.github.io/tags/Web-Spider/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://leishufei.github.io/tags/GUI/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -147,14 +161,14 @@
   
   <url>
     <loc>https://leishufei.github.io/categories/Python/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://leishufei.github.io/categories/Windows/</loc>
-    <lastmod>2020-09-22</lastmod>
+    <lastmod>2020-09-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
