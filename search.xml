@@ -1,263 +1,474 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>Hexo新建文章后自动打开Markdown编辑器</title>
-      <link href="Hexo/2020-09-27-hexo/"/>
-      <url>Hexo/2020-09-27-hexo/</url>
-      
-        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 Hexo 中新建一篇博客很简单，只需要在命令行中输入以下命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new blog_title</span><br></pre></td></tr></table></figure><p>然后 Hexo 会在站点根目录下的 Source\_posts 目录中创建一个 Markdown 文件，文件名为 blog_title，我们再打开 Markdown 编辑器即可。</p><p>但这样有 2 点不足，一是要自己手动打开（主要是懒T_T），二是文件多了以后，找到对应的文件比较麻烦。那有没有解决办法呢？也是有的。</p><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ol><li>在站点根目录下新建一个<code>scripts</code>目录</li><li>在<code>scripts</code>目录下新建一个<code>js</code>脚本，名字随意</li><li>在新建的<code>js</code>脚本中键入以下代码：</li></ol><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">&#x27;child_process&#x27;</span>).exec;</span><br><span class="line">hexo.on(<span class="string">&#x27;new&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  spawn(<span class="string">&#x27;start  &quot;C:\Program Files\Typora\Typora.exe&quot; &#x27;</span> + data.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p><strong>注意</strong>：Markdown 编辑器的路径需要替换自己安装编辑器对应的路径，并且其后的空格不能删除。</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a href="https://www.cnblogs.com/senup/p/12190475.html">https://www.cnblogs.com/senup/p/12190475.html</a></p><p>[2] <a href="https://acidwits.gitee.io/2020/01/27/A-0024/">https://acidwits.gitee.io/2020/01/27/A-0024/</a></p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>Markdown中添加图注</title>
+    <url>/Markdown/2020-09-27-add-legend-for-picture/</url>
+    <content><![CDATA[<p>插入图片时，嵌入以下代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">&quot;border-radius:0.3em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);&quot;</span> <span class="attr">src</span>=<span class="string">&quot;2020-09-27-add-legend-for-picture\sample.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200px&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color:orange;color:#999;padding:2px;&quot;</span>&gt;</span>这是题注<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<center>
+    <img style="border-radius:0.3em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Markdown/2020-09-27-add-legend-for-picture/sample.jpg" width="200px">
+    <p style="color:orange;color: #999;padding: 2px; padding-top:-10px">这是题注</p>
+</center>
+
+<blockquote>
+<p>转载</p>
+</blockquote>
+<p style="line-height=0.5em">
+  作者：一瓶矿泉水<br>
+  链接：https://www.zhihu.com/question/42802592/answer/383110578<br>
+  来源：知乎<br>
+</p>
+
+]]></content>
       <categories>
-          
-          <category> Hexo </category>
-          
+        <category>Markdown</category>
       </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>FAT32转NTFS命令</title>
-      <link href="Windows/2020-09-26-convert-fat-to-ntfs/"/>
-      <url>Windows/2020-09-26-convert-fat-to-ntfs/</url>
-      
-        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>往 U 盘里复制超过 4G 大小的文件时，经常会遇到无法复制的情况，这是因为 U 盘的文件系统为 FAT32。要想往文件系统里复制超过 4G 的文件，必须先将其转为 NTFS 文件系统。</p><h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><p>按 Win + R 组合键，输入 cmd，唤出命令行窗口，再输入以下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">convert X:&#x2F;fs:ntfs</span><br></pre></td></tr></table></figure><p>X 表示你想转换的盘符。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo新建文章后自动打开Markdown编辑器</title>
+    <url>/Hexo/2020-09-27-hexo/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 Hexo 中新建一篇博客很简单，只需要在命令行中输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new blog_title</span><br></pre></td></tr></table></figure>
+
+<p>然后 Hexo 会在站点根目录下的 Source\_posts 目录中创建一个 Markdown 文件，文件名为 blog_title，我们再打开 Markdown 编辑器即可。</p>
+<p>但这样有 2 点不足，一是要自己手动打开（主要是懒T_T），二是文件多了以后，找到对应的文件比较麻烦。那有没有解决办法呢？也是有的。</p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><ol>
+<li>在站点根目录下新建一个<code>scripts</code>目录</li>
+<li>在<code>scripts</code>目录下新建一个<code>js</code>脚本，名字随意</li>
+<li>在新建的<code>js</code>脚本中键入以下代码：</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">&#x27;child_process&#x27;</span>).exec;</span><br><span class="line">hexo.on(<span class="string">&#x27;new&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  spawn(<span class="string">&#x27;start  &quot;C:\Program Files\Typora\Typora.exe&quot; &#x27;</span> + data.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：Markdown 编辑器的路径需要替换自己安装编辑器对应的路径，并且其后的空格不能删除。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a href="https://www.cnblogs.com/senup/p/12190475.html">https://www.cnblogs.com/senup/p/12190475.html</a></p>
+<p>[2] <a href="https://acidwits.gitee.io/2020/01/27/A-0024/">https://acidwits.gitee.io/2020/01/27/A-0024/</a></p>
+]]></content>
       <categories>
-          
-          <category> Windows </category>
-          
+        <category>Hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Python中同时替换多个字符串的方法</title>
-      <link href="Python/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-      <url>Python/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-      
-        <content type="html"><![CDATA[<h1 id="replace-方法"><a href="#replace-方法" class="headerlink" title="replace() 方法"></a>replace() 方法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">str_ = <span class="string">&quot;abcead&quot;</span></span><br><span class="line">result = str_.replace(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>).replace(<span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果：</span></span><br><span class="line">cccecd</span><br></pre></td></tr></table></figure><h1 id="re-sub-方法"><a href="#re-sub-方法" class="headerlink" title="re.sub() 方法"></a>re.sub() 方法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">str_ = <span class="string">&quot;abcdefg&quot;</span></span><br><span class="line"><span class="comment"># 第一个参数为正则表达式，第二个参数为替换后的字符串，第三个参数为待替换的字符串</span></span><br><span class="line">result_1 = re.sub(<span class="string">&quot;[abc]&quot;</span>, <span class="string">&quot;&quot;</span>, str_)</span><br><span class="line">print(result_1)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">defg</span><br><span class="line"></span><br><span class="line">result_2 = re.sub(<span class="string">&quot;a|b|c&quot;</span>, <span class="string">&quot;&quot;</span>, str_)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">defg</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+  </entry>
+  <entry>
+    <title>FAT32转NTFS命令</title>
+    <url>/Windows/2020-09-26-convert-fat-to-ntfs/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>往 U 盘里复制超过 4G 大小的文件时，经常会遇到无法复制的情况，这是因为 U 盘的文件系统为 FAT32。要想往文件系统里复制超过 4G 的文件，必须先将其转为 NTFS 文件系统。</p>
+<h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><p>按 Win + R 组合键，输入 cmd，唤出命令行窗口，再输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">convert X:&#x2F;fs:ntfs</span><br></pre></td></tr></table></figure>
+
+<p>X 表示你想转换的盘符。</p>
+]]></content>
       <categories>
-          
-          <category> Python </category>
-          
+        <category>Windows</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Python中的openpyxl模块</title>
-      <link href="Python/2020-09-20-python-openpyxl/"/>
-      <url>Python/2020-09-20-python-openpyxl/</url>
-      
-        <content type="html"><![CDATA[<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install openpyxl</span><br></pre></td></tr></table></figure><h1 id="打开表格"><a href="#打开表格" class="headerlink" title="打开表格"></a>打开表格</h1><ul><li>创建</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化</span></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"><span class="comment"># 选择 sheet</span></span><br><span class="line">sheet = work_book.active</span><br></pre></td></tr></table></figure><ul><li>从文件读取</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line">work_book = openpyxl.load_workbook(<span class="string">&quot;sample.xlsx&quot;</span>)  <span class="comment"># 不支持后缀为 xls 的文件</span></span><br></pre></td></tr></table></figure><h1 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line">work_book = openpyxl.WorkBook()</span><br><span class="line">work_book.save(<span class="string">&quot;sample.xlsx&quot;</span>)</span><br></pre></td></tr></table></figure><h1 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet[<span class="string">&quot;A1&quot;</span>] = <span class="number">12</span>  <span class="comment"># 通过 字母+数字 的索引方法找到单元格</span></span><br><span class="line">sheet.cell(row=<span class="number">1</span>, column=<span class="number">1</span>) = <span class="number">12</span>  <span class="comment"># 通过 行+列 的索引方法找到单元格</span></span><br></pre></td></tr></table></figure><h1 id="创建-sheet"><a href="#创建-sheet" class="headerlink" title="创建 sheet"></a>创建 sheet</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">work_book.create_sheet(<span class="string">&quot;NewSheet&quot;</span>)</span><br></pre></td></tr></table></figure><h1 id="选择-sheet"><a href="#选择-sheet" class="headerlink" title="选择 sheet"></a>选择 sheet</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"><span class="comment"># 推荐方法一</span></span><br><span class="line">work_book[<span class="string">&quot;sheet_name&quot;</span>]  <span class="comment"># 方法一</span></span><br><span class="line">work_book.get_sheet_by_name(<span class="string">&quot;sheet_name&quot;</span>)  <span class="comment"># 方法二</span></span><br></pre></td></tr></table></figure><h1 id="查看和修改-sheet-名"><a href="#查看和修改-sheet-名" class="headerlink" title="查看和修改 sheet 名"></a>查看和修改 sheet 名</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet_name = sheet.title  <span class="comment"># 查看表名</span></span><br><span class="line">sheet.title = <span class="string">&quot;changed title&quot;</span>  <span class="comment">#修改表名</span></span><br></pre></td></tr></table></figure><h1 id="访问单元格"><a href="#访问单元格" class="headerlink" title="访问单元格"></a>访问单元格</h1><ul><li>单一单元格</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">cell = sheet[<span class="string">&quot;A1&quot;</span>]  <span class="comment"># 方法一</span></span><br><span class="line">cell = sheet.cell(row=<span class="number">1</span>, column=<span class="number">1</span>)  <span class="comment"># 方法二</span></span><br></pre></td></tr></table></figure><ul><li>多单元格</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">cells = sheet[<span class="string">&quot;A1:B2&quot;</span>]</span><br></pre></td></tr></table></figure><h1 id="循环访问单元格"><a href="#循环访问单元格" class="headerlink" title="循环访问单元格"></a>循环访问单元格</h1><ul><li>方法一</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line">rows = sheet[<span class="string">&quot;A1:B2&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> rows:</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure><ul><li>方法二</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">      <span class="keyword">for</span> column <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">          print(sheet.cell(row=row, column=column))</span><br></pre></td></tr></table></figure><ul><li>方法三</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> work_book.iter_rows(min_row=<span class="number">1</span>, max_row=<span class="number">3</span>, min_col=<span class="number">1</span>, max_col=<span class="number">3</span>):</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure><ul><li>方法四</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> work_book.iter_cols(min_row=<span class="number">1</span>, max_row=<span class="number">3</span>, min_col=<span class="number">1</span>, max_col=<span class="number">3</span>):</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> column:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure><ul><li>方法五</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> sheet.rows:</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure><ul><li>方法六</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> sheet.columns:</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> column:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure><h1 id="获取单元格所在行和列"><a href="#获取单元格所在行和列" class="headerlink" title="获取单元格所在行和列"></a>获取单元格所在行和列</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.acitve</span><br><span class="line">cell = shett.cell(row=<span class="number">1</span>, column=<span class="number">1</span>)</span><br><span class="line">row, column = cell.row, cell.column</span><br></pre></td></tr></table></figure><h1 id="根据数字得到字母，根据字母得到数字"><a href="#根据数字得到字母，根据字母得到数字" class="headerlink" title="根据数字得到字母，根据字母得到数字"></a>根据数字得到字母，根据字母得到数字</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="comment"># 导入需要的类</span></span><br><span class="line"><span class="keyword">from</span> openpyxl.utils <span class="keyword">import</span> get_column_letter, column_index_from_string</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据列数得到对应的字母</span></span><br><span class="line">print(get_column_letter(<span class="number">2</span>))</span><br><span class="line"><span class="comment"># 根据字母得到对应的列数</span></span><br><span class="line">print(column_index_from_string(<span class="string">&quot;B&quot;</span>))</span><br></pre></td></tr></table></figure><h1 id="设置单元格风格"><a href="#设置单元格风格" class="headerlink" title="设置单元格风格"></a>设置单元格风格</h1><ul><li>字体</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入需要的类</span></span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Font, colors, Alignment</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"><span class="comment"># name: 字体名称</span></span><br><span class="line"><span class="comment"># size: 字体大小</span></span><br><span class="line"><span class="comment"># italic: 是否斜体</span></span><br><span class="line"><span class="comment"># color: 字体颜色</span></span><br><span class="line"><span class="comment"># bold: 是否加粗</span></span><br><span class="line">sheet[<span class="string">&quot;A1&quot;</span>].font = Font(name=<span class="string">&quot;等线&quot;</span>, size=<span class="number">24</span>, italic=<span class="literal">True</span>, color=colors.RED, bold=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure><ul><li>设置行高和列宽</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行高和列宽是针对行或列进行设置的，不能单独对单元格进行设置</span></span><br><span class="line">sheet.row_dimensions[<span class="number">2</span>].height = <span class="number">40</span>  <span class="comment"># 设置第 2 行行高为 40</span></span><br><span class="line">sheet.column_dimensions[<span class="string">&quot;C&quot;</span>].width = <span class="number">12</span>  <span class="comment"># 设置 C 列列宽为 12</span></span><br></pre></td></tr></table></figure><ul><li>设置对齐方式</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Alignment</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="comment"># horizontal: 水平对齐方式</span></span><br><span class="line"><span class="comment"># vertical: 垂直对齐方式</span></span><br><span class="line"><span class="comment"># wrap_text: 是否自动换行，True 表示自动换行</span></span><br><span class="line">sheet[<span class="string">&quot;A1&quot;</span>].alignment = Alignment(horizontal=<span class="string">&quot;center&quot;</span>, vertical=<span class="string">&quot;center&quot;</span>, wrap_text=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure><ul><li><p>合并和拆分单元格</p><ul><li>获取所有合并的单元格</li></ul></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Font, colors, Alignment</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">all_merged_cells = list(sheet.merged_cells)  <span class="comment"># 获取所有合并的单元格</span></span><br></pre></td></tr></table></figure><ul><li>合并单元格</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet.merge_cells(<span class="string">&quot;A1:B2&quot;</span>)</span><br></pre></td></tr></table></figure><ul><li>拆分单元格</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet.unmerge_cells(<span class="string">&quot;A1:B2&quot;</span>)</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python中同时替换多个字符串的方法</title>
+    <url>/Python/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h1 id="replace-方法"><a href="#replace-方法" class="headerlink" title="replace() 方法"></a>replace() 方法</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str_ = <span class="string">&quot;abcead&quot;</span></span><br><span class="line">result = str_.replace(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>).replace(<span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果：</span></span><br><span class="line">cccecd</span><br></pre></td></tr></table></figure>
+
+<h1 id="re-sub-方法"><a href="#re-sub-方法" class="headerlink" title="re.sub() 方法"></a>re.sub() 方法</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">str_ = <span class="string">&quot;abcdefg&quot;</span></span><br><span class="line"><span class="comment"># 第一个参数为正则表达式，第二个参数为替换后的字符串，第三个参数为待替换的字符串</span></span><br><span class="line">result_1 = re.sub(<span class="string">&quot;[abc]&quot;</span>, <span class="string">&quot;&quot;</span>, str_)</span><br><span class="line">print(result_1)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">defg</span><br><span class="line"></span><br><span class="line">result_2 = re.sub(<span class="string">&quot;a|b|c&quot;</span>, <span class="string">&quot;&quot;</span>, str_)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">defg</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
-          
-          <category> Python </category>
-          
+        <category>Python</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Python制作天气查询助手</title>
-      <link href="Python/2020-08-28-weather-assistant/"/>
-      <url>Python/2020-08-28-weather-assistant/</url>
-      
-        <content type="html"><![CDATA[<p>今天闲来无事，想写个查天气的脚本。Idea 在手，拿起 Python 干就完事了。<br>首先找一个比较靠谱的天气数据网站，这里我选的是<a href="http://www.weather.com.cn/">中国天气网</a>，如下图所示，</p><p><img src="/Python/2020-08-28-weather-assistant/s1.png" alt="s1"></p><p>随便搜索一个城市的天气试试，当前的 URL 为：<a href="http://www.weather.com.cn/weather1d/101270101.shtml#input">http://www.weather.com.cn/weather1d/101270101.shtml#input</a></p><p><img src="/Python/2020-08-28-weather-assistant/s2.png" alt="s2"></p><p>URL 中的 101270101 猜测应该是城市的 id 之类的，那么如果要查询不同的城市的天气数据，首先得找到城市名和这个 id 的对应关系。<br>回到起初搜索的地方，观察一下网络请求。</p><p><img src="/Python/2020-08-28-weather-assistant/s3.png" alt="s3"></p><p>发现网络面板中有含有 search 关键字的请求，具体内容过如下：</p><p><img src="/Python/2020-08-28-weather-assistant/s4.png" alt="s4"></p><p>Nice！这个请求里面包含了城市的 id。请求的 URL 为：<a href="http://toy1.weather.com.cn/search?cityname=%E6%88%90%E9%83%BD&callback=success_jsonpCallback&_=1598586444643">http://toy1.weather.com.cn/search?cityname=%E6%88%90%E9%83%BD&amp;callback=success_jsonpCallback&amp;_=1598586444643</a>，请求方法为 GET，然后分析一下具体的请求参数：</p><blockquote><p>‘cityname’: 成都</p><p>‘callback’: success_jsonpCallback</p><p>‘_’: 1598586444643</p></blockquote><p>cityname 是城市的名称，callback 不知其具体意义，_ 一看就知道是时间戳。<br>那这样就很简单了，写一段简单的代码就可以获取到城市的 id：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;</span><br><span class="line">      <span class="string">&quot;User-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36 Edg/84.0.522.59&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Referer&quot;</span>: <span class="string">&quot;http://www.weather.com.cn/weather1d/101271201.shtml&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">city_name = <span class="string">&quot;成都&quot;</span></span><br><span class="line">timestamp = int(time.time() * <span class="number">1000</span>)</span><br><span class="line">url = <span class="string">f&quot;http://toy1.weather.com.cn/search?cityname=<span class="subst">&#123;city_name&#125;</span>&amp;callback=success_jsonpCallback&amp;_=<span class="subst">&#123;timestamp&#125;</span>&quot;</span></span><br><span class="line">response = requests.get(url, headers=headers)</span><br><span class="line">city_ip = re.findall(<span class="string">r&quot;\d&#123;9&#125;&quot;</span>, response.text)[<span class="number">0</span>]</span><br><span class="line">print(city_ip)</span><br></pre></td></tr></table></figure><blockquote><p>需要注意的是，如果 headers 里不添加 Referer，就会出现 403 错误码，在这里也是栽了跟头。</p></blockquote><p>解决了城市 ip 的问题，接下来就要获取页面上的天气数据了。<br>把页面上的主要数据分为 3 个部分，如下所示。</p><img src="/Python/2020-08-28-weather-assistant/s5.png" width="500"><p>对于第 1 板块的数据，在源代码中并没有发现，说明是异步加载的数据。<br>然后在网络面板中发现了一个请求，里面由对应的信息，如下所示：</p><p><img src="/Python/2020-08-28-weather-assistant/s6.png" alt="s6"></p><p>该请求的请求 URL 为：[<a href="http://d1.weather.com.cn/sk_2d/101270101.html?_=1598588972022%5D">http://d1.weather.com.cn/sk_2d/101270101.html?_=1598588972022]</a>(<a href="http://d1.weather.com.cn/sk_2d/101270101.html?_=1598588972022%EF%BC%8C%E4%B9%8B%E5%89%8D%E8%8E%B7%E5%8F%96%E5%88%B0%E7%9A%84%E5%9F%8E%E5%B8%82">http://d1.weather.com.cn/sk_2d/101270101.html?_=1598588972022，之前获取到的城市</a> ip 在这同样适用。写一段代码来获取这个数据：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cip = <span class="string">&quot;101270101&quot;</span></span><br><span class="line">timestamp = int(time.time() * <span class="number">1000</span>)</span><br><span class="line">url = <span class="string">f&quot;http://d1.weather.com.cn/sk_2d/<span class="subst">&#123;cip&#125;</span>.html?_=<span class="subst">&#123;timestamp&#125;</span>&quot;</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line">response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">content = response.text</span><br></pre></td></tr></table></figure><p>然后解析数据：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 温度</span></span><br><span class="line">temp = re.findall(<span class="string">&#x27;&quot;temp&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>] + <span class="string">&quot;°C&quot;</span></span><br><span class="line"><span class="comment"># 风向</span></span><br><span class="line">wd = re.findall(<span class="string">&#x27;&quot;WD&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 风速</span></span><br><span class="line">ws = re.findall(<span class="string">&#x27;&quot;WS&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 湿度</span></span><br><span class="line">sd = re.findall(<span class="string">&#x27;&quot;SD&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 时间</span></span><br><span class="line">time_ = re.findall(<span class="string">&#x27;&quot;time&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 天气状况</span></span><br><span class="line">weather = re.findall(<span class="string">&#x27;&quot;weather&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 能见度</span></span><br><span class="line">njd = re.findall(<span class="string">&#x27;&quot;njd&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 降雨</span></span><br><span class="line">rain = re.findall(<span class="string">&#x27;&quot;rain&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 空气质量</span></span><br><span class="line">aqi = re.findall(<span class="string">&#x27;&quot;aqi&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 日期</span></span><br><span class="line">date_ = re.findall(<span class="string">&#x27;&quot;date&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure><p>对于第 2 个板块的数据，在源代码中可以搜索到，因此我们可以直接用 requests 获取对应的数据，然后用 bs4 或者其他的解析库解析。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">f&quot;http://www.weather.com.cn/weather1d/<span class="subst">&#123;cip&#125;</span>.shtml#input&quot;</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line">response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">html = response.text</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一列数据</span></span><br><span class="line">li1 = soup.select(<span class="string">&quot;div.t &gt; ul.clearfix &gt; li&quot;</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 白天 or 夜间</span></span><br><span class="line">type1 = li1.select(<span class="string">&quot;h1&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line"><span class="comment"># 天气状况</span></span><br><span class="line">weather1 = li1.select(<span class="string">&quot;p.wea&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line"><span class="comment"># 温度</span></span><br><span class="line">temp1 = li1.select(<span class="string">&quot;p.tem&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line"><span class="comment"># 风速</span></span><br><span class="line">ws1 = li1.select(<span class="string">&quot;p.win &gt; span&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line"><span class="comment"># 第二列数据</span></span><br><span class="line">li2 = soup.select(<span class="string">&quot;div.t &gt; ul.clearfix &gt; li&quot;</span>)[<span class="number">1</span>]</span><br><span class="line">type2 = li2.select(<span class="string">&quot;h1&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line">weather2 = li2.select(<span class="string">&quot;p.wea&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line">temp2 = li2.select(<span class="string">&quot;p.tem&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line">ws2 = li2.select(<span class="string">&quot;p.win &gt; span&quot;</span>)[<span class="number">0</span>].text.strip()</span><br></pre></td></tr></table></figure><p>对于第 3 个板块的数据，在源代码中也不能直接搜索到，应该是 js 返回的数据，但找了很久，我都没有找到。最后利用全局搜索（Ctrl + Shift + F），在 html 文档的 script 标签中找到了对应的数据，如下所示：</p><p><img src="/Python/2020-08-28-weather-assistant/s7.png" alt="s7"></p><p>这样，要获取数据就很简单了，直接用 requests 库获取页面，然后用正则表达式或者解析库提取 script 标签中的数据：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cip = <span class="string">&quot;101270101 &quot;</span></span><br><span class="line">url = <span class="string">f&quot;ttp://www.weather.com.cn/weather1d/<span class="subst">&#123;cip&#125;</span>.shtml#input&quot;</span></span><br><span class="line">response = requests.get(url, headers=headers)</span><br><span class="line">response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">html = response.text</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">script = soup.select(<span class="string">&quot;div#today &gt; script&quot;</span>)[<span class="number">1</span>].text.strip().strip(<span class="string">&quot;var hour3data=&quot;</span>)</span><br><span class="line">json_ = json.loads(script)</span><br><span class="line">data = json_[<span class="string">&quot;1d&quot;</span>]  <span class="comment"># 获取 1 天的数据</span></span><br><span class="line">time_list = []</span><br><span class="line">temp_list = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):</span><br><span class="line">  time_ = data[i].split(<span class="string">&quot;,&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">  temp = data[i].split(<span class="string">&quot;,&quot;</span>)[<span class="number">3</span>]</span><br><span class="line">  time_list.append(time_)</span><br><span class="line">  temp_list.append(temp)</span><br><span class="line">  time_list = [re.findall(<span class="string">&quot;\d+&quot;</span>, i)[<span class="number">0</span>] + <span class="string">&quot;-&quot;</span> + re.findall(<span class="string">&quot;\d+&quot;</span>, i)[<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> time_list]</span><br><span class="line">  temp_list = [int(i.strip(<span class="string">&quot;℃&quot;</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> temp_list]</span><br></pre></td></tr></table></figure><p>至此，页面上主要的数据就获取完了，接下来将其输出就行了。<br>但光是这样我还没有满足，总觉得没有一个像样的 GUI 就缺了点啥。<br>GUI 的实现采用的是 PyQt5（推荐先用 Qt Designer 设计好界面，然后转换成 python 代码，这样会方便很多）。有了界面和控件，然后需要把控件和事件绑定起来，并将 matplotlib 绘制的图像显示在界面中<sup>[1]</sup>。<br>不过有个坑需要注意一下，就是图片的刷新问题。图片是不会自己刷新的，得做一点小改动。在网上搜索了很多相关博客<sup>[2]</sup>，基本上都说的下面这种方法，</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.axes.cla()</span><br><span class="line">self.axes.plot(x, y)</span><br><span class="line">self.draw()</span><br></pre></td></tr></table></figure><p>但这样并没有什么卵用，一运行就会卡死或者闪退。怎么搜索也找不到解决方法，就很崩溃。不过黄天不负有心人，在知乎上看到了一篇文章<sup>[3]</sup>，有所启发。在刷新图片之前，需要通过 sip.delete（from PyQt5 import sip）命令删除 layout 中的 widget，这相当于删掉画板，然后重新添加画布和画板，并重新绘图，这样就可以实现图片的刷新。<br>简略代码（请结合源码理解上述内容）如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">self.flag = <span class="number">0</span>  <span class="comment"># 判断是首次查询还是非首次查询</span></span><br><span class="line"><span class="keyword">if</span> self.flag == <span class="number">0</span>:</span><br><span class="line">    self.F = PlotFigure(width=<span class="number">3</span>, height=<span class="number">2</span>, dpi=<span class="number">80</span>)  <span class="comment"># 实例化画布</span></span><br><span class="line">    self.F.plot(curve_data)  <span class="comment"># 绘图</span></span><br><span class="line">    self.gridLayout.addWidget(self.F, <span class="number">0</span>, <span class="number">1</span>)  <span class="comment"># 添加 widget</span></span><br><span class="line">    self.flag += <span class="number">1</span>  <span class="comment"># 查询了就 +1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    sip.delete(self.F)  <span class="comment"># 删除画板</span></span><br><span class="line">    self.F = PlotFigure(width=<span class="number">3</span>, height=<span class="number">2</span>, dpi=<span class="number">80</span>)</span><br><span class="line">    self.F.plot(curve_data)</span><br><span class="line">    self.gridLayout.addWidget(self.F, <span class="number">0</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure><p>做了如此改动后，程序就可以正常运行了。<br>运行结果如下，</p><center>  <img src="/Python/2020-08-28-weather-assistant/s8.png" width="400">  <img src="/Python/2020-08-28-weather-assistant/s9.png" width="400"></center><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接<p>[1] <a href="https://blog.csdn.net/panrenlong/article/details/80183519">https://blog.csdn.net/panrenlong/article/details/80183519</a></p><p>[2] <a href="https://blog.csdn.net/wuwei_201/article/details/106106387">https://blog.csdn.net/wuwei_201/article/details/106106387</a></p><p>[3] <a href="https://zhuanlan.zhihu.com/p/191533944">https://zhuanlan.zhihu.com/p/191533944</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python中的openpyxl模块</title>
+    <url>/Python/2020-09-20-python-openpyxl/</url>
+    <content><![CDATA[<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install openpyxl</span><br></pre></td></tr></table></figure>
+
+<h1 id="打开表格"><a href="#打开表格" class="headerlink" title="打开表格"></a>打开表格</h1><ul>
+<li>创建</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化</span></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"><span class="comment"># 选择 sheet</span></span><br><span class="line">sheet = work_book.active</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从文件读取</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line">work_book = openpyxl.load_workbook(<span class="string">&quot;sample.xlsx&quot;</span>)  <span class="comment"># 不支持后缀为 xls 的文件</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line">work_book = openpyxl.WorkBook()</span><br><span class="line">work_book.save(<span class="string">&quot;sample.xlsx&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet[<span class="string">&quot;A1&quot;</span>] = <span class="number">12</span>  <span class="comment"># 通过 字母+数字 的索引方法找到单元格</span></span><br><span class="line">sheet.cell(row=<span class="number">1</span>, column=<span class="number">1</span>) = <span class="number">12</span>  <span class="comment"># 通过 行+列 的索引方法找到单元格</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="创建-sheet"><a href="#创建-sheet" class="headerlink" title="创建 sheet"></a>创建 sheet</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">work_book.create_sheet(<span class="string">&quot;NewSheet&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="选择-sheet"><a href="#选择-sheet" class="headerlink" title="选择 sheet"></a>选择 sheet</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"><span class="comment"># 推荐方法一</span></span><br><span class="line">work_book[<span class="string">&quot;sheet_name&quot;</span>]  <span class="comment"># 方法一</span></span><br><span class="line">work_book.get_sheet_by_name(<span class="string">&quot;sheet_name&quot;</span>)  <span class="comment"># 方法二</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="查看和修改-sheet-名"><a href="#查看和修改-sheet-名" class="headerlink" title="查看和修改 sheet 名"></a>查看和修改 sheet 名</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet_name = sheet.title  <span class="comment"># 查看表名</span></span><br><span class="line">sheet.title = <span class="string">&quot;changed title&quot;</span>  <span class="comment">#修改表名</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="访问单元格"><a href="#访问单元格" class="headerlink" title="访问单元格"></a>访问单元格</h1><ul>
+<li>单一单元格</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">cell = sheet[<span class="string">&quot;A1&quot;</span>]  <span class="comment"># 方法一</span></span><br><span class="line">cell = sheet.cell(row=<span class="number">1</span>, column=<span class="number">1</span>)  <span class="comment"># 方法二</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>多单元格</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">cells = sheet[<span class="string">&quot;A1:B2&quot;</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="循环访问单元格"><a href="#循环访问单元格" class="headerlink" title="循环访问单元格"></a>循环访问单元格</h1><ul>
+<li>方法一</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line">rows = sheet[<span class="string">&quot;A1:B2&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> rows:</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法二</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">      <span class="keyword">for</span> column <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">          print(sheet.cell(row=row, column=column))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法三</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> work_book.iter_rows(min_row=<span class="number">1</span>, max_row=<span class="number">3</span>, min_col=<span class="number">1</span>, max_col=<span class="number">3</span>):</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法四</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> work_book.iter_cols(min_row=<span class="number">1</span>, max_row=<span class="number">3</span>, min_col=<span class="number">1</span>, max_col=<span class="number">3</span>):</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> column:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法五</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> sheet.rows:</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法六</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> sheet.columns:</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> column:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
+
+<h1 id="获取单元格所在行和列"><a href="#获取单元格所在行和列" class="headerlink" title="获取单元格所在行和列"></a>获取单元格所在行和列</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.acitve</span><br><span class="line">cell = shett.cell(row=<span class="number">1</span>, column=<span class="number">1</span>)</span><br><span class="line">row, column = cell.row, cell.column</span><br></pre></td></tr></table></figure>
+
+<h1 id="根据数字得到字母，根据字母得到数字"><a href="#根据数字得到字母，根据字母得到数字" class="headerlink" title="根据数字得到字母，根据字母得到数字"></a>根据数字得到字母，根据字母得到数字</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="comment"># 导入需要的类</span></span><br><span class="line"><span class="keyword">from</span> openpyxl.utils <span class="keyword">import</span> get_column_letter, column_index_from_string</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据列数得到对应的字母</span></span><br><span class="line">print(get_column_letter(<span class="number">2</span>))</span><br><span class="line"><span class="comment"># 根据字母得到对应的列数</span></span><br><span class="line">print(column_index_from_string(<span class="string">&quot;B&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+<h1 id="设置单元格风格"><a href="#设置单元格风格" class="headerlink" title="设置单元格风格"></a>设置单元格风格</h1><ul>
+<li>字体</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 导入需要的类</span></span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Font, colors, Alignment</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"><span class="comment"># name: 字体名称</span></span><br><span class="line"><span class="comment"># size: 字体大小</span></span><br><span class="line"><span class="comment"># italic: 是否斜体</span></span><br><span class="line"><span class="comment"># color: 字体颜色</span></span><br><span class="line"><span class="comment"># bold: 是否加粗</span></span><br><span class="line">sheet[<span class="string">&quot;A1&quot;</span>].font = Font(name=<span class="string">&quot;等线&quot;</span>, size=<span class="number">24</span>, italic=<span class="literal">True</span>, color=colors.RED, bold=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置行高和列宽</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行高和列宽是针对行或列进行设置的，不能单独对单元格进行设置</span></span><br><span class="line">sheet.row_dimensions[<span class="number">2</span>].height = <span class="number">40</span>  <span class="comment"># 设置第 2 行行高为 40</span></span><br><span class="line">sheet.column_dimensions[<span class="string">&quot;C&quot;</span>].width = <span class="number">12</span>  <span class="comment"># 设置 C 列列宽为 12</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置对齐方式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Alignment</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="comment"># horizontal: 水平对齐方式</span></span><br><span class="line"><span class="comment"># vertical: 垂直对齐方式</span></span><br><span class="line"><span class="comment"># wrap_text: 是否自动换行，True 表示自动换行</span></span><br><span class="line">sheet[<span class="string">&quot;A1&quot;</span>].alignment = Alignment(horizontal=<span class="string">&quot;center&quot;</span>, vertical=<span class="string">&quot;center&quot;</span>, wrap_text=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>合并和拆分单元格</p>
+<ul>
+<li>获取所有合并的单元格</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Font, colors, Alignment</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">all_merged_cells = list(sheet.merged_cells)  <span class="comment"># 获取所有合并的单元格</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>合并单元格</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet.merge_cells(<span class="string">&quot;A1:B2&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>拆分单元格</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet.unmerge_cells(<span class="string">&quot;A1:B2&quot;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
-          
-          <category> Python </category>
-          
+        <category>Python</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Python </tag>
-            
-            <tag> Web Spider </tag>
-            
-            <tag> GUI </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>编写批处理命令时遇到的坑</title>
-      <link href="Python/2020-08-13-some-problems-with-bat/"/>
-      <url>Python/2020-08-13-some-problems-with-bat/</url>
-      
-        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近写了一个脚本，每次运行都要在对应的目录下打开命令行，然后输入<code>python main.py</code>命令或者直接输入<code>python xxx\xxx\xxx\xxx\xxx\main.py</code>命令，也不是特别复杂，但对于想偷懒的我来说还是很麻烦，所以写一个批处理命令(bat)，直接双击运行，岂不美哉。<br>批处理命令如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">python F:\Python项目\安卓App\AutoRead\main.py</span><br><span class="line">pause</span><br></pre></td></tr></table></figure><h1 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h1><p>但是一运行就会报<code>python: can&#39;t open file &#39;&lt;unprintable file name&gt;&#39;: [Errno 2] No such file or directory</code>错误，在网上搜索了很多答案，都没有找到解决问题的办法。<br>没办法了，只能自己慢慢摸索了。</p><h1 id="尝试解决"><a href="#尝试解决" class="headerlink" title="尝试解决"></a>尝试解决</h1><p>尝试先<code>cd</code>到 python 文件所在的目录，然后再运行脚本。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f:</span><br><span class="line">cd Python项目\安卓App\AutoRead\</span><br><span class="line">python main.py</span><br><span class="line">pause</span><br></pre></td></tr></table></figure><p>但依旧会报上面的错误。<br>然后手动尝试在命令行窗口执行命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python F:\Python项目\安卓App\AutoRead\main.py</span><br></pre></td></tr></table></figure><p>不报错。再尝试：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f:</span><br><span class="line">cd Python项目\安卓App\AutoRead\</span><br><span class="line">python main.py</span><br></pre></td></tr></table></figure><p>也不报错，这让我有点懵逼了。</p><h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1><p>正在思考是怎么回事的时候，突然我注意到路径中有中文，脑子一闪，这可能是由于 bat 文件的编码问题所导致的。在网上搜索了一下，发现的确是由于编码所导致的中文乱码问题<sup>[1]</sup>。建立的批处理文件默认是 UTF-8 编码格式，不能正确显示中文内容，所以会乱码，只需要在写好批处理命令后，将其另存为，同时编码选择 ANSI，再运行就不会出现乱码了。<br>改好后重新运行也没有再报错^_^。</p><blockquote><p>在搜索时发现还有另外一种解决方法<sup>[2]</sup>：</p><p>通过<code>chcp 65001</code>命令（UTF-8 的代码页为 65001）改变代码页，然后再运行脚本，这样也可以正常运行。</p></blockquote><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>[1] <a href="https://blog.csdn.net/huige6941/article/details/85320066">https://blog.csdn.net/huige6941/article/details/85320066</a></p><p>[2] <a href="https://www.cnblogs.com/laughingQing/p/4554980.html">https://www.cnblogs.com/laughingQing/p/4554980.html</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python制作天气查询助手</title>
+    <url>/Python/2020-08-28-weather-assistant/</url>
+    <content><![CDATA[<p>今天闲来无事，想写个查天气的脚本。Idea 在手，拿起 Python 干就完事了。<br>首先找一个比较靠谱的天气数据网站，这里我选的是<a href="http://www.weather.com.cn/">中国天气网</a>，如下图所示，</p>
+<p><img src="/Python/2020-08-28-weather-assistant/s1.png" alt="s1"></p>
+<p>随便搜索一个城市的天气试试，当前的 URL 为：<a href="http://www.weather.com.cn/weather1d/101270101.shtml#input">http://www.weather.com.cn/weather1d/101270101.shtml#input</a></p>
+<p><img src="/Python/2020-08-28-weather-assistant/s2.png" alt="s2"></p>
+<p>URL 中的 101270101 猜测应该是城市的 id 之类的，那么如果要查询不同的城市的天气数据，首先得找到城市名和这个 id 的对应关系。<br>回到起初搜索的地方，观察一下网络请求。</p>
+<p><img src="/Python/2020-08-28-weather-assistant/s3.png" alt="s3"></p>
+<p>发现网络面板中有含有 search 关键字的请求，具体内容过如下：</p>
+<p><img src="/Python/2020-08-28-weather-assistant/s4.png" alt="s4"></p>
+<p>Nice！这个请求里面包含了城市的 id。请求的 URL 为：<a href="http://toy1.weather.com.cn/search?cityname=%E6%88%90%E9%83%BD&callback=success_jsonpCallback&_=1598586444643">http://toy1.weather.com.cn/search?cityname=%E6%88%90%E9%83%BD&amp;callback=success_jsonpCallback&amp;_=1598586444643</a>，请求方法为 GET，然后分析一下具体的请求参数：</p>
+<blockquote>
+<p>‘cityname’: 成都</p>
+<p>‘callback’: success_jsonpCallback</p>
+<p>‘_’: 1598586444643</p>
+</blockquote>
+<p>cityname 是城市的名称，callback 不知其具体意义，_ 一看就知道是时间戳。<br>那这样就很简单了，写一段简单的代码就可以获取到城市的 id：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">headers = &#123;</span><br><span class="line">      <span class="string">&quot;User-agent&quot;</span>: <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36 Edg/84.0.522.59&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Referer&quot;</span>: <span class="string">&quot;http://www.weather.com.cn/weather1d/101271201.shtml&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">city_name = <span class="string">&quot;成都&quot;</span></span><br><span class="line">timestamp = int(time.time() * <span class="number">1000</span>)</span><br><span class="line">url = <span class="string">f&quot;http://toy1.weather.com.cn/search?cityname=<span class="subst">&#123;city_name&#125;</span>&amp;callback=success_jsonpCallback&amp;_=<span class="subst">&#123;timestamp&#125;</span>&quot;</span></span><br><span class="line">response = requests.get(url, headers=headers)</span><br><span class="line">city_ip = re.findall(<span class="string">r&quot;\d&#123;9&#125;&quot;</span>, response.text)[<span class="number">0</span>]</span><br><span class="line">print(city_ip)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>需要注意的是，如果 headers 里不添加 Referer，就会出现 403 错误码，在这里也是栽了跟头。</p>
+</blockquote>
+<p>解决了城市 ip 的问题，接下来就要获取页面上的天气数据了。<br>把页面上的主要数据分为 3 个部分，如下所示。</p>
+<img src="/Python/2020-08-28-weather-assistant/s5.png" width="500">
+
+<p>对于第 1 板块的数据，在源代码中并没有发现，说明是异步加载的数据。<br>然后在网络面板中发现了一个请求，里面由对应的信息，如下所示：</p>
+<p><img src="/Python/2020-08-28-weather-assistant/s6.png" alt="s6"></p>
+<p>该请求的请求 URL 为：[<a href="http://d1.weather.com.cn/sk_2d/101270101.html?_=1598588972022%5D">http://d1.weather.com.cn/sk_2d/101270101.html?_=1598588972022]</a>(<a href="http://d1.weather.com.cn/sk_2d/101270101.html?_=1598588972022%EF%BC%8C%E4%B9%8B%E5%89%8D%E8%8E%B7%E5%8F%96%E5%88%B0%E7%9A%84%E5%9F%8E%E5%B8%82">http://d1.weather.com.cn/sk_2d/101270101.html?_=1598588972022，之前获取到的城市</a> ip 在这同样适用。写一段代码来获取这个数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cip = <span class="string">&quot;101270101&quot;</span></span><br><span class="line">timestamp = int(time.time() * <span class="number">1000</span>)</span><br><span class="line">url = <span class="string">f&quot;http://d1.weather.com.cn/sk_2d/<span class="subst">&#123;cip&#125;</span>.html?_=<span class="subst">&#123;timestamp&#125;</span>&quot;</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line">response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">content = response.text</span><br></pre></td></tr></table></figure>
+
+<p>然后解析数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 温度</span></span><br><span class="line">temp = re.findall(<span class="string">&#x27;&quot;temp&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>] + <span class="string">&quot;°C&quot;</span></span><br><span class="line"><span class="comment"># 风向</span></span><br><span class="line">wd = re.findall(<span class="string">&#x27;&quot;WD&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 风速</span></span><br><span class="line">ws = re.findall(<span class="string">&#x27;&quot;WS&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 湿度</span></span><br><span class="line">sd = re.findall(<span class="string">&#x27;&quot;SD&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 时间</span></span><br><span class="line">time_ = re.findall(<span class="string">&#x27;&quot;time&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 天气状况</span></span><br><span class="line">weather = re.findall(<span class="string">&#x27;&quot;weather&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 能见度</span></span><br><span class="line">njd = re.findall(<span class="string">&#x27;&quot;njd&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 降雨</span></span><br><span class="line">rain = re.findall(<span class="string">&#x27;&quot;rain&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 空气质量</span></span><br><span class="line">aqi = re.findall(<span class="string">&#x27;&quot;aqi&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 日期</span></span><br><span class="line">date_ = re.findall(<span class="string">&#x27;&quot;date&quot;:&quot;(.*?)&quot;&#x27;</span>, content)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>对于第 2 个板块的数据，在源代码中可以搜索到，因此我们可以直接用 requests 获取对应的数据，然后用 bs4 或者其他的解析库解析。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">url = <span class="string">f&quot;http://www.weather.com.cn/weather1d/<span class="subst">&#123;cip&#125;</span>.shtml#input&quot;</span></span><br><span class="line">response = requests.get(url)</span><br><span class="line">response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">html = response.text</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一列数据</span></span><br><span class="line">li1 = soup.select(<span class="string">&quot;div.t &gt; ul.clearfix &gt; li&quot;</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="comment"># 白天 or 夜间</span></span><br><span class="line">type1 = li1.select(<span class="string">&quot;h1&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line"><span class="comment"># 天气状况</span></span><br><span class="line">weather1 = li1.select(<span class="string">&quot;p.wea&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line"><span class="comment"># 温度</span></span><br><span class="line">temp1 = li1.select(<span class="string">&quot;p.tem&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line"><span class="comment"># 风速</span></span><br><span class="line">ws1 = li1.select(<span class="string">&quot;p.win &gt; span&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line"><span class="comment"># 第二列数据</span></span><br><span class="line">li2 = soup.select(<span class="string">&quot;div.t &gt; ul.clearfix &gt; li&quot;</span>)[<span class="number">1</span>]</span><br><span class="line">type2 = li2.select(<span class="string">&quot;h1&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line">weather2 = li2.select(<span class="string">&quot;p.wea&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line">temp2 = li2.select(<span class="string">&quot;p.tem&quot;</span>)[<span class="number">0</span>].text.strip()</span><br><span class="line">ws2 = li2.select(<span class="string">&quot;p.win &gt; span&quot;</span>)[<span class="number">0</span>].text.strip()</span><br></pre></td></tr></table></figure>
+
+<p>对于第 3 个板块的数据，在源代码中也不能直接搜索到，应该是 js 返回的数据，但找了很久，我都没有找到。最后利用全局搜索（Ctrl + Shift + F），在 html 文档的 script 标签中找到了对应的数据，如下所示：</p>
+<p><img src="/Python/2020-08-28-weather-assistant/s7.png" alt="s7"></p>
+<p>这样，要获取数据就很简单了，直接用 requests 库获取页面，然后用正则表达式或者解析库提取 script 标签中的数据：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cip = <span class="string">&quot;101270101 &quot;</span></span><br><span class="line">url = <span class="string">f&quot;ttp://www.weather.com.cn/weather1d/<span class="subst">&#123;cip&#125;</span>.shtml#input&quot;</span></span><br><span class="line">response = requests.get(url, headers=headers)</span><br><span class="line">response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">html = response.text</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">script = soup.select(<span class="string">&quot;div#today &gt; script&quot;</span>)[<span class="number">1</span>].text.strip().strip(<span class="string">&quot;var hour3data=&quot;</span>)</span><br><span class="line">json_ = json.loads(script)</span><br><span class="line">data = json_[<span class="string">&quot;1d&quot;</span>]  <span class="comment"># 获取 1 天的数据</span></span><br><span class="line">time_list = []</span><br><span class="line">temp_list = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):</span><br><span class="line">  time_ = data[i].split(<span class="string">&quot;,&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">  temp = data[i].split(<span class="string">&quot;,&quot;</span>)[<span class="number">3</span>]</span><br><span class="line">  time_list.append(time_)</span><br><span class="line">  temp_list.append(temp)</span><br><span class="line">  time_list = [re.findall(<span class="string">&quot;\d+&quot;</span>, i)[<span class="number">0</span>] + <span class="string">&quot;-&quot;</span> + re.findall(<span class="string">&quot;\d+&quot;</span>, i)[<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> time_list]</span><br><span class="line">  temp_list = [int(i.strip(<span class="string">&quot;℃&quot;</span>)) <span class="keyword">for</span> i <span class="keyword">in</span> temp_list]</span><br></pre></td></tr></table></figure>
+
+<p>至此，页面上主要的数据就获取完了，接下来将其输出就行了。<br>但光是这样我还没有满足，总觉得没有一个像样的 GUI 就缺了点啥。<br>GUI 的实现采用的是 PyQt5（推荐先用 Qt Designer 设计好界面，然后转换成 python 代码，这样会方便很多）。有了界面和控件，然后需要把控件和事件绑定起来，并将 matplotlib 绘制的图像显示在界面中<sup>[1]</sup>。<br>不过有个坑需要注意一下，就是图片的刷新问题。图片是不会自己刷新的，得做一点小改动。在网上搜索了很多相关博客<sup>[2]</sup>，基本上都说的下面这种方法，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.axes.cla()</span><br><span class="line">self.axes.plot(x, y)</span><br><span class="line">self.draw()</span><br></pre></td></tr></table></figure>
+
+<p>但这样并没有什么卵用，一运行就会卡死或者闪退。怎么搜索也找不到解决方法，就很崩溃。不过黄天不负有心人，在知乎上看到了一篇文章<sup>[3]</sup>，有所启发。在刷新图片之前，需要通过 sip.delete（from PyQt5 import sip）命令删除 layout 中的 widget，这相当于删掉画板，然后重新添加画布和画板，并重新绘图，这样就可以实现图片的刷新。<br>简略代码（请结合源码理解上述内容）如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">self.flag = <span class="number">0</span>  <span class="comment"># 判断是首次查询还是非首次查询</span></span><br><span class="line"><span class="keyword">if</span> self.flag == <span class="number">0</span>:</span><br><span class="line">    self.F = PlotFigure(width=<span class="number">3</span>, height=<span class="number">2</span>, dpi=<span class="number">80</span>)  <span class="comment"># 实例化画布</span></span><br><span class="line">    self.F.plot(curve_data)  <span class="comment"># 绘图</span></span><br><span class="line">    self.gridLayout.addWidget(self.F, <span class="number">0</span>, <span class="number">1</span>)  <span class="comment"># 添加 widget</span></span><br><span class="line">    self.flag += <span class="number">1</span>  <span class="comment"># 查询了就 +1</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    sip.delete(self.F)  <span class="comment"># 删除画板</span></span><br><span class="line">    self.F = PlotFigure(width=<span class="number">3</span>, height=<span class="number">2</span>, dpi=<span class="number">80</span>)</span><br><span class="line">    self.F.plot(curve_data)</span><br><span class="line">    self.gridLayout.addWidget(self.F, <span class="number">0</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>做了如此改动后，程序就可以正常运行了。<br>运行结果如下，</p>
+<center>
+  <img src="/Python/2020-08-28-weather-assistant/s8.png" width="400">
+  <img src="/Python/2020-08-28-weather-assistant/s9.png" width="400">
+</center><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接<p>[1] <a href="https://blog.csdn.net/panrenlong/article/details/80183519">https://blog.csdn.net/panrenlong/article/details/80183519</a></p>
+<p>[2] <a href="https://blog.csdn.net/wuwei_201/article/details/106106387">https://blog.csdn.net/wuwei_201/article/details/106106387</a></p>
+<p>[3] <a href="https://zhuanlan.zhihu.com/p/191533944">https://zhuanlan.zhihu.com/p/191533944</a></p>
+]]></content>
       <categories>
-          
-          <category> Python </category>
-          
+        <category>Python</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> Bat </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>使用Pyinstaller过程中遇到的一些问题</title>
-      <link href="Python/2020-08-12-problems-during-using-pyinstaller/"/>
-      <url>Python/2020-08-12-problems-during-using-pyinstaller/</url>
-      
-        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有时候，我们用 Python 编写好了程序，但想要发布给没有安装 Python 环境的人使用，如果让别人从 0 开始安装运行环境、第三方库，那估计黄花菜都凉了。因此，将 Python 程序打包成可执行的文件就相当有必要了。实际上，Python 中的第三方库 PyInstaller 可以很好的解决这个问题。</p><h1 id="打包单个程序"><a href="#打包单个程序" class="headerlink" title="打包单个程序"></a>打包单个程序</h1><p>对于单个 Python 程序的打包，非常简单，可以直接使用以下命令：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller -F -w -i icon.ico xxx.py</span><br></pre></td></tr></table></figure><p><strong>-F</strong>: 打包成单个可执行文件<br>**-w**: 去掉启动软件后的黑色窗口<br>**-i**: 为程序添加图标</p><p>稍等片刻后，就会在 Python 程序所在目录下的 dist 文件夹中生成打包好的可执行文件。</p><h1 id="打包时引入外部文件"><a href="#打包时引入外部文件" class="headerlink" title="打包时引入外部文件"></a>打包时引入外部文件</h1><p>但往往我们打包程序并不只限于单个文件，可能还需要引入自己编写的 Python 模块、图片、文本或者其他文件，这时打包的情况就变得复杂许多，需要借助打包时生成的的 xxx.spec 文件引入外部的资源文件。</p><p>那么如何生成 spec 文件？可以通过下面 2 中方法生成 spec 文件：</p><ol><li><p><code>pyinstaller -F xxx.py</code>命令</p><p>PS: 如果想打包成单个可执行文件，需要加上<code>-F</code>参数</p><p>然后在程序的所在的目录下，会生成 build 和 dist 文件夹以及 xxx.spec 文件，将两个文件夹删掉（后面打包时会重新生成）。</p></li><li><p><code>pyi-makespec xxx.py</code>命令</p><p>这样只会生成一个 xxx.spec 文件。</p></li></ol><p>xxx.spec 长下面这样子：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"># -*- mode: python ; coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">block_cipher &#x3D; None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a &#x3D; Analysis([&#39;test.py&#39;],</span><br><span class="line">             pathex&#x3D;[&#39;C:\\Users\\lei\\Desktop\\test&#39;],</span><br><span class="line">             binaries&#x3D;[],</span><br><span class="line">             datas&#x3D;[],</span><br><span class="line">             hiddenimports&#x3D;[],</span><br><span class="line">             hookspath&#x3D;[],</span><br><span class="line">             runtime_hooks&#x3D;[],</span><br><span class="line">             excludes&#x3D;[],</span><br><span class="line">             win_no_prefer_redirects&#x3D;False,</span><br><span class="line">             win_private_assemblies&#x3D;False,</span><br><span class="line">             cipher&#x3D;block_cipher,</span><br><span class="line">             noarchive&#x3D;False)</span><br><span class="line">pyz &#x3D; PYZ(a.pure, a.zipped_data,</span><br><span class="line">             cipher&#x3D;block_cipher)</span><br><span class="line">exe &#x3D; EXE(pyz,</span><br><span class="line">          a.scripts,</span><br><span class="line">          a.binaries,</span><br><span class="line">          a.zipfiles,</span><br><span class="line">          a.datas,</span><br><span class="line">          [],</span><br><span class="line">          name&#x3D;&#39;test&#39;,</span><br><span class="line">          debug&#x3D;False,</span><br><span class="line">          bootloader_ignore_signals&#x3D;False,</span><br><span class="line">          strip&#x3D;False,</span><br><span class="line">          upx&#x3D;True,</span><br><span class="line">          upx_exclude&#x3D;[],</span><br><span class="line">          runtime_tmpdir&#x3D;None,</span><br><span class="line">          console&#x3D;True )</span><br></pre></td></tr></table></figure><p>引入外部资源文件时，需要关注几个地方：Analysis 中的第一个参数和 datas 参数。前者列表中的值表示要打包的 Python 文件；datas 参数则是要引入的一些文本、音频或者图像文件，传入参数时需要传入列表，列表中需要写成元组，如：[(&#39;folder1\test1.txt&#39;, &#39;folder1&#39;)]，前者表示文件所在的相对路径，后者表示打包后所在的路径（如果打包在根目录，需要写成[(&#39;folder1\test1.txt&#39;, &#39;.&#39;)]。</p><p>一个打包示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># -*- mode: python ; coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">block_cipher &#x3D; None</span><br><span class="line"></span><br><span class="line">py_files &#x3D; [</span><br><span class="line">    &#39;Demo.py&#39;,</span><br><span class="line">    &#39;api\\baidu.py&#39;,</span><br><span class="line">    &#39;api\\google.py&#39;,</span><br><span class="line">    &#39;api\\youdao.py&#39;,</span><br><span class="line">    &#39;ui\\MainWindow.py&#39;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">datas &#x3D; [</span><br><span class="line">    (&#39;assets\\icon.png&#39;, &#39;assets&#39;),</span><br><span class="line">    (&#39;javascript\\*.js&#39;, &#39;javascript&#39;)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">a &#x3D; Analysis(py_files,</span><br><span class="line">             pathex&#x3D;[&#39;F:\\Python\\谷歌、有道、百度翻译\\Translator&#39;],</span><br><span class="line">             binaries&#x3D;[],</span><br><span class="line">             datas&#x3D;datas,</span><br><span class="line">             hiddenimports&#x3D;[],</span><br><span class="line">             hookspath&#x3D;[],</span><br><span class="line">             runtime_hooks&#x3D;[],</span><br><span class="line">             excludes&#x3D;[],</span><br><span class="line">             win_no_prefer_redirects&#x3D;False,</span><br><span class="line">             win_private_assemblies&#x3D;False,</span><br><span class="line">             cipher&#x3D;block_cipher,</span><br><span class="line">             noarchive&#x3D;False)</span><br><span class="line">pyz &#x3D; PYZ(a.pure, a.zipped_data,</span><br><span class="line">             cipher&#x3D;block_cipher)</span><br><span class="line">exe &#x3D; EXE(pyz,</span><br><span class="line">          a.scripts,</span><br><span class="line">          a.binaries,</span><br><span class="line">          a.zipfiles,</span><br><span class="line">          a.datas,</span><br><span class="line">          [],</span><br><span class="line">          name&#x3D;&#39;Demo&#39;,</span><br><span class="line">          debug&#x3D;False,</span><br><span class="line">          bootloader_ignore_signals&#x3D;False,</span><br><span class="line">          strip&#x3D;False,</span><br><span class="line">          upx&#x3D;True,</span><br><span class="line">          upx_exclude&#x3D;[],</span><br><span class="line">          runtime_tmpdir&#x3D;None,</span><br><span class="line">          console&#x3D;False,</span><br><span class="line">               icon&#x3D;&#39;assets\\icon.ico&#39;)</span><br></pre></td></tr></table></figure><p>Analysis 中的参数设置好了，还可以设置 EXE 中的一些参数，例如：设置 name 参数的值以指定打包程序的名字，设置 console 为 False 以去除启动程序时产生的黑色窗口，另外还可以设置 icon 的值为程序添加图标。</p><p>通过以上对 spec 文件的设置就可以打包外部资源文件到程序中，但这还没有结束。打包完成后一运行程序，就会发现报错，提示找不到对应的外部文件。这就奇了怪了，我不是已经打包到程序里面了吗？</p><p>最后，在网上一通搜索，发现了一个问题，当运行打包后的程序时，会生成一个临时文件夹，程序是通过此临时文件夹去访问外部资源的，如果 Python 程序中是按照常规方式引用外部文件的话，那必然会报错。所以，我们需要对文件的搜索做一点改变。</p><p>在源代码中添加以下函数：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">resource_path</span>(<span class="params">relative_path</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">      获取正确的文件路径</span></span><br><span class="line"><span class="string">      &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> getattr(sys, <span class="string">&#x27;frozen&#x27;</span>, <span class="literal">None</span>):</span><br><span class="line">        base_path = sys._MEIPASS</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        base_path = os.path.dirname(__file__)</span><br><span class="line">    <span class="keyword">return</span> os.path.join(base_path, relative_path)</span><br></pre></td></tr></table></figure><p>然后将源代码中引用文件的路径参数替换成<code>resource_path(relative_path)</code>，这样再运行打包后的程序就不会出错了，也可以放心的发布给别人使用了。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Python</tag>
+        <tag>Web Spider</tag>
+        <tag>GUI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编写批处理命令时遇到的坑</title>
+    <url>/Python/2020-08-13-some-problems-with-bat/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近写了一个脚本，每次运行都要在对应的目录下打开命令行，然后输入<code>python main.py</code>命令或者直接输入<code>python xxx\xxx\xxx\xxx\xxx\main.py</code>命令，也不是特别复杂，但对于想偷懒的我来说还是很麻烦，所以写一个批处理命令(bat)，直接双击运行，岂不美哉。<br>批处理命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">python F:\Python项目\安卓App\AutoRead\main.py</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<h1 id="遇到问题"><a href="#遇到问题" class="headerlink" title="遇到问题"></a>遇到问题</h1><p>但是一运行就会报<code>python: can&#39;t open file &#39;&lt;unprintable file name&gt;&#39;: [Errno 2] No such file or directory</code>错误，在网上搜索了很多答案，都没有找到解决问题的办法。<br>没办法了，只能自己慢慢摸索了。</p>
+<h1 id="尝试解决"><a href="#尝试解决" class="headerlink" title="尝试解决"></a>尝试解决</h1><p>尝试先<code>cd</code>到 python 文件所在的目录，然后再运行脚本。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f:</span><br><span class="line">cd Python项目\安卓App\AutoRead\</span><br><span class="line">python main.py</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>但依旧会报上面的错误。<br>然后手动尝试在命令行窗口执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python F:\Python项目\安卓App\AutoRead\main.py</span><br></pre></td></tr></table></figure>
+
+<p>不报错。再尝试：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f:</span><br><span class="line">cd Python项目\安卓App\AutoRead\</span><br><span class="line">python main.py</span><br></pre></td></tr></table></figure>
+
+<p>也不报错，这让我有点懵逼了。</p>
+<h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1><p>正在思考是怎么回事的时候，突然我注意到路径中有中文，脑子一闪，这可能是由于 bat 文件的编码问题所导致的。在网上搜索了一下，发现的确是由于编码所导致的中文乱码问题<sup>[1]</sup>。建立的批处理文件默认是 UTF-8 编码格式，不能正确显示中文内容，所以会乱码，只需要在写好批处理命令后，将其另存为，同时编码选择 ANSI，再运行就不会出现乱码了。<br>改好后重新运行也没有再报错^_^。</p>
+<blockquote>
+<p>在搜索时发现还有另外一种解决方法<sup>[2]</sup>：</p>
+<p>通过<code>chcp 65001</code>命令（UTF-8 的代码页为 65001）改变代码页，然后再运行脚本，这样也可以正常运行。</p>
+</blockquote>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p>[1] <a href="https://blog.csdn.net/huige6941/article/details/85320066">https://blog.csdn.net/huige6941/article/details/85320066</a></p>
+<p>[2] <a href="https://www.cnblogs.com/laughingQing/p/4554980.html">https://www.cnblogs.com/laughingQing/p/4554980.html</a></p>
+]]></content>
       <categories>
-          
-          <category> Python </category>
-          
+        <category>Python</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Python </tag>
-            
-            <tag> Pyinstaller </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Python中实现不换行输出</title>
-      <link href="Python/2020-08-11-print-without-newline/"/>
-      <url>Python/2020-08-11-print-without-newline/</url>
-      
-        <content type="html"><![CDATA[<p>在 Python 里要想不换行输出，其实很简单，只需要像下面这样打印信息：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    print(<span class="string">&#x27;\r目前进度为：[%s] %.2f%%&#x27;</span> % (i * <span class="string">&quot;#&quot;</span>, i * <span class="number">100</span> / <span class="number">100</span>), end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure><p>实际上，Python 打印信息时的<code>end</code>默认为<code>\n</code>（即换行符），同时将光标提到最新行的最前面，相当于执行了<code>print(&quot;\n\r&quot;)</code>，这样就实现了换行输出 。那如果想要不换行输出就很简单了，只需要将<code>end</code>指定为空字符串（即不换行），同时加入<code>\r</code>，这样就可以了。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Windows</tag>
+        <tag>Bat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Pyinstaller过程中遇到的一些问题</title>
+    <url>/Python/2020-08-12-problems-during-using-pyinstaller/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>有时候，我们用 Python 编写好了程序，但想要发布给没有安装 Python 环境的人使用，如果让别人从 0 开始安装运行环境、第三方库，那估计黄花菜都凉了。因此，将 Python 程序打包成可执行的文件就相当有必要了。实际上，Python 中的第三方库 PyInstaller 可以很好的解决这个问题。</p>
+<h1 id="打包单个程序"><a href="#打包单个程序" class="headerlink" title="打包单个程序"></a>打包单个程序</h1><p>对于单个 Python 程序的打包，非常简单，可以直接使用以下命令：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pyinstaller -F -w -i icon.ico xxx.py</span><br></pre></td></tr></table></figure>
+
+<p><strong>-F</strong>: 打包成单个可执行文件<br>**-w**: 去掉启动软件后的黑色窗口<br>**-i**: 为程序添加图标</p>
+<p>稍等片刻后，就会在 Python 程序所在目录下的 dist 文件夹中生成打包好的可执行文件。</p>
+<h1 id="打包时引入外部文件"><a href="#打包时引入外部文件" class="headerlink" title="打包时引入外部文件"></a>打包时引入外部文件</h1><p>但往往我们打包程序并不只限于单个文件，可能还需要引入自己编写的 Python 模块、图片、文本或者其他文件，这时打包的情况就变得复杂许多，需要借助打包时生成的的 xxx.spec 文件引入外部的资源文件。</p>
+<p>那么如何生成 spec 文件？可以通过下面 2 中方法生成 spec 文件：</p>
+<ol>
+<li><p><code>pyinstaller -F xxx.py</code>命令</p>
+<p>PS: 如果想打包成单个可执行文件，需要加上<code>-F</code>参数</p>
+<p>然后在程序的所在的目录下，会生成 build 和 dist 文件夹以及 xxx.spec 文件，将两个文件夹删掉（后面打包时会重新生成）。</p>
+</li>
+<li><p><code>pyi-makespec xxx.py</code>命令</p>
+<p>这样只会生成一个 xxx.spec 文件。</p>
+</li>
+</ol>
+<p>xxx.spec 长下面这样子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># -*- mode: python ; coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">block_cipher &#x3D; None</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a &#x3D; Analysis([&#39;test.py&#39;],</span><br><span class="line">             pathex&#x3D;[&#39;C:\\Users\\lei\\Desktop\\test&#39;],</span><br><span class="line">             binaries&#x3D;[],</span><br><span class="line">             datas&#x3D;[],</span><br><span class="line">             hiddenimports&#x3D;[],</span><br><span class="line">             hookspath&#x3D;[],</span><br><span class="line">             runtime_hooks&#x3D;[],</span><br><span class="line">             excludes&#x3D;[],</span><br><span class="line">             win_no_prefer_redirects&#x3D;False,</span><br><span class="line">             win_private_assemblies&#x3D;False,</span><br><span class="line">             cipher&#x3D;block_cipher,</span><br><span class="line">             noarchive&#x3D;False)</span><br><span class="line">pyz &#x3D; PYZ(a.pure, a.zipped_data,</span><br><span class="line">             cipher&#x3D;block_cipher)</span><br><span class="line">exe &#x3D; EXE(pyz,</span><br><span class="line">          a.scripts,</span><br><span class="line">          a.binaries,</span><br><span class="line">          a.zipfiles,</span><br><span class="line">          a.datas,</span><br><span class="line">          [],</span><br><span class="line">          name&#x3D;&#39;test&#39;,</span><br><span class="line">          debug&#x3D;False,</span><br><span class="line">          bootloader_ignore_signals&#x3D;False,</span><br><span class="line">          strip&#x3D;False,</span><br><span class="line">          upx&#x3D;True,</span><br><span class="line">          upx_exclude&#x3D;[],</span><br><span class="line">          runtime_tmpdir&#x3D;None,</span><br><span class="line">          console&#x3D;True )</span><br></pre></td></tr></table></figure>
+
+<p>引入外部资源文件时，需要关注几个地方：Analysis 中的第一个参数和 datas 参数。前者列表中的值表示要打包的 Python 文件；datas 参数则是要引入的一些文本、音频或者图像文件，传入参数时需要传入列表，列表中需要写成元组，如：[(&#39;folder1\test1.txt&#39;, &#39;folder1&#39;)]，前者表示文件所在的相对路径，后者表示打包后所在的路径（如果打包在根目录，需要写成[(&#39;folder1\test1.txt&#39;, &#39;.&#39;)]。</p>
+<p>一个打包示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># -*- mode: python ; coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">block_cipher &#x3D; None</span><br><span class="line"></span><br><span class="line">py_files &#x3D; [</span><br><span class="line">    &#39;Demo.py&#39;,</span><br><span class="line">    &#39;api\\baidu.py&#39;,</span><br><span class="line">    &#39;api\\google.py&#39;,</span><br><span class="line">    &#39;api\\youdao.py&#39;,</span><br><span class="line">    &#39;ui\\MainWindow.py&#39;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">datas &#x3D; [</span><br><span class="line">    (&#39;assets\\icon.png&#39;, &#39;assets&#39;),</span><br><span class="line">    (&#39;javascript\\*.js&#39;, &#39;javascript&#39;)</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">a &#x3D; Analysis(py_files,</span><br><span class="line">             pathex&#x3D;[&#39;F:\\Python\\谷歌、有道、百度翻译\\Translator&#39;],</span><br><span class="line">             binaries&#x3D;[],</span><br><span class="line">             datas&#x3D;datas,</span><br><span class="line">             hiddenimports&#x3D;[],</span><br><span class="line">             hookspath&#x3D;[],</span><br><span class="line">             runtime_hooks&#x3D;[],</span><br><span class="line">             excludes&#x3D;[],</span><br><span class="line">             win_no_prefer_redirects&#x3D;False,</span><br><span class="line">             win_private_assemblies&#x3D;False,</span><br><span class="line">             cipher&#x3D;block_cipher,</span><br><span class="line">             noarchive&#x3D;False)</span><br><span class="line">pyz &#x3D; PYZ(a.pure, a.zipped_data,</span><br><span class="line">             cipher&#x3D;block_cipher)</span><br><span class="line">exe &#x3D; EXE(pyz,</span><br><span class="line">          a.scripts,</span><br><span class="line">          a.binaries,</span><br><span class="line">          a.zipfiles,</span><br><span class="line">          a.datas,</span><br><span class="line">          [],</span><br><span class="line">          name&#x3D;&#39;Demo&#39;,</span><br><span class="line">          debug&#x3D;False,</span><br><span class="line">          bootloader_ignore_signals&#x3D;False,</span><br><span class="line">          strip&#x3D;False,</span><br><span class="line">          upx&#x3D;True,</span><br><span class="line">          upx_exclude&#x3D;[],</span><br><span class="line">          runtime_tmpdir&#x3D;None,</span><br><span class="line">          console&#x3D;False,</span><br><span class="line">               icon&#x3D;&#39;assets\\icon.ico&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>Analysis 中的参数设置好了，还可以设置 EXE 中的一些参数，例如：设置 name 参数的值以指定打包程序的名字，设置 console 为 False 以去除启动程序时产生的黑色窗口，另外还可以设置 icon 的值为程序添加图标。</p>
+<p>通过以上对 spec 文件的设置就可以打包外部资源文件到程序中，但这还没有结束。打包完成后一运行程序，就会发现报错，提示找不到对应的外部文件。这就奇了怪了，我不是已经打包到程序里面了吗？</p>
+<p>最后，在网上一通搜索，发现了一个问题，当运行打包后的程序时，会生成一个临时文件夹，程序是通过此临时文件夹去访问外部资源的，如果 Python 程序中是按照常规方式引用外部文件的话，那必然会报错。所以，我们需要对文件的搜索做一点改变。</p>
+<p>在源代码中添加以下函数：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">resource_path</span>(<span class="params">relative_path</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">      获取正确的文件路径</span></span><br><span class="line"><span class="string">      &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">if</span> getattr(sys, <span class="string">&#x27;frozen&#x27;</span>, <span class="literal">None</span>):</span><br><span class="line">        base_path = sys._MEIPASS</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        base_path = os.path.dirname(__file__)</span><br><span class="line">    <span class="keyword">return</span> os.path.join(base_path, relative_path)</span><br></pre></td></tr></table></figure>
+
+<p>然后将源代码中引用文件的路径参数替换成<code>resource_path(relative_path)</code>，这样再运行打包后的程序就不会出错了，也可以放心的发布给别人使用了。</p>
+]]></content>
       <categories>
-          
-          <category> Python </category>
-          
+        <category>Python</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Python </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Windows下生成项目目录树结构</title>
-      <link href="Windows/2020-08-11-directory-tree-stucture/"/>
-      <url>Windows/2020-08-11-directory-tree-stucture/</url>
-      
-        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个好的项目应该具有一个简洁明了的 README 文件，而 README 文件中的目录树结构能让读者很<br>好的了解你的项目。当文件结构比较简单的时候，逐行手动打出来倒不是太大的问题，但是当项目<br>文件比较多，结构相对复杂的时候，手动打出来就比较费劲了。这时，自动生成目录树结构的方法<br>就显得尤为重要。</p><h1 id="具体实现方法"><a href="#具体实现方法" class="headerlink" title="具体实现方法"></a>具体实现方法</h1><h2 id="Windows-自带的-tree-命令"><a href="#Windows-自带的-tree-命令" class="headerlink" title="Windows 自带的 tree 命令"></a>Windows 自带的 tree 命令</h2><ul><li><code>tree /a</code></li><li><code>tree /f</code></li></ul><p><code>tree /a</code>的效果如下：</p><p><img src="/Windows/2020-08-11-directory-tree-stucture/s1.png" alt="s1"></p><p><code>tree /f</code>的效果如下：</p><p><img src="/Windows/2020-08-11-directory-tree-stucture/s2.png" alt="s2"></p><p>如果想把目录结构输出到文件里，可以使用<code>tree /f &gt; tree.txt</code>命令。</p><p><strong>注意</strong>：Windows 的 tree 命令并不能用在 git 工具中，如果想要在 git 命令行工具中使用 tree 命令，则必须要下载 tree 应用。</p><blockquote><p>解决方法</p></blockquote><ul><li>下载 tree 应用支持，链接：<a href="https://links.jianshu.com/go?to=http://gnuwin32.sourceforge.net/packages/tree.htm">http://gnuwin32.sourceforge.net/packages/tree.htm</a>，选择 Binaries 版本</li><li>下载后将其解压并将 bin 目录下的 tree.exe 复制到安装 git 的 usr/bin 目录里</li></ul><h2 id="git-中使用-tree-命令"><a href="#git-中使用-tree-命令" class="headerlink" title="git 中使用 tree 命令"></a>git 中使用 tree 命令</h2><ul><li><p>基本使用：<code>tree [command] [params]</code></p></li><li><p>常用参数</p></li></ul><p>下面一些是比较常用的参数：</p><table><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td>-a</td><td>列出所有文件</td></tr><tr><td>-N</td><td>原样打印</td></tr><tr><td>-r</td><td>按字母数字倒序排列文件</td></tr><tr><td>-L level</td><td>向下深入的层数</td></tr><tr><td>-A</td><td>打印 ANSI 线图形压痕线</td></tr><tr><td>-I pattern</td><td>忽略文件或文件夹</td></tr><tr><td>-o</td><td>输出文件路径</td></tr><tr><td>–charset X</td><td>指定编码</td></tr></tbody></table><p> 更多的相关命令和参数可以通过<code>tree --help</code>查询。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Python</tag>
+        <tag>Pyinstaller</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python中实现不换行输出</title>
+    <url>/Python/2020-08-11-print-without-newline/</url>
+    <content><![CDATA[<p>在 Python 里要想不换行输出，其实很简单，只需要像下面这样打印信息：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    print(<span class="string">&#x27;\r目前进度为：[%s] %.2f%%&#x27;</span> % (i * <span class="string">&quot;#&quot;</span>, i * <span class="number">100</span> / <span class="number">100</span>), end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>实际上，Python 打印信息时的<code>end</code>默认为<code>\n</code>（即换行符），同时将光标提到最新行的最前面，相当于执行了<code>print(&quot;\n\r&quot;)</code>，这样就实现了换行输出 。那如果想要不换行输出就很简单了，只需要将<code>end</code>指定为空字符串（即不换行），同时加入<code>\r</code>，这样就可以了。</p>
+]]></content>
       <categories>
-          
-          <category> Windows </category>
-          
+        <category>Python</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> Directory Tree </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>谷歌、有道和百度翻译的 JS 加密参数破解</title>
-      <link href="Python/2020-08-08-google-translation-js-crack/"/>
-      <url>Python/2020-08-08-google-translation-js-crack/</url>
-      
-        <content type="html"><![CDATA[<p>打开开发者工具（F12），进入网络 （Network）面板，然后随便输入一个词翻译一下，观察一下新增的请求，对前端有一些了解的话，很容易知道这种内容一般是通过异步请求（XHR）返回的数据。观察发现下图红框中的请求正是我们所需要的。</p><p><img src="/Python/2020-08-08-google-translation-js-crack/p1.png" alt="p1"></p><p>然后分析一下请求 URL 所带的一些参数，参数有很多，不过只有 sl, tl, tk, q 是我们需要关注的，其中 sl 表示原文的语言类型，tl 表示译文的语言类型，tk 表示加密参数，需要破解，q 是我们输入的文本。</p><p>既然知道需要破解什么参数了，那就比较好下手了。<br>切换到源代码（Source）面板，在右边的调试工具中添加 XHR/提取（XHR/fetch）断点，内容为不带参数的 URL （即：<code>https://translate.google.cn/translate_a/single</code>），如下图所示。</p><p><img src="/Python/2020-08-08-google-translation-js-crack/p3.png" alt="p3"></p><p>再重新输入一个词进行翻译或者刷新一下页面，js 脚本下图中的红框处暂停了，并且产生了下图右边的调用堆栈（即函数的先后调用次序，A 被 B 调用，B 被 C 调用，以此类推，顺序从下往上）。</p><p><img src="/Python/2020-08-08-google-translation-js-crack/p4.png" alt="p4"></p><p>继续追根朔源，跳转到 Vj 函数，发现 Vj 的参数 a 中就带有我们所需要的 tk 参数，简直 amazing！</p><p><img src="/Python/2020-08-08-google-translation-js-crack/p5.png" alt="p5"></p><p>继续往下查找，发现在 fF 函数中存在 tk 参数，而在 hF 函数中不存在，因此这个 fF 就是我们接下来要分析的目标。fF 函数如下：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fF = <span class="function"><span class="keyword">function</span>(<span class="params">a, b, c, d, e, f</span>) </span>&#123;</span><br><span class="line">    c = c.toString();</span><br><span class="line">    c += eF(d);</span><br><span class="line">    d = d.toString();</span><br><span class="line">    <span class="keyword">var</span> g = <span class="string">&quot;POST&quot;</span>;</span><br><span class="line">    b += <span class="string">&quot;?&quot;</span> + c;</span><br><span class="line">    <span class="number">2E3</span> &gt; b.length + d.length &amp;&amp; (g = <span class="string">&quot;GET&quot;</span>,</span><br><span class="line">    b += <span class="string">&quot;&amp;&quot;</span> + d,</span><br><span class="line">    d = <span class="string">&quot;&quot;</span>);</span><br><span class="line">    ++a.j;</span><br><span class="line">    <span class="keyword">return</span> Vj(b, <span class="function"><span class="keyword">function</span>(<span class="params">h</span>) </span>&#123;</span><br><span class="line">        --a.j;</span><br><span class="line">        e(h)</span><br><span class="line">    &#125;, g, d, <span class="keyword">void</span> <span class="number">0</span>, f)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在 fF 函数的第一行和最后一行打上断点，删除其余的断点，然后重新调试。当在断点处暂停后，采用步进调试的方法（防止跳过重要参数信息）。如图可见，tk 的值来源于 eF 函数，其参数 d 是一个对象，其中包含有我们输入的内容。</p><p><img src="/Python/2020-08-08-google-translation-js-crack/p6.png" alt="p6"></p><p>跳转到 eF 函数，分析 tk 是如何生成的。eF 函数代码如下：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eF = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    a = a.Kb(<span class="string">&quot;q&quot;</span>).join(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> Au(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>eF 函数中的 Kb 函数其实就是将我们所输入的文本从对象中提取出来，a 就是我们所输入的文本，然后再传给 Au 函数。继续跳转到 Au 函数进行分析，Au 函数代码如下：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Au = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">null</span> !== zu)</span><br><span class="line">        <span class="keyword">var</span> b = zu;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        b = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">84</span>));</span><br><span class="line">        <span class="keyword">var</span> c = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">75</span>));</span><br><span class="line">        b = [b(), b()];</span><br><span class="line">        b[<span class="number">1</span>] = c();</span><br><span class="line">        b = (zu = <span class="built_in">window</span>[b.join(c())] || <span class="string">&quot;&quot;</span>) || <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> d = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">116</span>));</span><br><span class="line">    c = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">107</span>));</span><br><span class="line">    d = [d(), d()];</span><br><span class="line">    d[<span class="number">1</span>] = c();</span><br><span class="line">    c = <span class="string">&quot;&amp;&quot;</span> + d.join(<span class="string">&quot;&quot;</span>) + <span class="string">&quot;=&quot;</span>;</span><br><span class="line">    d = b.split(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">    b = <span class="built_in">Number</span>(d[<span class="number">0</span>]) || <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> e = [], f = <span class="number">0</span>, g = <span class="number">0</span>; g &lt; a.length; g++) &#123;</span><br><span class="line">        <span class="keyword">var</span> h = a.charCodeAt(g);</span><br><span class="line">        <span class="number">128</span> &gt; h ? e[f++] = h : (<span class="number">2048</span> &gt; h ? e[f++] = h &gt;&gt; <span class="number">6</span> | <span class="number">192</span> : (<span class="number">55296</span> == (h &amp; <span class="number">64512</span>) &amp;&amp; g + <span class="number">1</span> &lt; a.length &amp;&amp; <span class="number">56320</span> == (a.charCodeAt(g + <span class="number">1</span>) &amp; <span class="number">64512</span>) ? (h = <span class="number">65536</span> + ((h &amp; <span class="number">1023</span>) &lt;&lt; <span class="number">10</span>) + (a.charCodeAt(++g) &amp; <span class="number">1023</span>),</span><br><span class="line">        e[f++] = h &gt;&gt; <span class="number">18</span> | <span class="number">240</span>,</span><br><span class="line">        e[f++] = h &gt;&gt; <span class="number">12</span> &amp; <span class="number">63</span> | <span class="number">128</span>) : e[f++] = h &gt;&gt; <span class="number">12</span> | <span class="number">224</span>,</span><br><span class="line">        e[f++] = h &gt;&gt; <span class="number">6</span> &amp; <span class="number">63</span> | <span class="number">128</span>),</span><br><span class="line">        e[f++] = h &amp; <span class="number">63</span> | <span class="number">128</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    a = b;</span><br><span class="line">    <span class="keyword">for</span> (f = <span class="number">0</span>; f &lt; e.length; f++)</span><br><span class="line">        a += e[f],</span><br><span class="line">        a = yu(a, <span class="string">&quot;+-a^+6&quot;</span>);</span><br><span class="line">    a = yu(a, <span class="string">&quot;+-3^+b+-f&quot;</span>);</span><br><span class="line">    a ^= <span class="built_in">Number</span>(d[<span class="number">1</span>]) || <span class="number">0</span>;</span><br><span class="line">    <span class="number">0</span> &gt; a &amp;&amp; (a = (a &amp; <span class="number">2147483647</span>) + <span class="number">2147483648</span>);</span><br><span class="line">    a %= <span class="number">1E6</span>;</span><br><span class="line">    <span class="keyword">return</span> c + (a.toString() + <span class="string">&quot;.&quot;</span> + (a ^ b))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>直接把这段代码放到 html 中进行测试，控制台报错（没有定义 zu）。</p><p><img src="/Python/2020-08-08-google-translation-js-crack/p7.png" alt="p7"></p><p>发现在源码中 Au 函数的前面有定义 zu，于是乎将其找到（使用跳转功能会很方便）并放进测试代码中，然后重新测试。再次报错：没有定义 xu。</p><p><img src="/Python/2020-08-08-google-translation-js-crack/p8.png" alt="p8"></p><p>可能中途还会遇到几次这样的错误，重复上面的方法直至没有报错即可。然后就可以正常生成 tk 参数了，如果你不想要返回的值带有 &amp;tk=，你可以将 Au 函数最后的<code>return c + (a.toString() + &quot;.&quot; + (a ^ b))</code>替换成<code>return  (a.toString() + &quot;.&quot; + (a ^ b))</code>。</p><p><img src="/Python/2020-08-08-google-translation-js-crack/p9.png" alt="image-20200808112916825"></p><p>到此，我们通过 js 代码获得了 tk 参数的值。<br>你以为到这就完了？No no no，事情还没有结束。<br>刚开始对于获得的 tk 值我并没太仔细看，以至于没注意小数点前后的数是一样的，这导致我后面用 python 代码测试的时候老是出错（粗心啊 T_T）。后来发现这是由 zu 的初始值错误所导致的，zu 最开始被复制为 null，实际上后来它会变成一个具体的值（443549.1213991190），重新给 zu 赋值就好了。</p><blockquote><p>以上就是破解谷歌 js 的过程了</p></blockquote><p>破解有道和百度翻译 js 的过程和谷歌类似，因此也不再过多的赘述了，可以多自己尝试一下。<br>总的来说，谷歌、有道和百度翻译的 js 破解还是比较简单的，但刚开始接触还是摸索了很久，不过最后也获取到了相应的参数。</p>]]></content>
-      
-      
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows下生成项目目录树结构</title>
+    <url>/Windows/2020-08-11-directory-tree-stucture/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个好的项目应该具有一个简洁明了的 README 文件，而 README 文件中的目录树结构能让读者很<br>好的了解你的项目。当文件结构比较简单的时候，逐行手动打出来倒不是太大的问题，但是当项目<br>文件比较多，结构相对复杂的时候，手动打出来就比较费劲了。这时，自动生成目录树结构的方法<br>就显得尤为重要。</p>
+<h1 id="具体实现方法"><a href="#具体实现方法" class="headerlink" title="具体实现方法"></a>具体实现方法</h1><h2 id="Windows-自带的-tree-命令"><a href="#Windows-自带的-tree-命令" class="headerlink" title="Windows 自带的 tree 命令"></a>Windows 自带的 tree 命令</h2><ul>
+<li><code>tree /a</code></li>
+<li><code>tree /f</code></li>
+</ul>
+<p><code>tree /a</code>的效果如下：</p>
+<p><img src="/Windows/2020-08-11-directory-tree-stucture/s1.png" alt="s1"></p>
+<p><code>tree /f</code>的效果如下：</p>
+<p><img src="/Windows/2020-08-11-directory-tree-stucture/s2.png" alt="s2"></p>
+<p>如果想把目录结构输出到文件里，可以使用<code>tree /f &gt; tree.txt</code>命令。</p>
+<p><strong>注意</strong>：Windows 的 tree 命令并不能用在 git 工具中，如果想要在 git 命令行工具中使用 tree 命令，则必须要下载 tree 应用。</p>
+<blockquote>
+<p>解决方法</p>
+</blockquote>
+<ul>
+<li>下载 tree 应用支持，链接：<a href="https://links.jianshu.com/go?to=http://gnuwin32.sourceforge.net/packages/tree.htm">http://gnuwin32.sourceforge.net/packages/tree.htm</a>，选择 Binaries 版本</li>
+<li>下载后将其解压并将 bin 目录下的 tree.exe 复制到安装 git 的 usr/bin 目录里</li>
+</ul>
+<h2 id="git-中使用-tree-命令"><a href="#git-中使用-tree-命令" class="headerlink" title="git 中使用 tree 命令"></a>git 中使用 tree 命令</h2><ul>
+<li><p>基本使用：<code>tree [command] [params]</code></p>
+</li>
+<li><p>常用参数</p>
+</li>
+</ul>
+<p>下面一些是比较常用的参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-a</td>
+<td>列出所有文件</td>
+</tr>
+<tr>
+<td>-N</td>
+<td>原样打印</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>按字母数字倒序排列文件</td>
+</tr>
+<tr>
+<td>-L level</td>
+<td>向下深入的层数</td>
+</tr>
+<tr>
+<td>-A</td>
+<td>打印 ANSI 线图形压痕线</td>
+</tr>
+<tr>
+<td>-I pattern</td>
+<td>忽略文件或文件夹</td>
+</tr>
+<tr>
+<td>-o</td>
+<td>输出文件路径</td>
+</tr>
+<tr>
+<td>–charset X</td>
+<td>指定编码</td>
+</tr>
+</tbody></table>
+<p> 更多的相关命令和参数可以通过<code>tree --help</code>查询。</p>
+]]></content>
       <categories>
-          
-          <category> Python </category>
-          
+        <category>Windows</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> Python </tag>
-            
-            <tag> Javascript </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>Windows</tag>
+        <tag>Directory Tree</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>谷歌、有道和百度翻译的 JS 加密参数破解</title>
+    <url>/Python/2020-08-08-google-translation-js-crack/</url>
+    <content><![CDATA[<p>打开开发者工具（F12），进入网络 （Network）面板，然后随便输入一个词翻译一下，观察一下新增的请求，对前端有一些了解的话，很容易知道这种内容一般是通过异步请求（XHR）返回的数据。观察发现下图红框中的请求正是我们所需要的。</p>
+<p><img src="/Python/2020-08-08-google-translation-js-crack/p1.png" alt="p1"></p>
+<p>然后分析一下请求 URL 所带的一些参数，参数有很多，不过只有 sl, tl, tk, q 是我们需要关注的，其中 sl 表示原文的语言类型，tl 表示译文的语言类型，tk 表示加密参数，需要破解，q 是我们输入的文本。</p>
+<p>既然知道需要破解什么参数了，那就比较好下手了。<br>切换到源代码（Source）面板，在右边的调试工具中添加 XHR/提取（XHR/fetch）断点，内容为不带参数的 URL （即：<code>https://translate.google.cn/translate_a/single</code>），如下图所示。</p>
+<p><img src="/Python/2020-08-08-google-translation-js-crack/p3.png" alt="p3"></p>
+<p>再重新输入一个词进行翻译或者刷新一下页面，js 脚本下图中的红框处暂停了，并且产生了下图右边的调用堆栈（即函数的先后调用次序，A 被 B 调用，B 被 C 调用，以此类推，顺序从下往上）。</p>
+<p><img src="/Python/2020-08-08-google-translation-js-crack/p4.png" alt="p4"></p>
+<p>继续追根朔源，跳转到 Vj 函数，发现 Vj 的参数 a 中就带有我们所需要的 tk 参数，简直 amazing！</p>
+<p><img src="/Python/2020-08-08-google-translation-js-crack/p5.png" alt="p5"></p>
+<p>继续往下查找，发现在 fF 函数中存在 tk 参数，而在 hF 函数中不存在，因此这个 fF 就是我们接下来要分析的目标。fF 函数如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fF = <span class="function"><span class="keyword">function</span>(<span class="params">a, b, c, d, e, f</span>) </span>&#123;</span><br><span class="line">    c = c.toString();</span><br><span class="line">    c += eF(d);</span><br><span class="line">    d = d.toString();</span><br><span class="line">    <span class="keyword">var</span> g = <span class="string">&quot;POST&quot;</span>;</span><br><span class="line">    b += <span class="string">&quot;?&quot;</span> + c;</span><br><span class="line">    <span class="number">2E3</span> &gt; b.length + d.length &amp;&amp; (g = <span class="string">&quot;GET&quot;</span>,</span><br><span class="line">    b += <span class="string">&quot;&amp;&quot;</span> + d,</span><br><span class="line">    d = <span class="string">&quot;&quot;</span>);</span><br><span class="line">    ++a.j;</span><br><span class="line">    <span class="keyword">return</span> Vj(b, <span class="function"><span class="keyword">function</span>(<span class="params">h</span>) </span>&#123;</span><br><span class="line">        --a.j;</span><br><span class="line">        e(h)</span><br><span class="line">    &#125;, g, d, <span class="keyword">void</span> <span class="number">0</span>, f)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 fF 函数的第一行和最后一行打上断点，删除其余的断点，然后重新调试。当在断点处暂停后，采用步进调试的方法（防止跳过重要参数信息）。如图可见，tk 的值来源于 eF 函数，其参数 d 是一个对象，其中包含有我们输入的内容。</p>
+<p><img src="/Python/2020-08-08-google-translation-js-crack/p6.png" alt="p6"></p>
+<p>跳转到 eF 函数，分析 tk 是如何生成的。eF 函数代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> eF = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    a = a.Kb(<span class="string">&quot;q&quot;</span>).join(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> Au(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>eF 函数中的 Kb 函数其实就是将我们所输入的文本从对象中提取出来，a 就是我们所输入的文本，然后再传给 Au 函数。继续跳转到 Au 函数进行分析，Au 函数代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> Au = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">null</span> !== zu)</span><br><span class="line">        <span class="keyword">var</span> b = zu;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        b = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">84</span>));</span><br><span class="line">        <span class="keyword">var</span> c = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">75</span>));</span><br><span class="line">        b = [b(), b()];</span><br><span class="line">        b[<span class="number">1</span>] = c();</span><br><span class="line">        b = (zu = <span class="built_in">window</span>[b.join(c())] || <span class="string">&quot;&quot;</span>) || <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> d = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">116</span>));</span><br><span class="line">    c = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">107</span>));</span><br><span class="line">    d = [d(), d()];</span><br><span class="line">    d[<span class="number">1</span>] = c();</span><br><span class="line">    c = <span class="string">&quot;&amp;&quot;</span> + d.join(<span class="string">&quot;&quot;</span>) + <span class="string">&quot;=&quot;</span>;</span><br><span class="line">    d = b.split(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">    b = <span class="built_in">Number</span>(d[<span class="number">0</span>]) || <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> e = [], f = <span class="number">0</span>, g = <span class="number">0</span>; g &lt; a.length; g++) &#123;</span><br><span class="line">        <span class="keyword">var</span> h = a.charCodeAt(g);</span><br><span class="line">        <span class="number">128</span> &gt; h ? e[f++] = h : (<span class="number">2048</span> &gt; h ? e[f++] = h &gt;&gt; <span class="number">6</span> | <span class="number">192</span> : (<span class="number">55296</span> == (h &amp; <span class="number">64512</span>) &amp;&amp; g + <span class="number">1</span> &lt; a.length &amp;&amp; <span class="number">56320</span> == (a.charCodeAt(g + <span class="number">1</span>) &amp; <span class="number">64512</span>) ? (h = <span class="number">65536</span> + ((h &amp; <span class="number">1023</span>) &lt;&lt; <span class="number">10</span>) + (a.charCodeAt(++g) &amp; <span class="number">1023</span>),</span><br><span class="line">        e[f++] = h &gt;&gt; <span class="number">18</span> | <span class="number">240</span>,</span><br><span class="line">        e[f++] = h &gt;&gt; <span class="number">12</span> &amp; <span class="number">63</span> | <span class="number">128</span>) : e[f++] = h &gt;&gt; <span class="number">12</span> | <span class="number">224</span>,</span><br><span class="line">        e[f++] = h &gt;&gt; <span class="number">6</span> &amp; <span class="number">63</span> | <span class="number">128</span>),</span><br><span class="line">        e[f++] = h &amp; <span class="number">63</span> | <span class="number">128</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    a = b;</span><br><span class="line">    <span class="keyword">for</span> (f = <span class="number">0</span>; f &lt; e.length; f++)</span><br><span class="line">        a += e[f],</span><br><span class="line">        a = yu(a, <span class="string">&quot;+-a^+6&quot;</span>);</span><br><span class="line">    a = yu(a, <span class="string">&quot;+-3^+b+-f&quot;</span>);</span><br><span class="line">    a ^= <span class="built_in">Number</span>(d[<span class="number">1</span>]) || <span class="number">0</span>;</span><br><span class="line">    <span class="number">0</span> &gt; a &amp;&amp; (a = (a &amp; <span class="number">2147483647</span>) + <span class="number">2147483648</span>);</span><br><span class="line">    a %= <span class="number">1E6</span>;</span><br><span class="line">    <span class="keyword">return</span> c + (a.toString() + <span class="string">&quot;.&quot;</span> + (a ^ b))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>直接把这段代码放到 html 中进行测试，控制台报错（没有定义 zu）。</p>
+<p><img src="/Python/2020-08-08-google-translation-js-crack/p7.png" alt="p7"></p>
+<p>发现在源码中 Au 函数的前面有定义 zu，于是乎将其找到（使用跳转功能会很方便）并放进测试代码中，然后重新测试。再次报错：没有定义 xu。</p>
+<p><img src="/Python/2020-08-08-google-translation-js-crack/p8.png" alt="p8"></p>
+<p>可能中途还会遇到几次这样的错误，重复上面的方法直至没有报错即可。然后就可以正常生成 tk 参数了，如果你不想要返回的值带有 &amp;tk=，你可以将 Au 函数最后的<code>return c + (a.toString() + &quot;.&quot; + (a ^ b))</code>替换成<code>return  (a.toString() + &quot;.&quot; + (a ^ b))</code>。</p>
+<p><img src="/Python/2020-08-08-google-translation-js-crack/p9.png" alt="image-20200808112916825"></p>
+<p>到此，我们通过 js 代码获得了 tk 参数的值。<br>你以为到这就完了？No no no，事情还没有结束。<br>刚开始对于获得的 tk 值我并没太仔细看，以至于没注意小数点前后的数是一样的，这导致我后面用 python 代码测试的时候老是出错（粗心啊 T_T）。后来发现这是由 zu 的初始值错误所导致的，zu 最开始被复制为 null，实际上后来它会变成一个具体的值（443549.1213991190），重新给 zu 赋值就好了。</p>
+<blockquote>
+<p>以上就是破解谷歌 js 的过程了</p>
+</blockquote>
+<p>破解有道和百度翻译 js 的过程和谷歌类似，因此也不再过多的赘述了，可以多自己尝试一下。<br>总的来说，谷歌、有道和百度翻译的 js 破解还是比较简单的，但刚开始接触还是摸索了很久，不过最后也获取到了相应的参数。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Javascript</tag>
+      </tags>
+  </entry>
 </search>
