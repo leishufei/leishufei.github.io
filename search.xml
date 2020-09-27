@@ -3,9 +3,7 @@
   <entry>
     <title>FAT32转NTFS命令</title>
     <url>/Windows/2020-09-26-convert-fat-to-ntfs/</url>
-    <content><![CDATA[<a id="more"></a>
-
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>往 U 盘里复制超过 4G 大小的文件时，经常会遇到无法复制的情况，这是因为 U 盘的文件系统为 FAT32。要想往文件系统里复制超过 4G 的文件，必须先将其转为 NTFS 文件系统。</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>往 U 盘里复制超过 4G 大小的文件时，经常会遇到无法复制的情况，这是因为 U 盘的文件系统为 FAT32。要想往文件系统里复制超过 4G 的文件，必须先将其转为 NTFS 文件系统。</p>
 <h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><p>按 Win + R 组合键，输入 cmd，唤出命令行窗口，再输入以下命令：</p>
 <figure class="highlight dos"><table><tr><td class="code"><pre><span class="line"><span class="built_in">convert</span> X:/<span class="built_in">fs</span>:ntfs</span><br></pre></td></tr></table></figure>
 
