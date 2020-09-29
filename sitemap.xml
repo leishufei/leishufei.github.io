@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.leishufei.top/Python/2020-09-29-the-last-day-of-month/</loc>
+    <loc>https://blog.leishufei.top/Python/2020-09-29-extracting-course-infomation-from-excel/</loc>
     
     <lastmod>2020-09-29</lastmod>
     
   </url>
   
   <url>
-    <loc>https://blog.leishufei.top/Office-Automation/2020-09-29-extracting-course-infomation-from-excel/</loc>
+    <loc>https://blog.leishufei.top/Python/2020-09-29-the-last-day-of-month/</loc>
     
     <lastmod>2020-09-29</lastmod>
     
@@ -200,7 +200,7 @@
   </url>
   
   <url>
-    <loc>https://blog.leishufei.top/tags/Automation/</loc>
+    <loc>https://blog.leishufei.top/tags/Office-Automation/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -238,13 +238,6 @@
   
   <url>
     <loc>https://blog.leishufei.top/categories/Hexo/</loc>
-    <lastmod>2020-09-29</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.leishufei.top/categories/Office-Automation/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

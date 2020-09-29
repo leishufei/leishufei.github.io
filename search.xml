@@ -15,10 +15,10 @@
   </entry>
   <entry>
     <title>Office自动化之Excel（一）</title>
-    <url>/Office-Automation/2020-09-29-extracting-course-infomation-from-excel/</url>
+    <url>/Python/2020-09-29-extracting-course-infomation-from-excel/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>HIT 的研究生课表简直让人无力吐槽🤣，既不能用超级课程表导入，课表信息又杂糅在一堆。就像下面这样，</p>
 <center>
-    <img style="border-radius:0.3em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Office-Automation/2020-09-29-extracting-course-infomation-from-excel/p1.png" width="600px">
+    <img style="border-radius:0.3em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-09-29-extracting-course-infomation-from-excel/p1.png" width="600px">
 </center>
 
 <p>这样看起来属实难受🙃。如果在超级课程表中手动输入每一周的课表，那简直是太麻烦了。那我又想偷懒，该怎么办呢？</p>
@@ -73,17 +73,16 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">    course_name = result[<span class="number">0</span>]</span><br><span class="line">    teachers = result[<span class="number">1</span>]</span><br><span class="line">    weeks = result[<span class="number">2</span>]</span><br><span class="line">    place = result[<span class="number">3</span>]</span><br><span class="line">    row, column = cell.row, cell.column</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(teachers)):</span><br><span class="line">        <span class="keyword">for</span> week <span class="keyword">in</span> weeks[i]:</span><br><span class="line">            sheet = book[<span class="string">f&quot;第<span class="subst">&#123;week&#125;</span>周&quot;</span>]</span><br><span class="line">            cell = sheet.cell(row=row, column=column)</span><br><span class="line">            cell.value = <span class="string">f&quot;<span class="subst">&#123;course_name&#125;</span>\n<span class="subst">&#123;teachers[i]&#125;</span>\n<span class="subst">&#123;place&#125;</span>&quot;</span></span><br><span class="line">            cell.font = Font(size=<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
 <h1 id="处理效果"><a href="#处理效果" class="headerlink" title="处理效果"></a>处理效果</h1><p>这是处理后的效果，瞬间清晰明了了，有木有😁。</p>
 <center>
-    <img style="border-radius:0.3em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Office-Automation/2020-09-29-extracting-course-infomation-from-excel/p2.png" width="600px">
+    <img style="border-radius:0.3em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-09-29-extracting-course-infomation-from-excel/p2.png" width="600px">
 </center>
 
 ]]></content>
       <categories>
         <category>Python</category>
-        <category>Office Automation</category>
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>Automation</tag>
+        <tag>Office Automation</tag>
         <tag>Excel</tag>
       </tags>
   </entry>
