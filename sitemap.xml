@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.leishufei.top/Office-Automation/2020-09-29-extracting-course-infomation-from-excel/</loc>
+    
+    <lastmod>2020-09-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.leishufei.top/Markdown/2020-09-27-add-legend-for-picture/</loc>
     
     <lastmod>2020-09-27</lastmod>
@@ -116,7 +123,7 @@
 
   <url>
     <loc>https://blog.leishufei.top/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -124,63 +131,77 @@
   
   <url>
     <loc>https://blog.leishufei.top/tags/Python/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/tags/Javascript/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/tags/Windows/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/tags/Directory-Tree/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/tags/Pyinstaller/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/tags/Bat/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/tags/Web-Spider/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/tags/GUI/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/tags/Markdown/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.leishufei.top/tags/Automation/</loc>
+    <lastmod>2020-09-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.leishufei.top/tags/Excel/</loc>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -189,28 +210,35 @@
   
   <url>
     <loc>https://blog.leishufei.top/categories/Python/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/categories/Windows/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/categories/Markdown/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.leishufei.top/categories/Hexo/</loc>
-    <lastmod>2020-09-27</lastmod>
+    <lastmod>2020-09-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.leishufei.top/categories/Office-Automation/</loc>
+    <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

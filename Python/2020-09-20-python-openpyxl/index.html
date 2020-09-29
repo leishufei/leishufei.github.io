@@ -122,17 +122,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">9</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -270,86 +270,65 @@
 
       
         <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install openpyxl</span><br></pre></td></tr></table></figure>
-
 <h1 id="打开表格"><a href="#打开表格" class="headerlink" title="打开表格"></a>打开表格</h1><ul>
 <li>创建</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实例化</span></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"><span class="comment"># 选择 sheet</span></span><br><span class="line">sheet = work_book.active</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>从文件读取</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line">work_book = openpyxl.load_workbook(<span class="string">&quot;sample.xlsx&quot;</span>)  <span class="comment"># 不支持后缀为 xls 的文件</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"></span><br><span class="line">work_book = openpyxl.WorkBook()</span><br><span class="line">work_book.save(<span class="string">&quot;sample.xlsx&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h1 id="写入数据"><a href="#写入数据" class="headerlink" title="写入数据"></a>写入数据</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet[<span class="string">&quot;A1&quot;</span>] = <span class="number">12</span>  <span class="comment"># 通过 字母+数字 的索引方法找到单元格</span></span><br><span class="line">sheet.cell(row=<span class="number">1</span>, column=<span class="number">1</span>) = <span class="number">12</span>  <span class="comment"># 通过 行+列 的索引方法找到单元格</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="创建-sheet"><a href="#创建-sheet" class="headerlink" title="创建 sheet"></a>创建 sheet</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">work_book.create_sheet(<span class="string">&quot;NewSheet&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <h1 id="选择-sheet"><a href="#选择-sheet" class="headerlink" title="选择 sheet"></a>选择 sheet</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"><span class="comment"># 推荐方法一</span></span><br><span class="line">work_book[<span class="string">&quot;sheet_name&quot;</span>]  <span class="comment"># 方法一</span></span><br><span class="line">work_book.get_sheet_by_name(<span class="string">&quot;sheet_name&quot;</span>)  <span class="comment"># 方法二</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="查看和修改-sheet-名"><a href="#查看和修改-sheet-名" class="headerlink" title="查看和修改 sheet 名"></a>查看和修改 sheet 名</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet_name = sheet.title  <span class="comment"># 查看表名</span></span><br><span class="line">sheet.title = <span class="string">&quot;changed title&quot;</span>  <span class="comment">#修改表名</span></span><br></pre></td></tr></table></figure>
-
 <h1 id="访问单元格"><a href="#访问单元格" class="headerlink" title="访问单元格"></a>访问单元格</h1><ul>
 <li>单一单元格</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">cell = sheet[<span class="string">&quot;A1&quot;</span>]  <span class="comment"># 方法一</span></span><br><span class="line">cell = sheet.cell(row=<span class="number">1</span>, column=<span class="number">1</span>)  <span class="comment"># 方法二</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>多单元格</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">cells = sheet[<span class="string">&quot;A1:B2&quot;</span>]</span><br></pre></td></tr></table></figure>
-
 <h1 id="循环访问单元格"><a href="#循环访问单元格" class="headerlink" title="循环访问单元格"></a>循环访问单元格</h1><ul>
 <li>方法一</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line">rows = sheet[<span class="string">&quot;A1:B2&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> rows:</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>方法二</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">      <span class="keyword">for</span> column <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">5</span>):</span><br><span class="line">          print(sheet.cell(row=row, column=column))</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>方法三</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> work_book.iter_rows(min_row=<span class="number">1</span>, max_row=<span class="number">3</span>, min_col=<span class="number">1</span>, max_col=<span class="number">3</span>):</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>方法四</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> work_book.iter_cols(min_row=<span class="number">1</span>, max_row=<span class="number">3</span>, min_col=<span class="number">1</span>, max_col=<span class="number">3</span>):</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> column:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>方法五</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> sheet.rows:</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>方法六</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> sheet.columns:</span><br><span class="line">      <span class="keyword">for</span> cell <span class="keyword">in</span> column:</span><br><span class="line">          print(cell.value)</span><br></pre></td></tr></table></figure>
-
 <h1 id="获取单元格所在行和列"><a href="#获取单元格所在行和列" class="headerlink" title="获取单元格所在行和列"></a>获取单元格所在行和列</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.acitve</span><br><span class="line">cell = shett.cell(row=<span class="number">1</span>, column=<span class="number">1</span>)</span><br><span class="line">row, column = cell.row, cell.column</span><br></pre></td></tr></table></figure>
-
 <h1 id="根据数字得到字母，根据字母得到数字"><a href="#根据数字得到字母，根据字母得到数字" class="headerlink" title="根据数字得到字母，根据字母得到数字"></a>根据数字得到字母，根据字母得到数字</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="comment"># 导入需要的类</span></span><br><span class="line"><span class="keyword">from</span> openpyxl.utils <span class="keyword">import</span> get_column_letter, column_index_from_string</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据列数得到对应的字母</span></span><br><span class="line">print(get_column_letter(<span class="number">2</span>))</span><br><span class="line"><span class="comment"># 根据字母得到对应的列数</span></span><br><span class="line">print(column_index_from_string(<span class="string">&quot;B&quot;</span>))</span><br></pre></td></tr></table></figure>
-
 <h1 id="设置单元格风格"><a href="#设置单元格风格" class="headerlink" title="设置单元格风格"></a>设置单元格风格</h1><ul>
 <li>字体</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入需要的类</span></span><br><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Font, colors, Alignment</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"><span class="comment"># name: 字体名称</span></span><br><span class="line"><span class="comment"># size: 字体大小</span></span><br><span class="line"><span class="comment"># italic: 是否斜体</span></span><br><span class="line"><span class="comment"># color: 字体颜色</span></span><br><span class="line"><span class="comment"># bold: 是否加粗</span></span><br><span class="line">sheet[<span class="string">&quot;A1&quot;</span>].font = Font(name=<span class="string">&quot;等线&quot;</span>, size=<span class="number">24</span>, italic=<span class="literal">True</span>, color=colors.RED, bold=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>设置行高和列宽</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="comment"># 行高和列宽是针对行或列进行设置的，不能单独对单元格进行设置</span></span><br><span class="line">sheet.row_dimensions[<span class="number">2</span>].height = <span class="number">40</span>  <span class="comment"># 设置第 2 行行高为 40</span></span><br><span class="line">sheet.column_dimensions[<span class="string">&quot;C&quot;</span>].width = <span class="number">12</span>  <span class="comment"># 设置 C 列列宽为 12</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>设置对齐方式</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Alignment</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line"></span><br><span class="line"><span class="comment"># horizontal: 水平对齐方式</span></span><br><span class="line"><span class="comment"># vertical: 垂直对齐方式</span></span><br><span class="line"><span class="comment"># wrap_text: 是否自动换行，True 表示自动换行</span></span><br><span class="line">sheet[<span class="string">&quot;A1&quot;</span>].alignment = Alignment(horizontal=<span class="string">&quot;center&quot;</span>, vertical=<span class="string">&quot;center&quot;</span>, wrap_text=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li><p>合并和拆分单元格</p>
 <ul>
@@ -358,12 +337,10 @@
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Font, colors, Alignment</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">all_merged_cells = list(sheet.merged_cells)  <span class="comment"># 获取所有合并的单元格</span></span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>合并单元格</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl <span class="keyword">import</span> WorkBook</span><br><span class="line"></span><br><span class="line">work_book = WorkBook()</span><br><span class="line">sheet = work_book.active</span><br><span class="line">sheet.merge_cells(<span class="string">&quot;A1:B2&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>拆分单元格</li>
 </ul>
@@ -376,7 +353,7 @@
     <div>
       
         
-<div class="my_post_copyright" style="line-height:0.8; border-left:3px solid #f00;padding-left:0.7em;">
+<div class="my_post_copyright" style="line-height:1.5; border-left:3px solid #f00;padding-left:0.7em;">
   <p><span><strong>本文标题</strong>：</span>Python中的openpyxl模块</p>
   <p><span><strong>本文作者</strong>：</span>雷书飞</p>
   <p><span><strong>发布时间</strong>：</span>2020 年 09 月 15 日</p>
@@ -496,20 +473,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -557,12 +534,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">18k</span>
+    <span title="站点总字数">24k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">16 分钟</span>
+    <span title="站点阅读时长">21 分钟</span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
         
 <div class="busuanzi-count">
@@ -659,6 +636,8 @@
 
 
 
+
+  
 
   
 

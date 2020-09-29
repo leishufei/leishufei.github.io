@@ -132,17 +132,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">9</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -290,15 +290,12 @@
 <p><img src="/Python/2020-08-08-google-translation-js-crack/p5.png" alt="p5"></p>
 <p>继续往下查找，发现在 fF 函数中存在 tk 参数，而在 hF 函数中不存在，因此这个 fF 就是我们接下来要分析的目标。fF 函数如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fF = <span class="function"><span class="keyword">function</span>(<span class="params">a, b, c, d, e, f</span>) </span>&#123;</span><br><span class="line">    c = c.toString();</span><br><span class="line">    c += eF(d);</span><br><span class="line">    d = d.toString();</span><br><span class="line">    <span class="keyword">var</span> g = <span class="string">&quot;POST&quot;</span>;</span><br><span class="line">    b += <span class="string">&quot;?&quot;</span> + c;</span><br><span class="line">    <span class="number">2E3</span> &gt; b.length + d.length &amp;&amp; (g = <span class="string">&quot;GET&quot;</span>,</span><br><span class="line">    b += <span class="string">&quot;&amp;&quot;</span> + d,</span><br><span class="line">    d = <span class="string">&quot;&quot;</span>);</span><br><span class="line">    ++a.j;</span><br><span class="line">    <span class="keyword">return</span> Vj(b, <span class="function"><span class="keyword">function</span>(<span class="params">h</span>) </span>&#123;</span><br><span class="line">        --a.j;</span><br><span class="line">        e(h)</span><br><span class="line">    &#125;, g, d, <span class="keyword">void</span> <span class="number">0</span>, f)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在 fF 函数的第一行和最后一行打上断点，删除其余的断点，然后重新调试。当在断点处暂停后，采用步进调试的方法（防止跳过重要参数信息）。如图可见，tk 的值来源于 eF 函数，其参数 d 是一个对象，其中包含有我们输入的内容。</p>
 <p><img src="/Python/2020-08-08-google-translation-js-crack/p6.png" alt="p6"></p>
 <p>跳转到 eF 函数，分析 tk 是如何生成的。eF 函数代码如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> eF = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    a = a.Kb(<span class="string">&quot;q&quot;</span>).join(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> Au(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>eF 函数中的 Kb 函数其实就是将我们所输入的文本从对象中提取出来，a 就是我们所输入的文本，然后再传给 Au 函数。继续跳转到 Au 函数进行分析，Au 函数代码如下：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Au = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">null</span> !== zu)</span><br><span class="line">        <span class="keyword">var</span> b = zu;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        b = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">84</span>));</span><br><span class="line">        <span class="keyword">var</span> c = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">75</span>));</span><br><span class="line">        b = [b(), b()];</span><br><span class="line">        b[<span class="number">1</span>] = c();</span><br><span class="line">        b = (zu = <span class="built_in">window</span>[b.join(c())] || <span class="string">&quot;&quot;</span>) || <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> d = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">116</span>));</span><br><span class="line">    c = xu(<span class="built_in">String</span>.fromCharCode(<span class="number">107</span>));</span><br><span class="line">    d = [d(), d()];</span><br><span class="line">    d[<span class="number">1</span>] = c();</span><br><span class="line">    c = <span class="string">&quot;&amp;&quot;</span> + d.join(<span class="string">&quot;&quot;</span>) + <span class="string">&quot;=&quot;</span>;</span><br><span class="line">    d = b.split(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">    b = <span class="built_in">Number</span>(d[<span class="number">0</span>]) || <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> e = [], f = <span class="number">0</span>, g = <span class="number">0</span>; g &lt; a.length; g++) &#123;</span><br><span class="line">        <span class="keyword">var</span> h = a.charCodeAt(g);</span><br><span class="line">        <span class="number">128</span> &gt; h ? e[f++] = h : (<span class="number">2048</span> &gt; h ? e[f++] = h &gt;&gt; <span class="number">6</span> | <span class="number">192</span> : (<span class="number">55296</span> == (h &amp; <span class="number">64512</span>) &amp;&amp; g + <span class="number">1</span> &lt; a.length &amp;&amp; <span class="number">56320</span> == (a.charCodeAt(g + <span class="number">1</span>) &amp; <span class="number">64512</span>) ? (h = <span class="number">65536</span> + ((h &amp; <span class="number">1023</span>) &lt;&lt; <span class="number">10</span>) + (a.charCodeAt(++g) &amp; <span class="number">1023</span>),</span><br><span class="line">        e[f++] = h &gt;&gt; <span class="number">18</span> | <span class="number">240</span>,</span><br><span class="line">        e[f++] = h &gt;&gt; <span class="number">12</span> &amp; <span class="number">63</span> | <span class="number">128</span>) : e[f++] = h &gt;&gt; <span class="number">12</span> | <span class="number">224</span>,</span><br><span class="line">        e[f++] = h &gt;&gt; <span class="number">6</span> &amp; <span class="number">63</span> | <span class="number">128</span>),</span><br><span class="line">        e[f++] = h &amp; <span class="number">63</span> | <span class="number">128</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    a = b;</span><br><span class="line">    <span class="keyword">for</span> (f = <span class="number">0</span>; f &lt; e.length; f++)</span><br><span class="line">        a += e[f],</span><br><span class="line">        a = yu(a, <span class="string">&quot;+-a^+6&quot;</span>);</span><br><span class="line">    a = yu(a, <span class="string">&quot;+-3^+b+-f&quot;</span>);</span><br><span class="line">    a ^= <span class="built_in">Number</span>(d[<span class="number">1</span>]) || <span class="number">0</span>;</span><br><span class="line">    <span class="number">0</span> &gt; a &amp;&amp; (a = (a &amp; <span class="number">2147483647</span>) + <span class="number">2147483648</span>);</span><br><span class="line">    a %= <span class="number">1E6</span>;</span><br><span class="line">    <span class="keyword">return</span> c + (a.toString() + <span class="string">&quot;.&quot;</span> + (a ^ b))</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>直接把这段代码放到 html 中进行测试，控制台报错（没有定义 zu）。</p>
 <p><img src="/Python/2020-08-08-google-translation-js-crack/p7.png" alt="p7"></p>
 <p>发现在源码中 Au 函数的前面有定义 zu，于是乎将其找到（使用跳转功能会很方便）并放进测试代码中，然后重新测试。再次报错：没有定义 xu。</p>
@@ -318,7 +315,7 @@
     <div>
       
         
-<div class="my_post_copyright" style="line-height:0.8; border-left:3px solid #f00;padding-left:0.7em;">
+<div class="my_post_copyright" style="line-height:1.5; border-left:3px solid #f00;padding-left:0.7em;">
   <p><span><strong>本文标题</strong>：</span>谷歌、有道和百度翻译的 JS 加密参数破解</p>
   <p><span><strong>本文作者</strong>：</span>雷书飞</p>
   <p><span><strong>发布时间</strong>：</span>2020 年 08 月 08 日</p>
@@ -435,20 +432,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -496,12 +493,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">18k</span>
+    <span title="站点总字数">24k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">16 分钟</span>
+    <span title="站点阅读时长">21 分钟</span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
         
 <div class="busuanzi-count">
@@ -598,6 +595,8 @@
 
 
 
+
+  
 
   
 
