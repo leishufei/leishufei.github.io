@@ -200,6 +200,13 @@
   </url>
   
   <url>
+    <loc>https://blog.leishufei.top/tags/Markdown/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.leishufei.top/tags/Office-Automation/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
@@ -208,13 +215,6 @@
   
   <url>
     <loc>https://blog.leishufei.top/tags/Excel/</loc>
-    <lastmod>2020-09-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.leishufei.top/tags/Markdown/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -237,14 +237,14 @@
   </url>
   
   <url>
-    <loc>https://blog.leishufei.top/categories/Hexo/</loc>
+    <loc>https://blog.leishufei.top/categories/Markdown/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.leishufei.top/categories/Markdown/</loc>
+    <loc>https://blog.leishufei.top/categories/Hexo/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
