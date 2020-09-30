@@ -168,7 +168,7 @@ NexT.motion.middleWares = {
         duration: 200,
         complete: function() {
           // After motion complete need to remove transform from sidebar to let affix work on Pisces | Gemini.
-          // sidebarAffix.style.transform = 'initial';
+          sidebarAffix.style.transform = 'initial';
         }
       });
     }
