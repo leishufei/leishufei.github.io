@@ -144,20 +144,6 @@
 
   
   <url>
-    <loc>https://blog.leishufei.top/tags/Windows/</loc>
-    <lastmod>2020-09-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.leishufei.top/tags/Directory-Tree/</loc>
-    <lastmod>2020-09-30</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.leishufei.top/tags/Python/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
@@ -172,7 +158,14 @@
   </url>
   
   <url>
-    <loc>https://blog.leishufei.top/tags/Pyinstaller/</loc>
+    <loc>https://blog.leishufei.top/tags/Windows/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.leishufei.top/tags/Directory-Tree/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -180,6 +173,13 @@
   
   <url>
     <loc>https://blog.leishufei.top/tags/Bat/</loc>
+    <lastmod>2020-09-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.leishufei.top/tags/Pyinstaller/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -223,14 +223,14 @@
 
   
   <url>
-    <loc>https://blog.leishufei.top/categories/Windows/</loc>
+    <loc>https://blog.leishufei.top/categories/Python/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.leishufei.top/categories/Python/</loc>
+    <loc>https://blog.leishufei.top/categories/Windows/</loc>
     <lastmod>2020-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
