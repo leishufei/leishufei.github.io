@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>链家二手房爬虫及数据分析</title>
+    <url>/Python/2020-10-02-A01/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好久没写关于爬虫和数据分析的内容了，再不写写估计都忘完了😂。这次就拿链家二手房数据来练练手。</p>
+<h1 id="爬虫部分"><a href="#爬虫部分" class="headerlink" title="爬虫部分"></a>爬虫部分</h1><p>链家的爬虫其实挺好写的，几十行代码就解决了，不过需要注意一下爬取的频率，爬得太快容易被检测到，然后给你跳出验证码来。</p>
+<h3 id="爬取目标"><a href="#爬取目标" class="headerlink" title="爬取目标"></a>爬取目标</h3><p>本人现在正在哈尔滨上学，所以选的是哈尔滨的二手房源作为爬取目标（其实这个选哪都无所谓🤦）。</p>
+<h3 id="爬取过程"><a href="#爬取过程" class="headerlink" title="爬取过程"></a>爬取过程</h3><p>先看一下 url的变化。第一、二、三页的 url 如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">第一页的 url: https:&#x2F;&#x2F;hrb.lianjia.com&#x2F;ershoufang&#x2F;</span><br><span class="line">第二页的 url: https:&#x2F;&#x2F;hrb.lianjia.com&#x2F;ershoufang&#x2F;pg2&#x2F;</span><br><span class="line">第三页的 url: https:&#x2F;&#x2F;hrb.lianjia.com&#x2F;ershoufang&#x2F;pg3&#x2F;</span><br></pre></td></tr></table></figure>
+<p>这已经很明显了，<code>pg</code>后的数字表示第几页，所以我们只需要在构造链接时传递一个<code>offset</code>（页数的偏移量）就好了。构造 url 的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">construct_url</span>(<span class="params">offset</span>):</span></span><br><span class="line">    base_url = <span class="string">&quot;https://hrb.lianjia.com/ershoufang/&quot;</span></span><br><span class="line">    url = base_url + <span class="string">&quot;pg&#123;&#125;&quot;</span>.format(offset) + <span class="string">&quot;/&quot;</span></span><br><span class="line">    <span class="keyword">return</span> url</span><br></pre></td></tr></table></figure>
+<p>通过请求上述 url， 可以获取到每一页的基础页面：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_base_html</span>(<span class="params">url</span>):</span></span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">    html = response.text</span><br><span class="line">    <span class="keyword">return</span> html</span><br></pre></td></tr></table></figure>
+<p>不过我们还需要对页面进行解析，找到二手房对应的详情页链接。观察开发者面板中的元素板块后发现，所有的二手房信息都放在了一个无序列表（ul）中，</p>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p1.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图1</div>
+</center>
+
+<p>详情页链接所在的路径为：</p>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p2.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图2</div>
+</center>
+
+<p>然后利用解析库或者正则表达式可以将对应的链接提取出来，我比较喜欢用<code>BeautifulSoup</code>解析，然后用<code>CSS选择器</code>提取相应的信息，具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detailed_link</span>(<span class="params">html</span>):</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">    lis = soup.select(<span class="string">&quot;#content &gt; .leftContent &gt; .sellListContent &gt; li&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> li <span class="keyword">in</span> lis:</span><br><span class="line">        a = li.select(<span class="string">&quot;.info.clear &gt; .title &gt; a&quot;</span>)[<span class="number">0</span>].get(<span class="string">&quot;href&quot;</span>)</span><br><span class="line">        <span class="keyword">yield</span> a</span><br></pre></td></tr></table></figure>
+<p>提取到了链接，调用<code>get_base_html</code>函数进行访问得到详情页面，再利用<code>BeautifulSoup</code>进行解析，获取到我们想要的信息。图 3 和 图 4 列出了二手房的一些具体数据，这里我只选择爬取了图 3 的数据。</p>
+<table style="border:0px">
+    <tr>
+        <td>
+            <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p3.png" height="300px">
+            <div style="color:orange;display: inline-block;color: #999;padding: 0px;text-align:center;">图3</div>
+        </td>
+        <td>
+            <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p4.png" height="300px">
+            <div style="color:orange;display: inline-block;color: #999;padding: 0px;text-align:center;">图4</div>
+        </td>
+    </tr>
+</table>
+
+<p>信息的提取和前面的类似，这里就不再多说了，直接上代码，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_details</span>(<span class="params">html</span>):</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">    content_container = soup.select(<span class="string">&quot;.overview &gt; .content&quot;</span>)[<span class="number">0</span>]</span><br><span class="line">    total_price = content_container.select(<span class="string">&quot;.price &gt; span.total&quot;</span>)[<span class="number">0</span>].text + <span class="string">&quot;万&quot;</span></span><br><span class="line">    unit_price = content_container.select(<span class="string">&quot;.price &gt; .text &gt; .unitPrice &gt; span&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">    layout = content_container.select(<span class="string">&quot;.houseInfo &gt; .room &gt; .mainInfo&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">    floor = content_container.select(<span class="string">&quot;.houseInfo &gt; .room &gt; .subInfo&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">    orientation = content_container.select(<span class="string">&quot;.houseInfo &gt; .type &gt; .mainInfo&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">    decoration = content_container.select(<span class="string">&quot;.houseInfo &gt; .type &gt; .subInfo&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">    area = content_container.select(<span class="string">&quot;.houseInfo &gt; .area &gt; .mainInfo&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">    type_ = content_container.select(<span class="string">&quot;.houseInfo &gt; .area &gt; .subInfo&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">    community_name = content_container.select(<span class="string">&quot;.aroundInfo &gt; .communityName &gt; .info&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">    region = content_container.select(<span class="string">&quot;.aroundInfo &gt; .areaName &gt; .info &gt; a&quot;</span>)[<span class="number">0</span>].text</span><br><span class="line">    street = content_container.select(<span class="string">&quot;.aroundInfo &gt; .areaName &gt; .info &gt; a&quot;</span>)[<span class="number">1</span>].text</span><br></pre></td></tr></table></figure>
+<p>最后将上述爬到的数据写入到文件中，我选择的是<code>CSV</code>文件，代码如下，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_to_csv</span>(<span class="params">contents: list</span>):</span></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">&quot;./results.csv&quot;</span>, <span class="string">&quot;a&quot;</span>, encoding=<span class="string">&quot;utf-8-sig&quot;</span>, newline=<span class="string">&quot;&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        writer = csv.writer(f)</span><br><span class="line">        writer.writerow(contents)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>  需要注意一点，往<code>CSV</code>文件中写入中文时，编码格式要选择<code>utf-8-sig</code>，不然全是乱码。</p>
+</blockquote>
+<p>为了不给链家的服务器增加压力，爬取的时候可以把访问频率降低一些。不过即便是这样依然被检测到是爬虫，因此，我在获取页面的函数中加入了一个循环判断的代码，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_base_html</span>(<span class="params">url</span>):</span></span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">    html = response.text</span><br><span class="line">    <span class="keyword">while</span> <span class="string">&quot;人机认证&quot;</span> <span class="keyword">in</span> html:</span><br><span class="line">        print(<span class="string">&quot;[INFO] 爬虫被检测到了，请进行人机验证...&quot;</span>)</span><br><span class="line">        time.sleep(<span class="number">10</span>)</span><br><span class="line">        response = requests.get(url, headers=headers)</span><br><span class="line">        response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">        html = response.text</span><br><span class="line">    <span class="keyword">return</span> html</span><br></pre></td></tr></table></figure>
+<p>在被检测到之后会不断重试，这时候我们可以手动进行验证，以保证爬虫的正常运行。虽然有些麻烦，不过这也是没办法的事（主要是太菜了，不会破解这种点选式的验证码💢）。好在网上有查找到相关的破解方法， 以后有时间可以学习一下。</p>
+<p>最终爬了大概有 2000 多条数据，不多，但是也足够了。</p>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p5.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图5</div>
+</center>
+
+<h1 id="数据分析部分"><a href="#数据分析部分" class="headerlink" title="数据分析部分"></a>数据分析部分</h1><h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>爬虫</tag>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>创建二维几何</title>
+    <url>/COMSOL%E5%AD%A6%E4%B9%A0/2020-10-01-creating-2d-geometries/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>COMSOL学习</category>
+      </categories>
+      <tags>
+        <tag>COMSOL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Office自动化之Excel（二）</title>
     <url>/Python/2020-09-30-python-for-excel/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在<a href="https://blog.leishufei.top/Python/2020-09-29-extracting-course-infomation-from-excel/">Office自动化之Excel（一）</a>中，已经成功从杂揉的课表信息中提取出了每周的课表。但每次想看在哪上课都得打开 Excel 表格查看，这样显得有些繁琐。本着技（偷）术（懒）为先的原则，当然是得搞点花里胡哨的东西。恰巧之前在<a href="https://github.com/ZainCheung/netease-cloud">网易云自动签到</a>项目中接触（白嫖）到了<a href="http://sc.ftqq.com/3.version">Server酱</a>的推送服务，这次就把它用上。</p>
@@ -49,7 +126,7 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>Office Automation</tag>
+        <tag>Office自动化</tag>
         <tag>Excel</tag>
       </tags>
   </entry>
@@ -137,7 +214,7 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>Office Automation</tag>
+        <tag>Office自动化</tag>
         <tag>Excel</tag>
       </tags>
   </entry>
@@ -188,12 +265,15 @@
       <categories>
         <category>Hexo</category>
       </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title>FAT32转NTFS命令</title>
     <url>/Windows/2020-09-26-convert-fat-to-ntfs/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>往 U 盘里复制超过 4G 大小的文件时，经常会遇到无法复制的情况，这是因为 U 盘的文件系统为 FAT32。要想往文件系统里复制超过 4G 的文件，必须先将其转为 NTFS 文件系统。</p>
-<h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><p>按 Win + R 组合键，输入 cmd，唤出命令行窗口，再输入以下命令：</p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>按 Win + R 组合键，输入 cmd，唤出命令行窗口，再输入以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">convert X:&#x2F;fs:ntfs</span><br></pre></td></tr></table></figure>
 <p>X 表示你想转换的盘符。</p>
 ]]></content>
@@ -205,7 +285,7 @@
       </tags>
   </entry>
   <entry>
-    <title>Python中同时替换多个字符串的方法</title>
+    <title>Python中同时替换多个字符串</title>
     <url>/Python/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     <content><![CDATA[<h1 id="replace-方法"><a href="#replace-方法" class="headerlink" title="replace() 方法"></a>replace() 方法</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str_ = <span class="string">&quot;abcead&quot;</span></span><br><span class="line">result = str_.replace(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>).replace(<span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果：</span></span><br><span class="line">cccecd</span><br></pre></td></tr></table></figure>
 <h1 id="re-sub-方法"><a href="#re-sub-方法" class="headerlink" title="re.sub() 方法"></a>re.sub() 方法</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">str_ = <span class="string">&quot;abcdefg&quot;</span></span><br><span class="line"><span class="comment"># 第一个参数为正则表达式，第二个参数为替换后的字符串，第三个参数为待替换的字符串</span></span><br><span class="line">result_1 = re.sub(<span class="string">&quot;[abc]&quot;</span>, <span class="string">&quot;&quot;</span>, str_)</span><br><span class="line">print(result_1)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">defg</span><br><span class="line"></span><br><span class="line">result_2 = re.sub(<span class="string">&quot;a|b|c&quot;</span>, <span class="string">&quot;&quot;</span>, str_)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">defg</span><br></pre></td></tr></table></figure>
@@ -302,6 +382,8 @@
       </categories>
       <tags>
         <tag>Python</tag>
+        <tag>Office自动化</tag>
+        <tag>Excel</tag>
       </tags>
   </entry>
   <entry>
@@ -355,7 +437,7 @@
       </categories>
       <tags>
         <tag>Python</tag>
-        <tag>Web Spider</tag>
+        <tag>爬虫</tag>
         <tag>GUI</tag>
       </tags>
   </entry>
@@ -444,7 +526,7 @@
   <entry>
     <title>Windows下生成项目目录树结构</title>
     <url>/Windows/2020-08-11-directory-tree-stucture/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个好的项目应该具有一个简洁明了的 README 文件，而 README 文件中的目录树结构能让读者很<br>好的了解你的项目。当文件结构比较简单的时候，逐行手动打出来倒不是太大的问题，但是当项目<br>文件比较多，结构相对复杂的时候，手动打出来就比较费劲了。这时，自动生成目录树结构的方法<br>就显得尤为重要。</p>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一个好的项目应该具有一个简洁明了的 README 文件，而 README 文件中的目录树结构能让读者很好的了解你的项目。当文件结构比较简单的时候，逐行手动打出来倒不是太大的问题，但是当项目文件比较多，结构相对复杂的时候，手动打出来就比较费劲了。这时，自动生成目录树结构的方法就显得尤为重要。</p>
 <h1 id="具体实现方法"><a href="#具体实现方法" class="headerlink" title="具体实现方法"></a>具体实现方法</h1><h2 id="Windows-自带的-tree-命令"><a href="#Windows-自带的-tree-命令" class="headerlink" title="Windows 自带的 tree 命令"></a>Windows 自带的 tree 命令</h2><ul>
 <li><code>tree /a</code></li>
 <li><code>tree /f</code></li>
@@ -520,7 +602,7 @@
       </categories>
       <tags>
         <tag>Windows</tag>
-        <tag>Directory Tree</tag>
+        <tag>目录树</tag>
       </tags>
   </entry>
   <entry>
@@ -561,6 +643,7 @@
       <tags>
         <tag>Python</tag>
         <tag>Javascript</tag>
+        <tag>爬虫</tag>
       </tags>
   </entry>
 </search>

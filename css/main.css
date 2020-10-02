@@ -436,7 +436,7 @@ pre {
 }
 pre,
 code {
-  font-family: 'Courier New', consolas, Menlo, 'Noto Serif SC', "Noto Serif SC", sans-serif, monospace;
+  font-family: 'Times New Roman', consolas, Menlo, 'Noto Serif SC', "Noto Serif SC", sans-serif, monospace;
 }
 code {
   background: #f9f2f4;
@@ -1278,7 +1278,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #fff509;
+  background: #ed7fcd;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1659,6 +1659,9 @@ pre .javascript .function {
 }
 .my_post_copyright p a {
   color: #428bca;
+}
+.post-button a {
+  color: #555;
 }
 .posts-collapse {
   margin-left: 35px;
