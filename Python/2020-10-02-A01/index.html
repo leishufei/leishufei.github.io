@@ -32,8 +32,20 @@
 <meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p3.png">
 <meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p4.png">
 <meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p5.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p6.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p7.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p8.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p9.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p10.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p11.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p12.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p13.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p14.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p15.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p16.png">
+<meta property="og:image" content="https://blog.leishufei.top/Python/2020-10-02-A01/p17.png">
 <meta property="article:published_time" content="2020-10-02T06:04:18.000Z">
-<meta property="article:modified_time" content="2020-10-02T09:48:24.956Z">
+<meta property="article:modified_time" content="2020-10-03T07:43:55.101Z">
 <meta property="article:author" content="雷书飞">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="爬虫">
@@ -225,10 +237,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-02 14:04:18 / 修改时间：17:48:24" itemprop="dateCreated datePublished" datetime="2020-10-02T14:04:18+08:00">2020-10-02</time>
+              <time title="创建时间：2020-10-02 14:04:18" itemprop="dateCreated datePublished" datetime="2020-10-02T14:04:18+08:00">2020-10-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-03 15:43:55" itemprop="dateModified" datetime="2020-10-03T15:43:55+08:00">2020-10-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -256,14 +274,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>3.3k</span>
+              <span>11k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
+              <span>10 分钟</span>
             </span>
             
             
@@ -326,11 +344,144 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_base_html</span>(<span class="params">url</span>):</span></span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">    html = response.text</span><br><span class="line">    <span class="keyword">while</span> <span class="string">&quot;人机认证&quot;</span> <span class="keyword">in</span> html:</span><br><span class="line">        print(<span class="string">&quot;[INFO] 爬虫被检测到了，请进行人机验证...&quot;</span>)</span><br><span class="line">        time.sleep(<span class="number">10</span>)</span><br><span class="line">        response = requests.get(url, headers=headers)</span><br><span class="line">        response.encoding = <span class="string">&quot;utf-8&quot;</span></span><br><span class="line">        html = response.text</span><br><span class="line">    <span class="keyword">return</span> html</span><br></pre></td></tr></table></figure>
 <p>在被检测到之后会不断重试，这时候我们可以手动进行验证，以保证爬虫的正常运行。虽然有些麻烦，不过这也是没办法的事（主要是太菜了，不会破解这种点选式的验证码💢）。好在网上有查找到相关的破解方法， 以后有时间可以学习一下。</p>
 <p>最终爬了大概有 2000 多条数据，不多，但是也足够了。</p>
-<p><center>
+<center>
     <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p5.png" width="800px">
     <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图5</div>
-</center></p>
-<h1 id="数据分析部分"><a href="#数据分析部分" class="headerlink" title="数据分析部分"></a>数据分析部分</h1><h3 id="1-数据清洗"><a href="#1-数据清洗" class="headerlink" title="1. 数据清洗"></a>1. 数据清洗</h3><p>等待补充…</p>
+</center>
+# 数据分析部分
+
+### 1. 读取文件
+
+读取文件并为每一列添加列名，
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&quot;results.csv&quot;</span>, names=[<span class="string">&quot;总价&quot;</span>, <span class="string">&quot;单价&quot;</span>, <span class="string">&quot;户型&quot;</span>, <span class="string">&quot;所在楼层&quot;</span>, <span class="string">&quot;房屋朝向&quot;</span>, <span class="string">&quot;装修情况&quot;</span>, <span class="string">&quot;面积&quot;</span>, <span class="string">&quot;建筑类型&quot;</span>, <span class="string">&quot;小区&quot;</span>, <span class="string">&quot;区域&quot;</span>, <span class="string">&quot;街道&quot;</span>])</span><br></pre></td></tr></table></figure>
+
+原始数据如下：
+
+
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p6.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图6</div>
+</center>
+### 2. 数据清洗
+
+原始数据还是比较清楚的，不过我们还需要进行清洗，以便于我们后续的分析。数据的清洗主要是以下几个部分：
+
+*   去除重复值并更新索引
+*   替换空值
+*   提取`总价`中的数值
+*   提取`单价`中的数值
+*   提取`装修情况`
+*   提取`建筑面积`
+*   在`区域`值后加上`区`
+
+数据清洗部分的代码如下：
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 去除重复值</span></span><br><span class="line">df.drop_duplicates(keep=<span class="string">&quot;first&quot;</span>, inplace=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 更新索引</span></span><br><span class="line">df.reset_index(inplace=<span class="literal">True</span>, drop=<span class="literal">True</span>)</span><br><span class="line"><span class="comment"># 替换空值</span></span><br><span class="line">df = df.applymap(<span class="keyword">lambda</span> x: <span class="string">&quot;暂无数据&quot;</span> <span class="keyword">if</span> pd.isnull(x) <span class="keyword">else</span> x)</span><br><span class="line"><span class="comment"># 提取总价中的数值</span></span><br><span class="line">df[<span class="string">&quot;总价&quot;</span>] = df[<span class="string">&quot;总价&quot;</span>].str.extract(pat=<span class="string">r&quot;(\d+.?\d+*)万&quot;</span>).astype(float)</span><br><span class="line"><span class="comment"># 提取单价中的数值</span></span><br><span class="line">df[<span class="string">&quot;单价&quot;</span>] = df[<span class="string">&quot;单价&quot;</span>].str.extract(pat=<span class="string">r&quot;(\d+)元/平米&quot;</span>).astype(int)</span><br><span class="line"><span class="comment"># 提取装修情况</span></span><br><span class="line">df[<span class="string">&quot;装修情况&quot;</span>] = df[<span class="string">&quot;装修情况&quot;</span>].map(<span class="keyword">lambda</span> x: x.split(<span class="string">&quot;/&quot;</span>)[<span class="number">1</span>] <span class="keyword">if</span> <span class="string">&quot;/&quot;</span> <span class="keyword">in</span> x <span class="keyword">else</span> x)</span><br><span class="line"><span class="comment"># 提取建筑面积</span></span><br><span class="line">df[<span class="string">&quot;面积&quot;</span>] = df[<span class="string">&quot;面积&quot;</span>].str.extract(pat=<span class="string">r&quot;(\d+.?[\d+]*)平米&quot;</span>).astype(float)</span><br><span class="line"><span class="comment"># 在区域值后加上区</span></span><br><span class="line">df[<span class="string">&quot;区域&quot;</span>] = df[<span class="string">&quot;区域&quot;</span>].map(<span class="keyword">lambda</span> x: x + <span class="string">&quot;区&quot;</span> <span class="keyword">if</span> x[<span class="number">-1</span>] != <span class="string">&quot;区&quot;</span> <span class="keyword">else</span> x)</span><br><span class="line"><span class="comment"># 对列进行重新排序</span></span><br><span class="line">columns = [<span class="string">&quot;总价&quot;</span>, <span class="string">&quot;单价&quot;</span>, <span class="string">&quot;户型&quot;</span>, <span class="string">&quot;所在楼层&quot;</span>, <span class="string">&quot;楼层数&quot;</span>, <span class="string">&quot;房屋朝向&quot;</span>, <span class="string">&quot;装修情况&quot;</span>, <span class="string">&quot;面积&quot;</span>, <span class="string">&quot;建筑类型&quot;</span>, <span class="string">&quot;小区&quot;</span>, <span class="string">&quot;区域&quot;</span>, <span class="string">&quot;街道&quot;</span>]</span><br><span class="line">df = df.reindex(columns=columns)</span><br></pre></td></tr></table></figure>
+
+清洗后的数据是不是清楚多了？
+
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p7.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图7</div>
+</center>
+
+<h3 id="3-可视化展示"><a href="#3-可视化展示" class="headerlink" title="3. 可视化展示"></a>3. 可视化展示</h3><ul>
+<li>二手房售价的分布情况</li>
+</ul>
+<p>先把售价分成几个阶层，考虑到哈尔滨的房价并不是特别高，我选取了<code>10万以内</code>、<code>10-20万</code>、<code>20-50万</code>、<code>50-100万</code>、<code>100-300万</code>、<code>300万以上</code>作为标准。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">df_1 = pd.cut(df[<span class="string">&quot;总价&quot;</span>], bins=[<span class="number">0</span>, <span class="number">100000</span>, <span class="number">200000</span>, <span class="number">500000</span>, <span class="number">1000000</span>, <span class="number">3000000</span>, np.inf], right=<span class="literal">True</span>, labels=[<span class="string">&quot;10万以内&quot;</span>, <span class="string">&quot;10-20万&quot;</span>, <span class="string">&quot;20-50万&quot;</span>, <span class="string">&quot;50-100万&quot;</span>, <span class="string">&quot;100-300万&quot;</span>, <span class="string">&quot;300万以上&quot;</span>])</span><br><span class="line">data_pair = [list(z) <span class="keyword">for</span> z <span class="keyword">in</span> zip(df_1.value_counts().index.tolist(), df_1.value_counts().values.tolist())]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 可视化代码</span></span><br><span class="line">pie = Pie(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>, theme=ThemeType.MACARONS))</span><br><span class="line">pie.add(series_name=<span class="string">&quot;&quot;</span>, data_pair=data_pair, radius=[<span class="string">&quot;40%&quot;</span>, <span class="string">&quot;70%&quot;</span>], rosetype=<span class="literal">True</span>)</span><br><span class="line">pie.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;哈尔滨房价分布&quot;</span>, subtitle=<span class="string">&quot;数据来源于「链家网」&quot;</span>))</span><br><span class="line">pie.set_series_opts(label_opts=opts.LabelOpts(formatter=<span class="string">&quot;&#123;b&#125;\n&#123;c&#125;套\n&#123;d&#125;%&quot;</span>))</span><br><span class="line">pie.render()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p8.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图8</div>
+</center>
+
+<p>价格在<code>50-100万</code>之间的二手房占了绝大部分，约 40% 左右，另外价格在<code>100-300万</code>之间的二手房也是不少的，占了大概 34%，说明哈尔滨的房价水平也是不低嘛🤦。</p>
+<ul>
+<li>二手房的户型分布情况</li>
+</ul>
+<p>我们再来看看户型的分布情况，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df_2 = df[[<span class="string">&quot;总价&quot;</span>, <span class="string">&quot;户型&quot;</span>]]</span><br><span class="line">df_2 = df_2[df_2[<span class="string">&quot;户型&quot;</span>]!=<span class="string">&quot;车位&quot;</span>]</span><br><span class="line">loyout = df_2[<span class="string">&quot;户型&quot;</span>].value_counts().sort_values(ascending=<span class="literal">True</span>).index.tolist()</span><br><span class="line">numbers = df_2[<span class="string">&quot;户型&quot;</span>].value_counts().sort_values(ascending=<span class="literal">True</span>).values.tolist()</span><br><span class="line"></span><br><span class="line">bar = Bar(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>, theme=ThemeType.MACARONS))</span><br><span class="line">bar.add_xaxis(loyout)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;&quot;</span>, numbers)</span><br><span class="line">bar.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;户型数量分布图&quot;</span>, subtitle=<span class="string">&quot;数据来源于「链家网」&quot;</span>))</span><br><span class="line">bar.set_series_opts(label_opts=opts.LabelOpts(position=<span class="string">&quot;right&quot;</span>))</span><br><span class="line">bar.reversal_axis()</span><br><span class="line">bar.render()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p9.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图9</div>
+</center>
+
+<p><code>2 室 1 厅</code>的户型占了半数，这对于想买<code>2 室 1 厅</code>的住户来说是比较有利的。其余的例如<code>3 室 1 厅</code>、<code>1 室 1 厅</code>和<code>3 室 2 厅</code>数量也挺多的，这些都是一些主流的户型。像<code>9 室 4 厅</code>、<code>9 室 1 厅</code>这种户型，那注定是我买不起的，酸了🍋。</p>
+<ul>
+<li>不同户型的二手房其价格如何</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">layout = df_2.groupby(<span class="string">&quot;户型&quot;</span>)[<span class="string">&quot;户型&quot;</span>].count().index.tolist()</span><br><span class="line">min_price = df_2.groupby(<span class="string">&quot;户型&quot;</span>)[<span class="string">&quot;总价&quot;</span>].min().values.tolist()</span><br><span class="line">average_price = df_2.groupby(<span class="string">&quot;户型&quot;</span>)[<span class="string">&quot;总价&quot;</span>].mean().values.tolist()</span><br><span class="line">max_price = df_2.groupby(<span class="string">&quot;户型&quot;</span>)[<span class="string">&quot;总价&quot;</span>].max().values.tolist()</span><br><span class="line"></span><br><span class="line">bar = Bar(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>, theme=ThemeType.MACARONS))</span><br><span class="line">bar.add_xaxis(layout)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;最低价&quot;</span>, min_price)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;均价&quot;</span>, average_price)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;最高价&quot;</span>, max_price)</span><br><span class="line">bar.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;不同户型的价格范围&quot;</span>, subtitle=<span class="string">&quot;数据来源于「链家网」&quot;</span>), xaxis_opts=opts.AxisOpts(axislabel_opts=opts.LabelOpts(rotate=<span class="number">45</span>)))</span><br><span class="line">bar.set_series_opts(label_opts=opts.LabelOpts(is_show=<span class="literal">False</span>))</span><br><span class="line">bar.render()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p10.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图10</div>
+</center>
+
+<p>就拿上面提到的主流配置<code>2 室 1 厅</code>说，它的最低价在<code>19万</code>左右，最高价在<code>640万</code>左右，均价在<code>77万</code>左右，这价格也是在大多数人能接受的一个范围。不过<code>9 室 1 厅</code>的二手房居然价格才<code>145万</code>，我怀疑是不是链家网录入错了。</p>
+<p>去搜索了一下这个小区，的确是这样的价格。就离谱，总共<code>127 平米</code>，做成了 <code>9 室 1 厅</code>，那房间是得多小…</p>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p11.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图11</div>
+</center>
+
+<ul>
+<li>二手房装修情况的分布情况</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df_3 = df[[<span class="string">&quot;总价&quot;</span>, <span class="string">&quot;装修情况&quot;</span>]]</span><br><span class="line">decoration = df_3[<span class="string">&quot;装修情况&quot;</span>].value_counts().index.tolist()</span><br><span class="line">numbers = df_3[<span class="string">&quot;装修情况&quot;</span>].value_counts().values.tolist()</span><br><span class="line">data_pair = [list(z) <span class="keyword">for</span> z <span class="keyword">in</span> zip(decoration, numbers)]</span><br><span class="line"></span><br><span class="line">pie = Pie(init_opts=opts.InitOpts(width=<span class="string">&quot;1350px&quot;</span>, height=<span class="string">&quot;750px&quot;</span>, theme=ThemeType.MACARONS))</span><br><span class="line">pie.add(<span class="string">&quot;&quot;</span>, data_pair=data_pair, radius=[<span class="string">&quot;40%&quot;</span>, <span class="string">&quot;60%&quot;</span>], rosetype=<span class="literal">True</span>)</span><br><span class="line">pie.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;装修情况分布&quot;</span>, subtitle=<span class="string">&quot;数据来源于「链家网」&quot;</span>))</span><br><span class="line">pie.set_series_opts(label_opts=opts.LabelOpts(formatter=<span class="string">&quot;&#123;b&#125;\n&#123;c&#125;套\n&#123;d&#125;%&quot;</span>))</span><br><span class="line">pie.render()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p12.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图12</div>
+</center>
+
+<p>可以看到<code>简装</code>和<code>精装</code>二手房占了大概 3/4 的样子，二者数量相当。那我们看一下它们的售价如何？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">decoration = df_3.groupby(<span class="string">&quot;装修情况&quot;</span>)[<span class="string">&quot;装修情况&quot;</span>].count().index.tolist()</span><br><span class="line">min_price = df_3.groupby(<span class="string">&quot;装修情况&quot;</span>)[<span class="string">&quot;总价&quot;</span>].min().values.tolist()</span><br><span class="line">average_price = df_3.groupby(<span class="string">&quot;装修情况&quot;</span>)[<span class="string">&quot;总价&quot;</span>].mean().values.tolist()</span><br><span class="line">max_price = df_3.groupby(<span class="string">&quot;装修情况&quot;</span>)[<span class="string">&quot;总价&quot;</span>].max().values.tolist()</span><br><span class="line"></span><br><span class="line">bar = Bar(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>, theme=ThemeType.MACARONS))</span><br><span class="line">bar.add_xaxis(decoration)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;最低价&quot;</span>, min_price)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;均价&quot;</span>, average_price)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;最高价&quot;</span>, max_price)</span><br><span class="line">bar.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;不同装修情况的房价情况&quot;</span>, subtitle=<span class="string">&quot;数据来源于「链家网」&quot;</span>))</span><br><span class="line">bar.set_series_opts(label_opts=opts.LabelOpts(is_show=<span class="literal">False</span>))</span><br><span class="line">bar.render()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p13.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图13</div>
+</center>
+
+<p><code>简装</code>的均价大概在<code>77万</code>左右，而<code>精装</code>的均价稍微高了一些，在<code>121万</code>左右。对于想买二手房但预算又吃紧的同志来说，买配置比较好的<code>简装房</code>或者配置稍低的<code>精装房</code>或许是个不错的选择。</p>
+<ul>
+<li>售价前 10 的小区</li>
+</ul>
+<p>让我们来看看哪些小区的二手房售价比较高。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">df_5 = df[[<span class="string">&quot;总价&quot;</span>, <span class="string">&quot;小区&quot;</span>]].sort_values(<span class="string">&quot;总价&quot;</span>, ascending=<span class="literal">False</span>)[:<span class="number">10</span>]</span><br><span class="line">df_5 = df_5.sort_values(<span class="string">&quot;总价&quot;</span>, ascending=<span class="literal">True</span>)</span><br><span class="line">community = df_5[<span class="string">&quot;小区&quot;</span>].tolist()</span><br><span class="line">price = df_5[<span class="string">&quot;总价&quot;</span>].tolist()</span><br><span class="line"></span><br><span class="line">bar = Bar(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>, theme=ThemeType.MACARONS))</span><br><span class="line">bar.add_xaxis(community)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;&quot;</span>, price)</span><br><span class="line">bar.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;二手房售价 Top10 的小区&quot;</span>, subtitle=<span class="string">&quot;数据来源于「链家网」&quot;</span>))</span><br><span class="line">bar.set_series_opts(label_opts=opts.LabelOpts(position=<span class="string">&quot;right&quot;</span>))</span><br><span class="line">bar.reversal_axis()</span><br><span class="line">bar.render()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p14.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图14</div>
+</center>
+
+<p>emmm...我大概是连一个厕所都买不起吧。搜索一下这个<code>盛和天下</code>小区长啥样，</p>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p15.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图15</div>
+</center>
+
+<p>啊这，500 平大别墅，i 了 i 了。不过看了下挂在链家上的照片，似乎不咋滴...还不如同一个小区 1250 万的别墅（好像说得我买得起一样🤣）。</p>
+<ul>
+<li>哪些区的二手房数量比较多？</li>
+</ul>
+<p>买房的话，房子所在区域算是一个很重要的参数了，毕竟房子离公司啥的太远了也不太方便是吧。让我们来看看哪些地区的二手房数量比较多吧。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df_6 = df[[<span class="string">&quot;总价&quot;</span>, <span class="string">&quot;区域&quot;</span>]]</span><br><span class="line">refion = df_6.groupby(<span class="string">&quot;区域&quot;</span>)[<span class="string">&quot;总价&quot;</span>].count().sort_values(ascending=<span class="literal">False</span>).index.tolist()</span><br><span class="line">count = df_6.groupby(<span class="string">&quot;区域&quot;</span>)[<span class="string">&quot;总价&quot;</span>].count().sort_values(ascending=<span class="literal">False</span>).values.tolist()</span><br><span class="line"></span><br><span class="line">bar = Bar(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>, theme=ThemeType.MACARONS))</span><br><span class="line">bar.add_xaxis(refion)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;&quot;</span>, count)</span><br><span class="line">bar.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;哈尔滨各区的二手房数量&quot;</span>, subtitle=<span class="string">&quot;数据来源于「链家网」&quot;</span>))</span><br><span class="line">bar.set_series_opts(label_opts=opts.LabelOpts(position=<span class="string">&quot;top&quot;</span>))</span><br><span class="line">bar.render()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p16.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图16</div>
+</center>
+
+<p>南岗区位居榜首，有 605 处二手房源。就以学校数量来说，哈工大、哈工程、哈理工等几所高校都扎根在南岗区，这里的热度确实可能比其他邻区的热度高一些。其他的，我作为一个外地来的，就不多比比了。</p>
+<ul>
+<li>Top10 商圈</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">street = df[<span class="string">&quot;街道&quot;</span>].value_counts()[:<span class="number">10</span>].sort_values(ascending=<span class="literal">True</span>).index.tolist()</span><br><span class="line">count = df[<span class="string">&quot;街道&quot;</span>].value_counts()[:<span class="number">10</span>].sort_values(ascending=<span class="literal">True</span>).values.tolist()</span><br><span class="line"></span><br><span class="line">bar = Bar(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>, theme=ThemeType.MACARONS))</span><br><span class="line">bar.add_xaxis(street)</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;&quot;</span>, count)</span><br><span class="line">bar.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;哈尔滨 Top10 商圈&quot;</span>, subtitle=<span class="string">&quot;数据来源于「链家网」&quot;</span>))</span><br><span class="line">bar.set_series_opts(label_opts=opts.LabelOpts(position=<span class="string">&quot;right&quot;</span>))</span><br><span class="line">bar.reversal_axis()</span><br><span class="line">bar.render()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p17.png" width="800px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图17</div>
+</center>
+
+<p>可以看到，哈西商圈附近的二手房源是比较多的，这也和哈尔滨南岗区政府扶持推进“哈西商圈”的政策有着密切的关系吧。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>由于新学期的关系，需要处理很多事情，没有时间学习新东西，也没有找东西来做巩固以前学习的知识，有点和最初搭建博客的意愿背道而驰了。</p>
+<p>这次的内容总体来说比较简单，爬虫部分都是一些常规的操作，数据分析只是简单进行了一些分析，没有深入剖析。老实说，<code>pandas</code>库的一些操作我还是用的不够熟练，老是被一些很简单但却不熟的内容卡住。另外，数据分析的思维依旧只是停留在表层，对于已有的数据不能深入的分析下去，如果总是这样的话，那分析的结果也没什么意义。</p>
+<p>希望在以后的时间里，能不忘初心，继续精进爬虫和数据分析的技巧吧。</p>
 
     </div>
     
@@ -442,7 +593,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%88%AC%E8%99%AB%E9%83%A8%E5%88%86"><span class="nav-text">爬虫部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%88%AC%E5%8F%96%E7%9B%AE%E6%A0%87"><span class="nav-text">1. 爬取目标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%88%AC%E5%8F%96%E8%BF%87%E7%A8%8B"><span class="nav-text">2. 爬取过程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E9%83%A8%E5%88%86"><span class="nav-text">数据分析部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97"><span class="nav-text">1. 数据清洗</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -519,12 +669,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">31k</span>
+    <span title="站点总字数">39k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">28 分钟</span>
+    <span title="站点阅读时长">35 分钟</span>
 </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
         
 <div class="busuanzi-count">
