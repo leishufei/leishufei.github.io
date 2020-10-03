@@ -200,6 +200,13 @@
   </url>
   
   <url>
+    <loc>https://blog.leishufei.top/tags/GUI/</loc>
+    <lastmod>2020-10-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.leishufei.top/tags/Office%E8%87%AA%E5%8A%A8%E5%8C%96/</loc>
     <lastmod>2020-10-03</lastmod>
     <changefreq>daily</changefreq>
@@ -214,7 +221,7 @@
   </url>
   
   <url>
-    <loc>https://blog.leishufei.top/tags/GUI/</loc>
+    <loc>https://blog.leishufei.top/tags/Markdown/</loc>
     <lastmod>2020-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -222,13 +229,6 @@
   
   <url>
     <loc>https://blog.leishufei.top/tags/Hexo/</loc>
-    <lastmod>2020-10-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.leishufei.top/tags/Markdown/</loc>
     <lastmod>2020-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -258,14 +258,14 @@
   </url>
   
   <url>
-    <loc>https://blog.leishufei.top/categories/Hexo/</loc>
+    <loc>https://blog.leishufei.top/categories/Markdown/</loc>
     <lastmod>2020-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.leishufei.top/categories/Markdown/</loc>
+    <loc>https://blog.leishufei.top/categories/Hexo/</loc>
     <lastmod>2020-10-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
