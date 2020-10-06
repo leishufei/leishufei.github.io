@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.leishufei.top/Python/2020-10-02-A01/</loc>
+    <lastmod>2020-10-06</lastmod>
+  </url>
+  <url>
     <loc>https://blog.leishufei.top/Python/2020-10-05-maoyan-comments-analysis/</loc>
     <lastmod>2020-10-06</lastmod>
   </url>
   <url>
-    <loc>https://blog.leishufei.top/Python/2020-10-02-A01/</loc>
-    <lastmod>2020-10-03</lastmod>
+    <loc>https://blog.leishufei.top/Hexo/2020-09-27-hexo/</loc>
+    <lastmod>2020-10-06</lastmod>
   </url>
   <url>
     <loc>https://blog.leishufei.top/Python/2020-09-30-python-for-excel/</loc>
@@ -14,10 +18,6 @@
   </url>
   <url>
     <loc>https://blog.leishufei.top/Python/2020-09-29-python-for-excel/</loc>
-    <lastmod>2020-10-02</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.leishufei.top/Hexo/2020-09-27-hexo/</loc>
     <lastmod>2020-10-02</lastmod>
   </url>
   <url>
@@ -33,7 +33,7 @@
     <lastmod>2020-09-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.leishufei.top/Python/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
+    <loc>https://blog.leishufei.top/Python/2020-09-21-python-replace-multiple-strings/</loc>
     <lastmod>2020-09-20</lastmod>
   </url>
   <url>

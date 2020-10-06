@@ -34,13 +34,13 @@
 <p>格式化的代码是这样的，是不是清晰多了？</p>
 <table>
     <tr>
-        <td>
+        <td align="center">
             <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p3.png" height="600px">
-            <p style="color:orange;display: inline-block;color: #999;padding: 2px;">图3</p>
+            <div style="color:orange;display: inline-block;color: #999;padding: 2px;font-size:17px">图3</div>
         </td>
-        <td>
+        <td align="center">
             <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p4.png" height="600px">
-            <p style="color:orange;display: inline-block;color: #999;padding: 2px;">图4</p>
+            <div style="color:orange;display: inline-block;color: #999;padding: 2px;font-size:17px">图4</div>
         </td>
     </tr>
 </table>
@@ -186,15 +186,15 @@
 <p>然后利用解析库或者正则表达式可以将对应的链接提取出来，我比较喜欢用<code>BeautifulSoup</code>解析，然后用<code>CSS选择器</code>提取相应的信息，具体代码如下：</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_detailed_link</span>(<span class="params">html</span>):</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">&quot;lxml&quot;</span>)</span><br><span class="line">    lis = soup.select(<span class="string">&quot;#content &gt; .leftContent &gt; .sellListContent &gt; li&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> li <span class="keyword">in</span> lis:</span><br><span class="line">        a = li.select(<span class="string">&quot;.info.clear &gt; .title &gt; a&quot;</span>)[<span class="number">0</span>].get(<span class="string">&quot;href&quot;</span>)</span><br><span class="line">        <span class="keyword">yield</span> a</span><br></pre></td></tr></table></figure>
 <p>提取到了链接，调用<code>get_base_html</code>函数进行访问得到详情页面，再利用<code>BeautifulSoup</code>进行解析，获取到我们想要的信息。图 3 和 图 4 列出了二手房的一些具体数据，这里我只选择爬取了图 3 的数据。</p>
-<table style="border:0px">
+<table>
     <tr>
-        <td>
+        <td align="center">
             <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p3.png" height="300px">
-            <div style="color:orange;display: inline-block;color: #999;padding: 0px;text-align:center;">图3</div>
+            <div style="color:orange;display: inline-block;color: #999;padding: 2px;font-size:17px;">图3</div>
         </td>
-        <td>
+        <td align="center">
             <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-02-A01/p4.png" height="300px">
-            <div style="color:orange;display: inline-block;color: #999;padding: 0px;text-align:center;">图4</div>
+            <div style="color:orange;display: inline-block;color: #999;padding: 2px;font-size:17px;">图4</div>
         </td>
     </tr>
 </table>
@@ -529,7 +529,7 @@
   <entry>
     <title>Hexo新建文章后自动打开Markdown编辑器</title>
     <url>/Hexo/2020-09-27-hexo/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在 Hexo 中新建一篇博客很简单，只需要在命令行中输入以下命令：</p>
+    <content><![CDATA[<p>在 Hexo 中新建一篇博客很简单，只需要在命令行中输入以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new blog_title</span><br></pre></td></tr></table></figure>
 <p>然后 Hexo 会在站点根目录下的 Source\_posts 目录中创建一个 Markdown 文件，文件名为 blog_title，我们再打开 Markdown 编辑器即可。</p>
 <p>但这样有 2 点不足，一是要自己手动打开（主要是懒T_T），二是文件多了以后，找到对应的文件比较麻烦。那有没有解决办法呢？也是有的。</p>
@@ -538,8 +538,11 @@
 <li>在<code>scripts</code>目录下新建一个<code>js</code>脚本，名字随意</li>
 <li>在新建的<code>js</code>脚本中键入以下代码：</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">&#x27;child_process&#x27;</span>).exec;</span><br><span class="line">hexo.on(<span class="string">&#x27;new&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  spawn(<span class="string">&#x27;start  &quot;C:\Program Files\Typora\Typora.exe&quot; &#x27;</span> + data.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">&#x27;child_process&#x27;</span>).exec;</span><br><span class="line">hexo.on(<span class="string">&#x27;new&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    spawn(<span class="string">&#x27;start  &quot;C:\Program Files\Typora\Typora.exe&quot; &#x27;</span> + data.path);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p><strong>注意</strong>：Markdown 编辑器的路径需要替换自己安装编辑器对应的路径，并且其后的空格不能删除。</p>
+<h1 id="新功能"><a href="#新功能" class="headerlink" title="新功能"></a>新功能</h1><p>虽然上面的方法可以在创建新文章后打开<code>markdown</code>编辑器，但我们如果存放图片的话，还需要打开对应的文件夹。那能不能像上面一样偷懒的方法呢？也是有的，只需要在上面的<code>js</code>脚本中加一条代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> spawn = <span class="built_in">require</span>(<span class="string">&#x27;child_process&#x27;</span>).exec;</span><br><span class="line">hexo.on(<span class="string">&#x27;new&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">    spawn(<span class="string">&#x27;start  &quot;C:\Program Files\Typora\Typora.exe&quot; &#x27;</span> + data.path);</span><br><span class="line">    spawn(<span class="string">&#x27;start &quot;explorer.exe&quot; &#x27;</span> + data.path.substr(<span class="number">0</span>, data.path.length - <span class="number">2</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样在我们新建文章后就会同时打开<code>markdown</code>编辑器和相应存放图片的文件夹。</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a href="https://www.cnblogs.com/senup/p/12190475.html">https://www.cnblogs.com/senup/p/12190475.html</a></p>
 <p>[2] <a href="https://acidwits.gitee.io/2020/01/27/A-0024/">https://acidwits.gitee.io/2020/01/27/A-0024/</a></p>
 ]]></content>
@@ -567,7 +570,7 @@
   </entry>
   <entry>
     <title>Python中同时替换多个字符串</title>
-    <url>/Python/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <url>/Python/2020-09-21-python-replace-multiple-strings/</url>
     <content><![CDATA[<h1 id="replace-方法"><a href="#replace-方法" class="headerlink" title="replace() 方法"></a>replace() 方法</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str_ = <span class="string">&quot;abcead&quot;</span></span><br><span class="line">result = str_.replace(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>).replace(<span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>)</span><br><span class="line">print(result)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 结果：</span></span><br><span class="line">cccecd</span><br></pre></td></tr></table></figure>
 <h1 id="re-sub-方法"><a href="#re-sub-方法" class="headerlink" title="re.sub() 方法"></a>re.sub() 方法</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line">str_ = <span class="string">&quot;abcdefg&quot;</span></span><br><span class="line"><span class="comment"># 第一个参数为正则表达式，第二个参数为替换后的字符串，第三个参数为待替换的字符串</span></span><br><span class="line">result_1 = re.sub(<span class="string">&quot;[abc]&quot;</span>, <span class="string">&quot;&quot;</span>, str_)</span><br><span class="line">print(result_1)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">defg</span><br><span class="line"></span><br><span class="line">result_2 = re.sub(<span class="string">&quot;a|b|c&quot;</span>, <span class="string">&quot;&quot;</span>, str_)</span><br><span class="line"><span class="comment"># 结果</span></span><br><span class="line">defg</span><br></pre></td></tr></table></figure>
 ]]></content>

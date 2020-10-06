@@ -6,7 +6,7 @@ https://blog.leishufei.top/Python/2020-09-29-python-for-excel/
 https://blog.leishufei.top/Markdown/2020-09-27-add-legend-for-picture/
 https://blog.leishufei.top/Hexo/2020-09-27-hexo/
 https://blog.leishufei.top/Windows/2020-09-26-convert-fat-to-ntfs/
-https://blog.leishufei.top/Python/2020-09-21-python%E5%90%8C%E6%97%B6%E6%9B%BF%E6%8D%A2%E5%A4%9A%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2/
+https://blog.leishufei.top/Python/2020-09-21-python-replace-multiple-strings/
 https://blog.leishufei.top/Python/2020-09-20-python-openpyxl/
 https://blog.leishufei.top/Python/2020-08-28-weather-assistant/
 https://blog.leishufei.top/Python/2020-08-13-some-problems-with-bat/
