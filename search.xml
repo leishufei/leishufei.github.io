@@ -57,14 +57,11 @@
     <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p5.png" width="700px">
     <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图5</div>
 </center>
-# 数据分析部分
 
-### 数据清洗
-
-*   读取`csv`文件
-
+<h1 id="数据分析部分"><a href="#数据分析部分" class="headerlink" title="数据分析部分"></a>数据分析部分</h1><h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3><ul>
+<li>读取<code>csv</code>文件</li>
+</ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&quot;data/maoyan_comments.csv&quot;</span>, names=[<span class="string">&quot;city&quot;</span>, <span class="string">&quot;comment&quot;</span>, <span class="string">&quot;score&quot;</span>, <span class="string">&quot;time&quot;</span>, <span class="string">&quot;user_level&quot;</span>, <span class="string">&quot;gender&quot;</span>])</span><br></pre></td></tr></table></figure>
-
 <center>
     <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p6.png" width="700px">
     <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图6</div>
