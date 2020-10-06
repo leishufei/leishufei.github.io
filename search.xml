@@ -1,6 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>《姜子牙》影评分析</title>
+    <url>/Python/2020-10-05-maoyan-comments-analysis/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前几天十一的时候，各大电影院上映了电影《姜子牙》，但大家看完后对它的评价似乎并不咋的。</p>
+<p>看了一下猫眼上的评分和评价，感觉也不是真的有那么差劲。我自己也没有看过，所以还是用数据来说话吧。</p>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p1.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图1</div>
+</center>
+
+<h1 id="爬虫部分"><a href="#爬虫部分" class="headerlink" title="爬虫部分"></a>爬虫部分</h1><p>老规矩，还是先获取猫眼上的评论。</p>
+<p>爬取猫眼评论的时候需要注意评论不能从网页中爬取到，需要请求下面这个接口：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;m.maoyan.com&#x2F;mmdb&#x2F;comments&#x2F;movie&#x2F;1211269.json?_v_&#x3D;yes&amp;offset&#x3D;1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>  <code>1211269</code>表示电影的<code>id</code></p>
+<p>  <code>offset</code>表示评论的偏移量，可以简单理解为页数</p>
+</blockquote>
+<p>还有一点就是每天只能从猫眼获得 1000 页的评论信息，去重过后大概只有几百条，所以可以多爬取几天的数据再进行分析。</p>
+<p>接下来就愉快的写代码吧。</p>
+<p>首先根据<code>offset</code>构造每一页评论的 url，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">construct_url</span>(<span class="params">offset</span>):</span></span><br><span class="line">    base_url = <span class="string">&quot;https://m.maoyan.com/mmdb/comments/movie/1211269.json?_v_=yes&amp;offset=&quot;</span></span><br><span class="line">    url = base_url + str(offset)</span><br><span class="line">    <span class="keyword">return</span> url</span><br></pre></td></tr></table></figure>
+<p>有了 url，就可以用<code>requests</code>进行请求，并返回<code>JSON</code>格式的评论数据，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_json</span>(<span class="params">url</span>):</span></span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        json_ = json.loads(response.text)</span><br><span class="line">        <span class="keyword">return</span> json_</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<p>有些时候网页的内容并不严格遵循<code>JSON</code>的格式规范，可能会报错，所以加一个<code>try except</code>增强程序的健壮性。</p>
+<p>获取到的<code>JSON</code>数据长下面这样，</p>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p2.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图2</div>
+</center>
+
+<p>但是这样并不利于我们查看和分析，因此先保存一个到本地<code>JSON</code>文件中，格式化一下。</p>
+<p>格式化的代码是这样的，是不是清晰多了？</p>
+<table>
+    <tr>
+        <td>
+            <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p3.png" height="600px">
+            <p style="color:orange;display: inline-block;color: #999;padding: 2px;">图3</p>
+        </td>
+        <td>
+            <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p4.png" height="600px">
+            <p style="color:orange;display: inline-block;color: #999;padding: 2px;">图4</p>
+        </td>
+    </tr>
+</table>
+
+<p>所有的信息都在<code>cmts</code>和<code>hcmts</code>两个列表的字典中，而我们需要取<code>cityName</code>、<code>content</code>、<code>gender</code>、<code>score</code>、<code>userLevel</code>和<code>time</code>这几个字段。</p>
+<p>不过需要注意，<code>hcmts</code>下对应的是热评的内容，这在每一页的评论中都有出现，所有我们解析<code>JSON</code>数据的时候需要判断一下。</p>
+<p>多说无益，开始写代码吧。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span>(<span class="params">json_data, flag=False</span>):</span></span><br><span class="line">    normal_comments = json_data[<span class="string">&quot;cmts&quot;</span>]</span><br><span class="line">    hot_comments = json_data[<span class="string">&quot;hcmts&quot;</span>]</span><br><span class="line">    cities = []</span><br><span class="line">    comments = []</span><br><span class="line">    scores = []</span><br><span class="line">    times = []</span><br><span class="line">    levels = []</span><br><span class="line">    genders = []</span><br><span class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> normal_comments:</span><br><span class="line">        cities.append(item[<span class="string">&quot;cityName&quot;</span>])</span><br><span class="line">        comments.append(item[<span class="string">&quot;content&quot;</span>].replace(<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot; &quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">        scores.append(item[<span class="string">&quot;score&quot;</span>])</span><br><span class="line">        times.append(item[<span class="string">&quot;time&quot;</span>])</span><br><span class="line">        levels.append(item[<span class="string">&quot;userLevel&quot;</span>])</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;gender&quot;</span> <span class="keyword">in</span> list(item.keys()):</span><br><span class="line">            genders.append(item[<span class="string">&quot;gender&quot;</span>])</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            genders.append(<span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> flag:</span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> hot_comments:</span><br><span class="line">            cities.append(item[<span class="string">&quot;cityName&quot;</span>])</span><br><span class="line">            comments.append(item[<span class="string">&quot;content&quot;</span>].replace(<span class="string">&quot;\n&quot;</span>, <span class="string">&quot;&quot;</span>).replace(<span class="string">&quot; &quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">            scores.append(item[<span class="string">&quot;score&quot;</span>])</span><br><span class="line">            times.append(item[<span class="string">&quot;time&quot;</span>])</span><br><span class="line">            levels.append(item[<span class="string">&quot;userLevel&quot;</span>])</span><br><span class="line">            <span class="keyword">if</span> <span class="string">&quot;gender&quot;</span> <span class="keyword">in</span> list(item.keys()):</span><br><span class="line">                genders.append(item[<span class="string">&quot;gender&quot;</span>])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                genders.append(<span class="string">&quot;&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> cities, comments, scores, times, levels, genders</span><br></pre></td></tr></table></figure>
+<p>最后将获取到的数据写入到文件或者数据库就行了。我比较喜欢用<code>csv</code>文件，所以这次还是写到<code>csv</code>文件中吧。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_to_csv</span>(<span class="params">contents: list</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(<span class="string">&quot;results/&quot;</span>):</span><br><span class="line">        os.mkdir(<span class="string">&quot;results/&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">&quot;results/maoyan_comments.csv&quot;</span>, <span class="string">&quot;a&quot;</span>, encoding=<span class="string">&quot;utf-8-sig&quot;</span>, newline=<span class="string">&quot;&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        writer = csv.writer(f)</span><br><span class="line">        writer.writerow(contents)</span><br></pre></td></tr></table></figure>
+<p>主函数就不写了，这个很简单，在循环中不断调用上述函数就行了。</p>
+<p>爬取到的数据如下所示，</p>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p5.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图5</div>
+</center>
+# 数据分析部分
+
+### 数据清洗
+
+*   读取`csv`文件
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&quot;data/maoyan_comments.csv&quot;</span>, names=[<span class="string">&quot;city&quot;</span>, <span class="string">&quot;comment&quot;</span>, <span class="string">&quot;score&quot;</span>, <span class="string">&quot;time&quot;</span>, <span class="string">&quot;user_level&quot;</span>, <span class="string">&quot;gender&quot;</span>])</span><br></pre></td></tr></table></figure>
+
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p6.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图6</div>
+</center>
+
+<p>一共有 14980 条数据，但其中有很多都是重复的内容。</p>
+<ul>
+<li>数据去重</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.drop_duplicates(keep=<span class="string">&quot;first&quot;</span>, inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p7.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图7</div>
+</center>
+
+<p>去重后就只剩 414 条了🤣。说实话，真心搞不懂猫眼这个评论，<code>JSON</code>里面特别多重复的内容。hai，将就先用着吧，等多攒几天的数据再替换一下。</p>
+<ul>
+<li>转换<code>评论</code>列的数据类型</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">&quot;comment&quot;</span>] = df[<span class="string">&quot;comment&quot;</span>].astype(str)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取评论类型（长评、中评或短评）</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df[<span class="string">&quot;comment_type&quot;</span>] = df[<span class="string">&quot;comment&quot;</span>].map(<span class="keyword">lambda</span> x: <span class="string">&quot;短评&quot;</span> <span class="keyword">if</span> len(x) &lt;= <span class="number">10</span> <span class="keyword">else</span> (<span class="string">&quot;中评&quot;</span> <span class="keyword">if</span> <span class="number">10</span> &lt; len(x) &lt;= <span class="number">30</span> <span class="keyword">else</span> <span class="string">&quot;长评&quot;</span>))</span><br></pre></td></tr></table></figure>
+<ul>
+<li>对行重新索引和对列重新排序</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">df.reset_index(inplace=<span class="literal">True</span>, drop=<span class="literal">True</span>)</span><br><span class="line">df = df.reindex(columns=[<span class="string">&quot;city&quot;</span>, <span class="string">&quot;comment&quot;</span>, <span class="string">&quot;comment_type&quot;</span>, <span class="string">&quot;score&quot;</span>, <span class="string">&quot;time&quot;</span>, <span class="string">&quot;gender&quot;</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h3><ul>
+<li>总体评论情况</li>
+</ul>
+<p>编写函数对评论内容进行分词，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cut_words</span>(<span class="params">series_content: pd.Series, userdefined_stop_words=[]</span>):</span></span><br><span class="line">    stop_words = []</span><br><span class="line">    <span class="keyword">with</span> open(<span class="string">&quot;data/stop_words.txt&quot;</span>, <span class="string">&quot;r&quot;</span>, encoding=<span class="string">&quot;utf-8&quot;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        lines = f.readlines()</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">            stop_words.append(line)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 添加自定义停词</span></span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> userdefined_stop_words:</span><br><span class="line">        stop_words.append(word)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 分词</span></span><br><span class="line">    words = jieba.lcut(series_content.str.cat(sep=<span class="string">&quot;。&quot;</span>), cut_all=<span class="literal">False</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 筛选长度大于等于 2 的词</span></span><br><span class="line">    selected_words = [i <span class="keyword">for</span> i <span class="keyword">in</span> words <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> stop_words <span class="keyword">and</span> len(i) &gt;= <span class="number">2</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> selected_words</span><br></pre></td></tr></table></figure>
+<p>然后绘制词云，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">userdefined_stop_words = [<span class="string">&quot;电影&quot;</span>, <span class="string">&quot;中国&quot;</span>, <span class="string">&quot;一部&quot;</span>, <span class="string">&quot;剧情&quot;</span>, <span class="string">&quot;哪吒&quot;</span>, <span class="string">&quot;没有&quot;</span>, <span class="string">&quot;姜子牙&quot;</span>]</span><br><span class="line">text1 = get_cut_words(df[<span class="string">&quot;comment&quot;</span>], userdefined_stop_words)</span><br><span class="line">stylecloud.gen_stylecloud(</span><br><span class="line">    text=<span class="string">&quot; &quot;</span>.join(text1),</span><br><span class="line">    max_words=<span class="number">500</span>,</span><br><span class="line">    collocations=<span class="literal">False</span>,</span><br><span class="line">    icon_name=<span class="string">&quot;fas fa-square&quot;</span>,</span><br><span class="line">    font_path=<span class="string">&quot;data/simhei.ttf&quot;</span>,</span><br><span class="line">    size=<span class="number">653</span>,</span><br><span class="line">    output_name=<span class="string">&quot;results/01 总体评论情况.png&quot;</span></span><br><span class="line">)</span><br><span class="line">Image(<span class="string">&quot;results/01 总体评论情况.png&quot;</span>)</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p8.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图8</div>
+</center>
+
+<p>从词云来看，大家对《姜子牙》的评价似乎也不是那么差，还是有很多人觉得好看、特效不错的<img src="/Python/2020-10-05-maoyan-comments-analysis/p9.png" width="25px" style="display:inline;position:relative;top:24px;">。</p>
+<ul>
+<li>评论的分布情况</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">comment_type_df = df</span><br><span class="line">comment_type = comment_type_df[<span class="string">&quot;comment_type&quot;</span>].value_counts().index.tolist()</span><br><span class="line">count = comment_type_df[<span class="string">&quot;comment_type&quot;</span>].value_counts().values.tolist()</span><br><span class="line">data_pair = [list(z) <span class="keyword">for</span> z <span class="keyword">in</span> zip(comment_type, count)]</span><br><span class="line"></span><br><span class="line">pie = Pie(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>))</span><br><span class="line">pie.add(<span class="string">&quot;&quot;</span>, data_pair=data_pair, rosetype=<span class="literal">True</span>, radius=[<span class="string">&quot;40%&quot;</span>, <span class="string">&quot;70%&quot;</span>])</span><br><span class="line">pie.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;评论分布情况&quot;</span>, subtitle=<span class="string">&quot;数据来源于「猫眼」&quot;</span>))</span><br><span class="line">pie.set_series_opts(label_opts=opts.LabelOpts(formatter=<span class="string">&quot;&#123;b&#125;\n&#123;c&#125;条\n&#123;d&#125;%&quot;</span>))</span><br><span class="line">pie.render_notebook()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p10.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图10</div>
+</center>
+
+<p>可以看到，评论是还是以短评和中评居多，毕竟很多人只是单纯的看个电影然后发表一下自己观影后的想法，并不会发表篇幅较长的评论。至少对于我来说，我看完电影一般是不会去评论的，就算评论也只是简短的评论一下。</p>
+<ul>
+<li>评分情况</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">score_df = df</span><br><span class="line">score_df = score_df[<span class="string">&quot;score&quot;</span>].value_counts().to_frame().reset_index()</span><br><span class="line">score_df.columns = [<span class="string">&quot;score&quot;</span>, <span class="string">&quot;count&quot;</span>]</span><br><span class="line">score_df.sort_values(<span class="string">&quot;score&quot;</span>, ascending=<span class="literal">True</span>, inplace=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">bar = Bar(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>))</span><br><span class="line">bar.add_xaxis(score_df[<span class="string">&quot;score&quot;</span>].tolist())</span><br><span class="line">bar.add_yaxis(<span class="string">&quot;&quot;</span>, score[<span class="string">&quot;count&quot;</span>].tolist())</span><br><span class="line">bar.set_global_opts(title_opts=opts.TitleOpts(title=<span class="string">&quot;评分情况&quot;</span>, subtitle=<span class="string">&quot;数据来源于「猫眼」&quot;</span>))</span><br><span class="line">bar.render_notebook()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p11.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图11</div>
+</center>
+
+<p>有 1/3 的人都给出了 5.0 的评分，所以说《姜子牙》也并不是这么差，是吧。不管人们是出自于对于国漫的支持还是真心觉得好看，至少它达到的效果已经不错了。</p>
+<ul>
+<li>观影时间分布</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">time_df = df[<span class="string">&quot;time&quot;</span>].to_frame().reset_index(drop=<span class="literal">True</span>)</span><br><span class="line">time_df = time_df.sort_values(by=<span class="string">&quot;time&quot;</span>, ascending=<span class="literal">True</span>)</span><br><span class="line">time_df[<span class="string">&quot;time&quot;</span>] = time_df[<span class="string">&quot;time&quot;</span>].str.replace(<span class="string">&quot;-&quot;</span>, <span class="string">&quot;/&quot;</span>)</span><br><span class="line">time = time_df.groupby(<span class="string">&quot;time&quot;</span>)[<span class="string">&quot;time&quot;</span>].count().index.tolist()</span><br><span class="line">count = time_df.groupby(<span class="string">&quot;time&quot;</span>)[<span class="string">&quot;time&quot;</span>].count().values.tolist()</span><br><span class="line"></span><br><span class="line">line = Line(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>))</span><br><span class="line">line.add_xaxis(time)</span><br><span class="line">line.add_yaxis(<span class="string">&quot;&quot;</span>, count)</span><br><span class="line">line.set_global_opts(</span><br><span class="line">    title_opts=opts.TitleOpts(title=<span class="string">&quot;观影时间&quot;</span>, subtitle=<span class="string">&quot;数据来源于「猫眼」&quot;</span>),</span><br><span class="line">    xaxis_opts=opts.AxisOpts(</span><br><span class="line">        boundary_gap=<span class="literal">False</span>,</span><br><span class="line">        axisline_opts=opts.AxisLineOpts(is_on_zero=<span class="literal">True</span>),</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">line.set_series_opts(label_opts=opts.LabelOpts(is_show=<span class="literal">True</span>))</span><br><span class="line">line.render_notebook()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p12.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图12</div>
+</center>
+
+<p>10.1 那天居然没什么人看，反而 10.5 算是一个小高峰，可能大家都想先观望观望？</p>
+<ul>
+<li>各城市观影的热力值</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">city_df = df</span><br><span class="line"><span class="comment"># 去掉这两个城市是因为坐标问题导致出错</span></span><br><span class="line">city_df = city_df[(city_df[<span class="string">&quot;city&quot;</span>] != <span class="string">&quot;石柱&quot;</span>) &amp; (city_df[<span class="string">&quot;city&quot;</span>] != <span class="string">&quot;丰宁&quot;</span>)]</span><br><span class="line">city_df[<span class="string">&quot;city&quot;</span>] = city_df[<span class="string">&quot;city&quot;</span>].map(<span class="keyword">lambda</span> x: x[:<span class="number">-1</span>] <span class="keyword">if</span> x[<span class="number">-1</span>] == <span class="string">&quot;市&quot;</span> <span class="keyword">else</span> x)</span><br><span class="line"></span><br><span class="line">city = city_df[<span class="string">&quot;city&quot;</span>].value_counts().index.tolist()</span><br><span class="line">count = city_df[<span class="string">&quot;city&quot;</span>].value_counts().values.tolist()</span><br><span class="line">data_pair = [list(z) <span class="keyword">for</span> z <span class="keyword">in</span> zip(city, count)]</span><br><span class="line"></span><br><span class="line">geo = Geo(init_opts=opts.InitOpts(width=<span class="string">&quot;1200px&quot;</span>, height=<span class="string">&quot;600px&quot;</span>))</span><br><span class="line">geo.add_schema(maptype=<span class="string">&quot;china&quot;</span>)</span><br><span class="line">geo.add(<span class="string">&quot;&quot;</span>, data_pair=data_pair, type_=ChartType.HEATMAP)</span><br><span class="line">geo.set_global_opts(</span><br><span class="line">    title_opts=opts.TitleOpts(title=<span class="string">&quot;各城市的观影热力图&quot;</span>, subtitle=<span class="string">&quot;数据来源于「猫眼」&quot;</span>),</span><br><span class="line">    visualmap_opts=opts.VisualMapOpts(</span><br><span class="line">        min_=<span class="number">1</span>,</span><br><span class="line">        max_=<span class="number">15</span></span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">geo.set_series_opts(label_opts=opts.LabelOpts(is_show=<span class="literal">False</span>))</span><br><span class="line">geo.render_notebook()</span><br></pre></td></tr></table></figure>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-05-maoyan-comments-analysis/p13.png" width="700px">
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图13</div>
+</center>
+
+<p>果然北上广的经济水平高就是不一样，看电影的人自然也多一些（当然，像我这样的穷 B 选择不看电影<img src="/Python/2020-10-05-maoyan-comments-analysis/p9.png" width="25px" style="display:inline;position:relative;top:24px;">）。另外，成都作为新一线城市，经济实力也在不断提高，其热力指数也挺高的。</p>
+<ul>
+<li>评论者的等级和性别</li>
+</ul>
+<p>这两个就暂时先不写了，留个坑后面再补吧。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过爬取了猫眼上对《姜子牙》的评论并分析，总的来说，《姜子牙》并不是那么不堪，还是有不少人觉得好看、特效不错的，或许也值得一看。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>爬虫</tag>
+        <tag>猫眼</tag>
+        <tag>数据分析</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>链家二手房爬虫及数据分析</title>
     <url>/Python/2020-10-02-A01/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好久没写关于爬虫和数据分析的内容了，再不写写估计都忘完了😂。这次就拿链家二手房数据来练练手。</p>
