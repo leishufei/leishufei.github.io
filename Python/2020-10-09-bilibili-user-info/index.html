@@ -23,22 +23,20 @@
     var CONFIG = {"hostname":"blog.leishufei.top","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","width":300,"display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":"flat"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Markdown 图注">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Markdown中添加图注">
-<meta property="og:url" content="https://blog.leishufei.top/Markdown/2020-09-27-add-legend-for-picture/">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="Bilibili 用户分析">
+<meta property="og:url" content="https://blog.leishufei.top/Python/2020-10-09-bilibili-user-info/">
 <meta property="og:site_name" content="lei&#39;s blog">
-<meta property="og:description" content="Markdown 图注">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.leishufei.top/Markdown/2020-09-27-add-legend-for-picture/sample.jpg">
-<meta property="article:published_time" content="2020-09-27T14:37:26.000Z">
-<meta property="article:modified_time" content="2020-09-27T14:54:16.756Z">
+<meta property="article:published_time" content="2020-10-09T03:32:43.000Z">
+<meta property="article:modified_time" content="2020-10-09T04:07:27.028Z">
 <meta property="article:author" content="雷书飞">
-<meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="爬虫">
+<meta property="article:tag" content="数据分析">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.leishufei.top/Markdown/2020-09-27-add-legend-for-picture/sample.jpg">
 
-<link rel="canonical" href="https://blog.leishufei.top/Markdown/2020-09-27-add-legend-for-picture/">
+<link rel="canonical" href="https://blog.leishufei.top/Python/2020-10-09-bilibili-user-info/">
 
 
 <script id="page-configurations">
@@ -51,7 +49,7 @@
   };
 </script>
 
-  <title>Markdown中添加图注 | lei's blog</title>
+  <title>Bilibili 用户分析 | lei's blog</title>
   
 
 
@@ -198,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.leishufei.top/Markdown/2020-09-27-add-legend-for-picture/">
+    <link itemprop="mainEntityOfPage" href="https://blog.leishufei.top/Python/2020-10-09-bilibili-user-info/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head_icon.jpg">
@@ -211,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Markdown中添加图注
+          Bilibili 用户分析
         </h1>
 
         <div class="post-meta">
@@ -224,7 +222,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-27 22:37:26 / 修改时间：22:54:16" itemprop="dateCreated datePublished" datetime="2020-09-27T22:37:26+08:00">2020-09-27</time>
+              <time title="创建时间：2020-10-09 11:32:43 / 修改时间：12:07:27" itemprop="dateCreated datePublished" datetime="2020-10-09T11:32:43+08:00">2020-10-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -232,7 +230,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Markdown/" itemprop="url" rel="index"><span itemprop="name">Markdown</span></a>
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
                 </span>
             </span>
 
@@ -253,7 +251,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>91</span>
+              <span>354</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -275,22 +273,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>插入图片时，嵌入以下代码：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">&quot;border-radius:0.3em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);&quot;</span> <span class="attr">src</span>=<span class="string">&quot;2020-09-27-add-legend-for-picture\sample.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200px&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color:orange;color:#999;padding:2px;&quot;</span>&gt;</span>这是题注<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<center>
-    <img style="border-radius:0.3em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Markdown/2020-09-27-add-legend-for-picture/sample.jpg" width="200px">
-    <p style="color:orange;color: #999;padding: 2px; padding-top:-10px">这是题注</p>
-</center>
-
+        <p>这两天没做什么爬虫的练习，正好这几天都在逛 B 站，就拿它下手了。</p>
+<h1 id="爬虫部分"><a href="#爬虫部分" class="headerlink" title="爬虫部分"></a>爬虫部分</h1><p>这次要爬取 B 站用户的一些基本信息，例如：<code>昵称</code>、<code>性别</code>、<code>粉丝数</code>、<code>关注数</code>、<code>等级</code>、<code>投稿数</code>、<code>文章数</code>、<code>会员类型</code>、<code>视频播放数</code>、<code>文章阅读数</code>和<code>获赞数</code>。</p>
+<p>上面的信息涉及到 3 个 API，如下所示，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;api.bilibili.com&#x2F;x&#x2F;web-interface&#x2F;card?mid&#x3D;&#123;mid&#125;</span><br><span class="line">https:&#x2F;&#x2F;api.bilibili.com&#x2F;x&#x2F;space&#x2F;acc&#x2F;info?mid&#x3D;&#123;mid&#125;&amp;jsonp&#x3D;jsonp</span><br><span class="line">https:&#x2F;&#x2F;api.bilibili.com&#x2F;x&#x2F;space&#x2F;upstat?mid&#x3D;&#123;mid&#125;&amp;jsonp&#x3D;jsonp</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>转载</p>
+<p>  <code>mid</code>相当于用户的<code>id</code>，从 1 开始，到多少结束我也不知道</p>
 </blockquote>
-<p style="line-height=0.5em">
-  作者：一瓶矿泉水<br>
-  链接：https://www.zhihu.com/question/42802592/answer/383110578<br>
-  来源：知乎<br>
-</p>
-
+<p>有了接口，其实爬虫就很容易了，下面开始写代码。</p>
+<p>导入基本的库，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> fake_useragent <span class="keyword">import</span> UserAgent</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> json</span><br></pre></td></tr></table></figure>
+<p>然后构建请求头，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&quot;User-agent&quot;</span>: UserAgent().random,</span><br><span class="line">    <span class="string">&quot;Cookie&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>  请求头需要加上<code>Cookie</code></p>
+</blockquote>
+<p>由于需要向 3 个 API 发起请求获取数据，所以我将<code>JSON</code>的获取与解析写成了 3 个函数，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_base_user_info</span>(<span class="params">mid</span>):</span></span><br><span class="line">    url = <span class="string">f&quot;https://api.bilibili.com/x/web-interface/card?mid=<span class="subst">&#123;mid&#125;</span>&quot;</span></span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    json_data = json.loads(response.text)</span><br><span class="line">    <span class="keyword">if</span> (json_data[<span class="string">&quot;code&quot;</span>] == <span class="number">-400</span>) <span class="keyword">or</span> (json_data[<span class="string">&quot;code&quot;</span>] == <span class="number">-404</span>) <span class="keyword">or</span> (json_data[<span class="string">&quot;code&quot;</span>] == <span class="number">-412</span>):</span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&quot;&quot;</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>)]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 昵称</span></span><br><span class="line">        name = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;card&quot;</span>][<span class="string">&quot;name&quot;</span>]</span><br><span class="line">        <span class="comment"># 性别</span></span><br><span class="line">        sex = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;card&quot;</span>][<span class="string">&quot;sex&quot;</span>]</span><br><span class="line">        <span class="comment"># 粉丝数</span></span><br><span class="line">        fans = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;card&quot;</span>][<span class="string">&quot;fans&quot;</span>]</span><br><span class="line">        <span class="comment"># 关注数</span></span><br><span class="line">        attention = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;card&quot;</span>][<span class="string">&quot;attention&quot;</span>]</span><br><span class="line">        <span class="comment"># 等级</span></span><br><span class="line">        level = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;card&quot;</span>][<span class="string">&quot;level_info&quot;</span>][<span class="string">&quot;current_level&quot;</span>]</span><br><span class="line">        <span class="comment"># 投稿数</span></span><br><span class="line">        archive_count = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;archive_count&quot;</span>]</span><br><span class="line">        <span class="comment"># 文章数</span></span><br><span class="line">        article_count = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;article_count&quot;</span>]</span><br><span class="line">        <span class="keyword">return</span> [name, sex, fans, attention, level, archive_count, article_count]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_vip_type</span>(<span class="params">mid</span>):</span></span><br><span class="line">    url = <span class="string">f&quot;https://api.bilibili.com/x/space/acc/info?mid=<span class="subst">&#123;mid&#125;</span>&amp;jsonp=jsonp&quot;</span></span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    json_data = json.loads(response.text)</span><br><span class="line">    <span class="keyword">if</span> (json_data[<span class="string">&quot;code&quot;</span>] == <span class="number">-400</span>) <span class="keyword">or</span> (json_data[<span class="string">&quot;code&quot;</span>] == <span class="number">-404</span>):</span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&quot;&quot;</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 会员类型</span></span><br><span class="line">        vip_type = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;vip&quot;</span>][<span class="string">&quot;label&quot;</span>][<span class="string">&quot;text&quot;</span>] <span class="keyword">if</span> json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;vip&quot;</span>][<span class="string">&quot;label&quot;</span>][<span class="string">&quot;text&quot;</span>] != <span class="string">&quot;&quot;</span> <span class="keyword">else</span> <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> [vip_type]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_views_and_like_count</span>(<span class="params">mid</span>):</span></span><br><span class="line">    url = <span class="string">f&quot;https://api.bilibili.com/x/space/upstat?mid=<span class="subst">&#123;mid&#125;</span>&amp;jsonp=jsonp&quot;</span></span><br><span class="line">    response = requests.get(url, headers=headers)</span><br><span class="line">    json_data = json.loads(response.text)</span><br><span class="line">    <span class="keyword">if</span> (json_data[<span class="string">&quot;code&quot;</span>] == <span class="number">-400</span>) <span class="keyword">or</span> (json_data[<span class="string">&quot;code&quot;</span>] == <span class="number">40061</span>):</span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&quot;&quot;</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>)]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># 视频播放数</span></span><br><span class="line">        archive_view = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;archive&quot;</span>][<span class="string">&quot;view&quot;</span>]</span><br><span class="line">        <span class="comment"># 文章阅读数</span></span><br><span class="line">        article_view = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;article&quot;</span>][<span class="string">&quot;view&quot;</span>]</span><br><span class="line">        <span class="comment"># 获赞数</span></span><br><span class="line">        likes = json_data[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;likes&quot;</span>]</span><br><span class="line">        <span class="keyword">return</span> [archive_view, article_view, likes]</span><br></pre></td></tr></table></figure>
+<p>剩下的事就很简单了，构建一个循环来不断爬取用户的信息，最后保存到文件或者数据库中，这里就不再多赘述了。</p>
+<blockquote>
+<p>  爬虫其实很简单，不过建议将访问频率降低一点，并且设置好代理，不然爬不了多少数据就被检测到了。</p>
+</blockquote>
+<h1 id="分析部分"><a href="#分析部分" class="headerlink" title="分析部分"></a>分析部分</h1><ul>
+<li>导入数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = pd.read_csv(<span class="string">&quot;bilibili_user_data.csv&quot;</span>, names=[<span class="string">&quot;昵称&quot;</span>, <span class="string">&quot;性别&quot;</span>, <span class="string">&quot;粉丝数&quot;</span>, <span class="string">&quot;关注数&quot;</span>, <span class="string">&quot;等级&quot;</span>, <span class="string">&quot;投稿数&quot;</span>, <span class="string">&quot;文章数&quot;</span>, <span class="string">&quot;会员类型&quot;</span>, <span class="string">&quot;视频播放数&quot;</span>, <span class="string">&quot;文章阅读数&quot;</span>, <span class="string">&quot;获赞数&quot;</span>])</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数据清洗</li>
+</ul>
+<p>待补充...</p>
 
     </div>
     
@@ -299,6 +310,14 @@
     <div>
       
         
+<div class="my_post_copyright" style="line-height:1.5; border-left:3px solid #f00;padding-left:0.7em;">
+  <p><span><strong>本文标题</strong>：</span>Bilibili 用户分析</p>
+  <p><span><strong>本文作者</strong>：</span>雷书飞</p>
+  <p><span><strong>发布时间</strong>：</span>2020 年 10 月 09 日</p>
+  <p><span><strong>本文链接</strong>：</span><a href="/Python/2020-10-09-bilibili-user-info/" title="Bilibili 用户分析">https://blog.leishufei.top/Python/2020-10-09-bilibili-user-info/</a></p>
+  <p><span><strong>版权声明</strong>：</span>本博客所有文章除特别声明外，均采用 <i class="fab fa-creative-commons"></i><a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/"  target="_blank">CC BY-NC-ND 4.0</a> 许可协议。转载请注明出处！</p>
+</div>
+
 
       
     </div>
@@ -320,7 +339,9 @@
       <footer class="post-footer">
             
           <div class="post-tags">
-              <a href="/tags/Markdown/" rel="tag"><i class="fa fa-tag"></i> Markdown</a>
+              <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"><i class="fa fa-tag"></i> 爬虫</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag"><i class="fa fa-tag"></i> 数据分析</a>
           </div>
 
         
@@ -329,13 +350,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/Hexo/2020-09-27-hexo/" rel="prev" title="Hexo新建文章后自动打开Markdown编辑器">
-      <i class="fa fa-chevron-left"></i> Hexo新建文章后自动打开Markdown编辑器
+    <a href="/Python/2020-10-05-maoyan-comments-analysis/" rel="prev" title="《姜子牙》影评分析">
+      <i class="fa fa-chevron-left"></i> 《姜子牙》影评分析
     </a></div>
-      <div class="post-nav-item">
-    <a href="/Python/2020-09-29-python-for-excel/" rel="next" title="Office自动化之Excel（一）">
-      Office自动化之Excel（一） <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
         </div>
       </footer>
