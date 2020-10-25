@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>从豆瓣反爬中得到的几点思考</title>
-    <url>/Python/2020-10-20-thinking-for-anti-spider-of-douban/</url>
-    <content><![CDATA[]]></content>
+    <title>豆瓣反爬</title>
+    <url>/Python/2020-10-20-anti-spider-of-douban/</url>
+    <content><![CDATA[<p>本来打算 20 号就写的，奈何事情有点多，拖到了今天...</p>
+<hr>
+<p>前几天在学校的二手集市上接了一个爬虫的活，任务是爬豆瓣上面有关于 2019 年电影的基本信息（包括电影名、导演、主演等等）和相应的影评。我一想这任务还挺简单的，就欣然接下了。</p>
+<p>豆瓣的爬虫挺简单的，所以我三两下就写好了，并且考虑到 2019 年的电影有点多（抓包发现接近 10000 部），还加了多线程。</p>
+<p>然而在我以为事情会顺利的按照我所设想的路线发展下去的时候，意外发生了。</p>
+<p>程序捕捉到了异常，返回了大量空内容。我一想，完了，肯定是被检测到是爬虫了。我立马登陆豆瓣看看啥情况。果不其然，账号被封了。</p>
+<blockquote>
+<p>  PS: 不登录账号的话，只能获取到前 10 页的评论</p>
+</blockquote>
+<p>估计是本机一个 IP 访问访问的太过于频繁，加上带了 Cookie，导致账号被封。</p>
+<p>那这样的话我多弄点 IP 去访问是不是就没问题了？因此我去网上找了一些免费的代理网站，想构建一个简单的代理池供自己使用。但免费的质量就是堪忧，随便找了几个来测试，都用不了。我又将目光投向了付费代理，在网上找了一些评测的文章<sup><a href="#link1">[1]</a></sup>，选择了其中一个 7 块一天的付费代理。</p>
+<p>本以为加了代理 IP 后，爬虫就不会出现异常了，过了一段时间后，爬虫还是被检测到了。这下应该是所有 IP 访问时都带的同一个 Cookie 才导致被封。没办法，只能在网上检索有没有解决方案了。在知乎上看到了一篇帖子<sup><a href="#link2">[2]</a></sup>，说可以构造随机 Cookie。然后赶紧试了一下，发现并没有什么叼用，这和不带 Cookie 的效果是一样的。在知乎上又看到另一篇帖子<sup><a href="#link3">[3]</a></sup>，答主提到两次访问间隔在 10s 以上的话，不会被封，但这产生了一个新问题，那就是：我这是帮别人写的啊，时间根本 TM 不够，那么多电影得爬到猴年马月去了。</p>
+<p>那这就没办法了，于是乎，我选择了带随机 Cookie （虽然没有用）去访问，基本的电影信息还是能获取到的，不过评论只能获取几百条（大概 10 页的样子）。</p>
+<blockquote>
+<p>  鱼和熊掌不可兼得啊😭</p>
+</blockquote>
+<p>最后爬到了大概 5000 条电影信息以及 4000 多部电影的评论信息。</p>
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-20-anti-spider-of-douban/p1.png" width="500px" height>
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图 1</div>
+</center>
+
+<center>
+    <img style="border-radius:0.4em;box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" src="/Python/2020-10-20-anti-spider-of-douban/p2.png" width="500px" height>
+    <div style="color:orange;display: inline-block;color: #999;padding: 2px;">图 2</div>
+</center>
+
+
+<p>总之，从这次爬虫中也学到了一些新东西，下次再应对类似的反爬策略也能有迹可循了。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[1] <a id="link1">a</a></p>
+<p>[2] <a id="link2">https://zhuanlan.zhihu.com/p/24035574</a></p>
+<p>[3] <a id="link3">https://zhuanlan.zhihu.com/p/35955767</a></p>
+]]></content>
       <categories>
         <category>Python</category>
       </categories>
@@ -12,11 +44,6 @@
         <tag>反爬</tag>
         <tag>豆瓣</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>2020-10-14-cnnlogs-spider</title>
-    <url>/null/2020-10-14-cnnlogs-spider/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>必应壁纸爬虫</title>
