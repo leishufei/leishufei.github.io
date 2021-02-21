@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2021-02-03-a-record-of-a-database-hack</title>
+    <title>PyCharm 中一些有用的插件</title>
+    <url>/null/some-useful-plugins-for-pycharm/</url>
+    <content><![CDATA[<ul>
+<li>Node.js (PyCharm 需要是专业版)</li>
+<li>CSV Plugin</li>
+<li>Rainbow CSV</li>
+<li>ExcelReader</li>
+<li>RegexpTester</li>
+<li>Json Parser</li>
+<li>Kite AI Code AutoComplete</li>
+<li>Chinese (Simplified) Language Pack EAP</li>
+<li>待更新...</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>记录一次服务器数据库被黑的经历</title>
     <url>/%E6%9C%8D%E5%8A%A1%E5%99%A8/2021-02-03-a-record-of-a-database-hack/</url>
     <content><![CDATA[<blockquote>
 <p>  服务器没用多久，数据库就被黑了一次，我也太惨了吧🤣</p>
