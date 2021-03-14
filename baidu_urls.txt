@@ -1,4 +1,5 @@
-https://blog.leishufei.top/null/some-useful-plugins-for-pycharm/
+https://blog.leishufei.top/null/2021-03-14-grabbing-packages-for-android-above-7-0/
+https://blog.leishufei.top/null/2021-02-21-some-useful-plugins-for-pycharm/
 https://blog.leishufei.top/%E6%9C%8D%E5%8A%A1%E5%99%A8/2021-02-03-a-record-of-a-database-hack/
 https://blog.leishufei.top/Python/2020-10-20-anti-spider-of-douban/
 https://blog.leishufei.top/Python/2020-10-12-bing-wallpaper-spider/
